@@ -120,12 +120,12 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <span class="arrow "></span>
         </a>
         <ul class="sub-menu">
-            <li class="active">
+            <li>
                 <a href="<?php echo U('Customer/customerlist');;?>">
                     Customers List
                 </a>
             </li>
-            <li >
+            <li class="active">
                 <a href="<?php echo U('Customer/customeradd');;?>">
                     Add Customers</a>
             </li>
@@ -292,8 +292,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <div class="row-fluid">
     <div class="span12">
         <h3 class="page-title">
-            Customer Managerment
-            <small> Customer Managerment</small>
+            Workers Managerment
+            <small> Workers panel</small>
         </h3>
         <ul class="breadcrumb">
             <li>
@@ -302,10 +302,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </li>
             <li>
-                <a href="#">Customer Managerment</a>
+                <a href="#">Workers Managerment</a>
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </li>
-            <li><a href="<?php echo U('Customer/customerlist');;?>">Customers List</a></li>
+            <li><a href="<?php echo U('Worker/workeradd');;?>">Add New Worker</a></li>
         </ul>
         <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
@@ -313,50 +313,55 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- END PAGE HEADER-->
 <!-- BEGIN PAGE CONTENT-->
 <div class="row-fluid">
-    <div class="span12">
-        <form role="form" action="<?php echo U('Customer/customerlist');;?>" method="post" class="form-search">
-            <div class="control">
-                <input name = 'search' class="m-wrap" type="text" required><button type="submit" class="btn green" type="button">Search!</button>
-            </div>
-        </form>
+	<div style="height: auto;" id="accordion1-1" class="accordion collapse">
+		<form role="form" action="<?php echo U('Worker/workerupdate');;?>" method="post" class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label">Wechat ID</label>
+				<div class="controls">
+					<input name="wxid" type="text" placeholder="Wechat ID" class="m-wrap large" value=<?php echo ($worker["wxid"]); ?> readonly>
+					<span class="help-inline">wechat id</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Wechat Name</label>
+				<div class="controls">
+					<input name="wxname" type="text" placeholder="Wechat Name" class="m-wrap large" value=<?php echo ($worker["wxname"]); ?> required>
+					<span class="help-inline">wechat name</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Email</label>
+				<div class="controls">
+					<input name="email" type="email" placeholder="Worker email" class="m-wrap large" value=<?php echo ($worker["email"]); ?> required>
+					<span class="help-inline">Worker email</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Technologies</label>
+				<div class="controls">
+					<?php if(is_array($teches)): foreach($teches as $key=>$vo): ?><label class="checkbox">
+							<?php if(in_array(($vo["techid"]), explode(',',"<?php echo ($techarr); ?>"))): ?>in<?php endif; ?>
+							<div class="checkboxdiv"><span><input name="tech[]" type="checkbox" value="<?php echo ($vo["techid"]); ?>" /> <?php echo ($vo["content"]); ?> </span></div>
+						</label><?php endforeach; endif; ?>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Descrition</label>
+				<div class="controls">
+					<textarea class="large m-wrap" rows="3" name="description"></textarea>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn blue"><i class="icon-ok"></i> Save</button>
+				<button type="button" class="btn">Cancel</button>
+			</div>
+		</form>
     </div>
-</div>
-<div class="row-fluid">
-    <div class="span12">
-    <table class="table table-striped table-hover table-bordered dataTable">
-       <thead>
-        <tr>
-            <th>WxID</th>
-            <th>Wxname</th>
-            <th>Email</th>
-            <th>Technologies</th>
-            <th>Addtime</th>
-            <th>Description</th>
-            <th>Option</th>
-        </tr>
-       </thead>
-       <tbody>
-        <?php if(is_array($workers)): foreach($workers as $key=>$vo): ?><tr>
-            <td><?php echo ($vo["wxid"]); ?></td>
-            <td><?php echo ($vo["wxname"]); ?></td>
-            <td><?php echo ($vo["email"]); ?></td>
-            <td>
-				<?php if(is_array($vo["techarr"])): foreach($vo["techarr"] as $key=>$vv): ?><span class="label label-important" style="margin-right:3px;"><?php echo ($vv["content"]); ?> </span><?php endforeach; endif; ?>
-			</td>
-            <td><?php echo ($vo["addtime"]); ?></td>
-            <td><?php echo ($vo["description"]); ?></td>
-            <td>
-                <a class="btn yellow easy-pie-chart-reload" href="<?php echo U('Worker/workereditpage?wxid='.$vo['wxid'].'');;?>">
-                    Edit	
-                </a>
-				<a class="btn yellow easy-pie-chart-reload" href="<?php echo U('Worker/workerdelete?wxid='.$vo['wxid'].'');;?>">
-                    Delete
-                </a>
-            </td>
-          </tr><?php endforeach; endif; ?>
-       </tbody>
-    </table>
-    </div>
+	
+	
+	
+	
+	
 </div>
 <!-- END PAGE CONTENT-->
 </div>
@@ -402,7 +407,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <script src="/csweb/DomainSystem/Public/metronic/media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
     <!-- END PAGE LEVEL SCRIPTS -->
-    <script type="text/javascript" src="/csweb/DomainSystem/Public/metronic/media/js/bootstrap-fileupload.js"></script>
     <script type="text/javascript" src="/csweb/DomainSystem/Public/metronic/media/js/chosen.jquery.min.js"></script>
     <script type="text/javascript" src="/csweb/DomainSystem/Public/metronic/media/js/validator.min.js"></script>
     <script>

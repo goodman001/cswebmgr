@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 18, 2017 at 05:45 PM
+-- Generation Time: Dec 19, 2017 at 03:46 PM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `db_admin` (
   `uid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `code` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `code` int(11) NOT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `db_admin` (
 --
 
 INSERT INTO `db_admin` (`uid`, `username`, `password`, `code`) VALUES
-('cs_5a37351ab9b09', 'csxueba', 'd90c2a7fa79ceb13c2de15e784058b11', '3330');
+('cs_5a37351ab9b09', 'csxueba', 'd90c2a7fa79ceb13c2de15e784058b11', 3330);
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `db_orders` (
 --
 
 CREATE TABLE IF NOT EXISTS `db_technologies` (
-  `techid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `techid` int(11) NOT NULL,
   `content` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`techid`)
@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS `db_technologies` (
 --
 
 INSERT INTO `db_technologies` (`techid`, `content`, `description`) VALUES
-('0', '数据结构', ''),
-('1', '算法', '');
+(0, '算法/数据结构', ''),
+(1, 'php', '');
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,8 @@ CREATE TABLE IF NOT EXISTS `db_workers` (
 --
 
 INSERT INTO `db_workers` (`wxid`, `wxname`, `email`, `description`, `addtime`) VALUES
-('wid', 'wname', 'aiisong@ucdavis.edu', '', '2017-12-18 17:10:45');
+('wx002', 'wxname', '0', '', '2017-12-19 14:38:38'),
+('wxid0', 'wxname', '0', '', '2017-12-19 11:46:54');
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `db_worker_order` (
 
 CREATE TABLE IF NOT EXISTS `db_worker_tech` (
   `wxid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `techid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `techid` int(11) NOT NULL,
   KEY `wxid` (`wxid`),
   KEY `techid` (`techid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -140,7 +141,9 @@ CREATE TABLE IF NOT EXISTS `db_worker_tech` (
 --
 
 INSERT INTO `db_worker_tech` (`wxid`, `techid`) VALUES
-('wid', '0');
+('wxid0', 0),
+('wxid0', 1),
+('wx002', 0);
 
 --
 -- Constraints for dumped tables

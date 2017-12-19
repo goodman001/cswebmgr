@@ -22,16 +22,18 @@ class WorkerController extends CommonController {
         }else
         {
             $workers = $Model->order('addtime asc')->select();
-			dump($workers);
+			//dump($workers);
 			foreach($workers as $k=>$v){
-				/*$MM = M('db');
+				$MM = M('worker_tech');
 				$map['wxid'] = $v['wxid'];
-				$teches = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid ');
-				*/
-				dump($v['wxid']);
+				$teches = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.techid,db_technologies.content')->where('db_worker_tech.wxid = "'.$v['wxid'].'"')->select();
+				$v['techarr'] = $teches;
+				$workers[$k] = $v;
 			}
         }
-		
+		//dump($workers);
+		$this->assign('workers',$workers);
+		$this->display(T('mgr/workers_list'));
         //dump($workers);
 		
 		//print_r($list);
@@ -128,6 +130,7 @@ class WorkerController extends CommonController {
         }
         
     }
+	/* add new worker */
     public function workeradd()//show page
     {
 		$Model = M('technologies');
@@ -168,4 +171,38 @@ class WorkerController extends CommonController {
         }
         
     }
+	/* edit worker*/
+	public function workereditpage(){
+		$data_['wxid'] = I('get.wxid');
+        $Model = M('workers');
+        $worker = $Model->where($data_)->find();
+		$Mtech = M('technologies');
+		$teches = $Mtech->select();
+		//dump($worker);
+        if(!empty($worker))
+        {
+			//dump($worker);
+			/* add to worker_tech*/
+			$MM = M('worker_tech');
+			$techesexit = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.techid')->where('db_worker_tech.wxid = "'.$data_['wxid'].'"')->select();
+			
+			$techstr = '';
+			foreach($techesexit as $k=>$v){
+				$techstr = $v['techid'].",".$techstr;
+			}
+			//dump($techstr);
+			$this->assign('teches',$teches);
+			$this->assign('techarr',$techstr);
+			$this->assign('worker',$worker);
+			$this->display(T('mgr/workers_edit'));
+			
+            
+        }
+        else
+        {
+            $this->error('Worker has no existed !', U('Worker/workerlist'),2);
+            
+        }
+		
+	}
 }
