@@ -314,9 +314,15 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN PAGE CONTENT-->
 <div class="row-fluid">
     <div class="span12">
-        <form role="form" action="<?php echo U('Customer/customerlist');;?>" method="post" class="form-search">
-            <div class="control">
-                <input name = 'search' class="m-wrap" type="text" required><button type="submit" class="btn green" type="button">Search!</button>
+		<h4>Search optiones</h4>
+        <form role="form" action="<?php echo U('Worker/workerlist');;?>" method="post" class="form-search">
+            <div class="control alert alert-info">
+				<?php if(is_array($teches)): foreach($teches as $key=>$item): ?><label class="checkbox">
+						<div class="checkboxdiv"><span><input name="techsearch[]" type="checkbox" value="<?php echo ($item["techid"]); ?>" /> <?php echo ($item["content"]); ?> </span></div>
+					</label><?php endforeach; endif; ?>
+				<br>
+				<hr>
+                <button type="submit" class="btn green" type="button">Search!</button>
             </div>
         </form>
     </div>
@@ -349,15 +355,31 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                 <a class="btn yellow easy-pie-chart-reload" href="<?php echo U('Worker/workereditpage?wxid='.$vo['wxid'].'');;?>">
                     Edit	
                 </a>
-				<a class="btn yellow easy-pie-chart-reload" href="<?php echo U('Worker/workerdelete?wxid='.$vo['wxid'].'');;?>">
+				<a class="btn yellow easy-pie-chart-reload" href="#confirmModal" data-toggle="modal">
                     Delete
                 </a>
+				<div id="confirmModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="confirmModal3" aria-hidden="true" style="display:none" >
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+						<h3 id="confirmModal3"> Delete user window</h3>
+
+					</div>	
+					<div class="modal-body">
+						<p>Would you like to delete this Worker?</p>
+					</div>
+					<div class="modal-footer">
+						<a class="btn blue" href="<?php echo U('Worker/workerdelete?wxid='.$vo['wxid'].'');;?>" >Confirm</a>
+						<a class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+
+					</div>
+				</div>
             </td>
           </tr><?php endforeach; endif; ?>
        </tbody>
     </table>
     </div>
 </div>
+
 <!-- END PAGE CONTENT-->
 </div>
 <!-- END PAGE CONTAINER-->

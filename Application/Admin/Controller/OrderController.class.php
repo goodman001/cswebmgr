@@ -2,7 +2,6 @@
 namespace Admin\Controller;
 use Think\Controller;
 class OrderController extends CommonController {
-	
 	public function orderlist()
 	{
 		$search =I('post.search');
@@ -24,9 +23,6 @@ class OrderController extends CommonController {
         
 		
 		//print_r($list);
-		/**
-		* pages
-		**/
 		
 		$Page = new \Think\Page($count,42);// page object
 		$Page->setConfig('prev','prev');
@@ -39,6 +35,22 @@ class OrderController extends CommonController {
 		$this->assign('list',$list);
         $this->display(T('mgr/orders_list'));
 	}
+	public function orderaddpage(){
+		$Model = M('workers');
+        $workers = $Model->select();
+		$this->assign('workers',$workers);
+        $this->display(T('mgr/orders_add'));
+	}
+	public function ordernew(){
+		
+		uniqid('php_');
+		$Model = M('workers');
+        $workers = $Model->select();
+		$this->assign('workers',$workers);
+        $this->display(T('mgr/orders_add'));
+	}
+	
+	
 	public function orderdetail()
 	{
 		$data['orderID'] = I('get.orderid');

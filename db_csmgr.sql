@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 19, 2017 at 03:46 PM
+-- Generation Time: Dec 20, 2017 at 09:59 PM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
 
@@ -103,8 +103,8 @@ CREATE TABLE IF NOT EXISTS `db_workers` (
 --
 
 INSERT INTO `db_workers` (`wxid`, `wxname`, `email`, `description`, `addtime`) VALUES
-('wx002', 'wxname', '0', '', '2017-12-19 14:38:38'),
-('wxid0', 'wxname', '0', '', '2017-12-19 11:46:54');
+('wxid1', 'wxname1', 'abc@gg.com', '', '2017-12-20 15:45:13'),
+('wxxx', 'xname', 'aiisong@ucdavis.edu', '', '2017-12-20 16:46:19');
 
 -- --------------------------------------------------------
 
@@ -115,6 +115,7 @@ INSERT INTO `db_workers` (`wxid`, `wxname`, `email`, `description`, `addtime`) V
 CREATE TABLE IF NOT EXISTS `db_worker_order` (
   `wxid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `orderid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `w_deadline` datetime NOT NULL,
   `w_payment` decimal(10,2) NOT NULL,
   `w_state` int(11) NOT NULL DEFAULT '0',
   `remark` int(11) NOT NULL DEFAULT '5',
@@ -141,9 +142,8 @@ CREATE TABLE IF NOT EXISTS `db_worker_tech` (
 --
 
 INSERT INTO `db_worker_tech` (`wxid`, `techid`) VALUES
-('wxid0', 0),
-('wxid0', 1),
-('wx002', 0);
+('wxid1', 1),
+('wxxx', 0);
 
 --
 -- Constraints for dumped tables

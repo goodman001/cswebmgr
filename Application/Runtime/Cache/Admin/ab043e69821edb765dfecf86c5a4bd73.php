@@ -32,7 +32,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <link href="/csweb/DomainSystem/Public/metronic/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
     <link href="/csweb/DomainSystem/Public/metronic/media/css/chosen.css" rel="stylesheet" type="text/css" />
 <!-- END CORE PLUGINS -->
-    
+    <link rel="stylesheet" type="text/css" media="screen"  href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+    <link href="/csweb/DomainSystem/Public/metronic/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <!-- END begin global -->
     <!--favicon
     <link rel="shortcut icon" href="/csweb/DomainSystem/Public/metronic/media/image/favicon.ico"/>
@@ -292,8 +293,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <div class="row-fluid">
     <div class="span12">
         <h3 class="page-title">
-            Workers Managerment
-            <small> Workers panel</small>
+            Orders Managerment
+            <small> Orders panel</small>
         </h3>
         <ul class="breadcrumb">
             <li>
@@ -302,14 +303,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </li>
             <li>
-                <a href="#">Workers Managerment</a>
+                <a href="#">Orders Managerment</a>
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </li>
-			<li>
-                <a href="<?php echo U('Worker/workerlist');;?>">Workers List</a>
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </li>
-            <li><a href="#">Edit Worker</a></li>
+            <li><a href="<?php echo U('Order/orderaddpage');;?>">Add A New Order</a></li>
         </ul>
         <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
@@ -318,36 +315,143 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN PAGE CONTENT-->
 <div class="row-fluid">
 	<div style="height: auto;" id="accordion1-1" class="accordion collapse">
-		<form role="form" action="<?php echo U('Worker/workerupdate');;?>" method="post" class="form-horizontal">
+		<form role="form" action="<?php echo U('Worker/workernew');;?>" method="post" class="form-horizontal">
 			<div class="control-group">
-				<label class="control-label">Wechat ID</label>
+				<label class="control-label">Create DateTime</label>
 				<div class="controls">
-					<input name="wxid" type="text" placeholder="Wechat ID" class="m-wrap large" value=<?php echo ($worker["wxid"]); ?> readonly>
+					<div id="datetimepicker" class="input-append date">
+					  <input name="createtime" class="m-wrap large" type="text" readonly />
+					  <span class="add-on" >
+						<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					  </span>
+					</div>	
+				</div>
+			</div>
+			<hr>
+			<div class="control-group">
+				<label class="control-label">Guest Wechat ID</label>
+				<div class="controls">
+					<input name="guest_wxid" type="text" placeholder="Guest Wechat ID" class="m-wrap large" required>
 					<span class="help-inline">wechat id</span>
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label">Wechat Name</label>
+				<label class="control-label">Guest Wechat Name</label>
 				<div class="controls">
-					<input name="wxname" type="text" placeholder="Wechat Name" class="m-wrap large" value=<?php echo ($worker["wxname"]); ?> required>
+					<input name="guest_wxname" type="text" placeholder="Guest Wechat Name" class="m-wrap large" required>
 					<span class="help-inline">wechat name</span>
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label">Email</label>
+				<label class="control-label">Project Name</label>
 				<div class="controls">
-					<input name="email" type="email" placeholder="Worker email" class="m-wrap large" value=<?php echo ($worker["email"]); ?> required>
-					<span class="help-inline">Worker email</span>
+					<input name="projectname" type="text" placeholder="Project name" class="m-wrap large" required>
+					<span class="help-inline">Project Name</span>
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label">Technologies</label>
+				<label class="control-label">Guest Dead line</label>
 				<div class="controls">
-					<?php if(is_array($teches)): foreach($teches as $key=>$vo): ?><label class="checkbox">
-							<?php if(in_array(($vo["techid"]), is_array($techarr)?$techarr:explode(',',$techarr))): ?><div class="checkboxdiv"><span><input name="tech[]" type="checkbox" value="<?php echo ($vo["techid"]); ?>" checked/> <?php echo ($vo["content"]); ?> </span></div>
-							<?php else: ?>
-								<div class="checkboxdiv"><span><input name="tech[]" type="checkbox" value="<?php echo ($vo["techid"]); ?>"/> <?php echo ($vo["content"]); ?> </span></div><?php endif; ?>
-						</label><?php endforeach; endif; ?>
+					<div id="datetimepicker1" class="input-append date">
+					  <input name="g_deadtime" class="m-wrap large" type="text" readonly />
+					  <span class="add-on" >
+						<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					  </span>
+					</div>	
+				</div>
+			</div>
+			<hr>
+			<div class="control-group">
+				<label class="control-label">Currency Type</label>
+				<div class="controls">
+					<select name="moneytype" class="m-wrap large" data-placeholder="Choose a Currency" tabindex="1">
+						<option value="USD">USD</option>
+						<option value="RMB">RMB</option>
+						<option value="EUR">EUR</option>
+						<option value="CAD">CAD</option>
+						<option value="HKD">HKD</option>
+						<option value="AUD">AUD</option>
+						<option value="SGD">SGD</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Total Price</label>
+				<div class="controls">
+					<input name="totalprice" type="number" value="0.00" min="0" step="0.01" class="m-wrap large" required>
+					<span class="help-inline">Guest payment total money</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Guarantee Money</label>
+				<div class="controls">
+					<input name="guarantee" type="number" value="0.00" min="0" step="0.01" class="m-wrap large" required>
+					<span class="help-inline">Guest payment Guarantee Money</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Exchange Rate</label>
+				<div class="controls">
+					<input name="exchange" type="number" value="1.00" min="0" step="0.01" class="m-wrap large" required>
+					<span class="help-inline">exchange 1? = ?RMB</span>
+				</div>
+			</div>
+			<!--
+				0. guest have no paid gurrentee
+				1. guest have paid gurrentee
+				2. guest have pain all money
+			-->
+			<div class="control-group">
+				<label class="control-label">Guest state</label>
+				<div class="controls">
+					<select name="g_state" class="m-wrap large" data-placeholder="Choose a Currency" tabindex="1">
+						<option value="0">guest have no paid gurrentee</option>
+						<option value="1">guest have paid gurrentee</option>
+						<option value="2">guest have pain all money</option>
+					</select>
+				</div>
+			</div>
+			<hr>
+			<div class="control-group">
+				<label class="control-label">Select worker</label>
+				<div class="controls">
+					<select name="wxid" class="m-wrap large" data-placeholder="Choose a Currency" tabindex="1" >
+						<option value="">Please Choose a worker</option>
+						<?php if(is_array($workers)): foreach($workers as $key=>$vo): ?><option value="<?php echo ($vo["wxid"]); ?>"><?php echo ($vo["wxid"]); ?> : <?php echo ($vo["wxname"]); ?></option><?php endforeach; endif; ?>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Worker Deadline</label>
+				<div class="controls">
+					<div id="datetimepicker2" class="input-append date">
+					  <input name="w_deadline" class="m-wrap large" type="text" readonly />
+					  <span class="add-on" >
+						<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					  </span>
+					</div>	
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Worker salary</label>
+				<div class="controls">
+					<input name="w_payment" type="number" value="0.00" min="0" step="0.01" class="m-wrap large" required>
+					<span class="help-inline">Worker salary(RMB)</span>
+				</div>
+			</div>
+			<!--
+				0. worker is doing
+				1. worker has completed and no pay
+				2. worker has completed and paid
+			-->
+			<div class="control-group">
+				<label class="control-label">Worker state</label>
+				<div class="controls">
+					<select name="w_state" class="m-wrap large" tabindex="1">
+						<option value="0" selected>worker is doing</option>
+						<option value="1">worker has completed and no pay</option>
+						<option value="2">worker has completed and paid</option>
+					</select>
 				</div>
 			</div>
 			<div class="control-group">
@@ -357,7 +461,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				</div>
 			</div>
 			<div class="form-actions">
-				<button type="submit" class="btn blue"><i class="icon-ok"></i> Save</button>
+				<button type="submit" class="btn blue"><i class="icon-ok"></i>Save</button>
 				<button type="button" class="btn">Cancel</button>
 			</div>
 		</form>
@@ -414,21 +518,41 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <!-- END PAGE LEVEL SCRIPTS -->
     <script type="text/javascript" src="/csweb/DomainSystem/Public/metronic/media/js/chosen.jquery.min.js"></script>
     <script type="text/javascript" src="/csweb/DomainSystem/Public/metronic/media/js/validator.min.js"></script>
-    <script>
+	<script type="text/javascript"
+     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript" src="/csweb/DomainSystem/Public/metronic/media/js/bootstrap-datetimepicker.js">
+    </script>
+    <script type="text/javascript" src="/csweb/DomainSystem/Public/metronic/media/js/bootstrap-datepicker.en-CA.js">
+    </script>
+    <script type="text/javascript">
+		$('#datetimepicker').datetimepicker({
+			format: 'yyyy-MM-dd hh:mm:ss'
+		});
+		$('#datetimepicker1').datetimepicker({
+        	format: 'yyyy-MM-dd hh:mm:ss'
+		});
+		$('#datetimepicker2').datetimepicker({
+        	format: 'yyyy-MM-dd hh:mm:ss'
+		});
+    </script>
+	<!-- date -->
+	
+
+<script src="/csweb/DomainSystem/Public/metronic/media/js/app.js" type="text/javascript"></script>
+<script src="/csweb/DomainSystem/Public/metronic/media/js/form-components.js"></script>  
+<script>
         jQuery(document).ready(function () {
 
         // initiate layout and plugins
 
         App.init();
+        FormComponents.init();
 
     });
-        
-    </script>
-
-<script src="/csweb/DomainSystem/Public/metronic/media/js/app.js" type="text/javascript"></script>
-<script type="text/javascript" charset="utf-8">  
-	//MyValidator.init();  
-</script>
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

@@ -401,6 +401,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <![endif]-->
 
 <script src="/csweb/DomainSystem/Public/metronic/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/csweb/DomainSystem/Public/metronic/media/js/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/csweb/DomainSystem/Public/metronic/media/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="/csweb/DomainSystem/Public/metronic/media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
     <!-- END PAGE LEVEL SCRIPTS -->
     <script type="text/javascript" src="/csweb/DomainSystem/Public/metronic/media/js/bootstrap-fileupload.js"></script>
