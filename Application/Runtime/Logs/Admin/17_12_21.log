@@ -1,0 +1,494 @@
+[ 2017-12-21T08:19:58+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderaddpage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000209s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000119s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000190s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000060s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000107s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.043799s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.043851s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000059s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000079s ]
+
+[ 2017-12-21T08:20:01+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000231s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000140s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000225s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000056s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000120s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017336s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017425s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000061s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000089s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000072s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000103s ]
+
+[ 2017-12-21T08:20:10+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Login/checkLog
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000206s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000112s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000218s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000864s ]
+SQL: SELECT `uid`,`username` FROM `db_admin` WHERE `username` = 'csxueba' AND `password` = 'd90c2a7fa79ceb13c2de15e784058b11' AND `code` = 3330 LIMIT 1   [ RunTime:0.000127s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000049s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000112s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014992s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015063s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000047s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000072s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000360s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000401s ]
+
+[ 2017-12-21T08:20:13+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Profile/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000168s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000067s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000128s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000858s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000161s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000101s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000185s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000314s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.049829s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049910s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000080s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000127s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000080s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000173s ]
+
+[ 2017-12-21T08:20:39+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderaddpage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000093s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000045s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000079s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000503s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000069s ]
+SQL: SHOW COLUMNS FROM `db_workers` [ RunTime:0.000412s ]
+SQL: SELECT * FROM `db_workers`  [ RunTime:0.000057s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000111s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000167s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010572s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010615s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000058s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000080s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000056s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000089s ]
+
+[ 2017-12-21T08:22:51+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/ordernew
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000121s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000031s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000054s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000376s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000048s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000049s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000075s ]
+
+[ 2017-12-21T08:29:55+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/ordernew
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000073s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000024s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000042s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000400s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000060s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000279s ]
+SQL: INSERT INTO `db_orders` (`orderid`,`createtime`,`guest_wxid`,`guest_wxname`,`projectname`,`g_deadtime`,`moneytype`,`totalprice`,`guarantee`,`exchange`,`g_state`) VALUES ('cs_5a3b0083927b8','2017-12-20 16:20:40','wxguestid','wxguestname','python abc','2017-12-27 23:57:40','USD','300.00','150.00','6.57',1) [ RunTime:0.058109s ]
+SQL: SHOW COLUMNS FROM `db_worker_order` [ RunTime:0.000371s ]
+SQL: INSERT INTO `db_worker_order` (`wxid`,`w_deadline`,`w_payment`,`w_state`,`description`) VALUES ('wxid1','2017-12-27 16:20:40','900',0,0) [ RunTime:0.056420s ]
+ERR: 1452:Cannot add or update a child row: a foreign key constraint fails (`db_csmgr`.`db_worker_order`, CONSTRAINT `db_worker_order_ibfk_2` FOREIGN KEY (`orderid`) REFERENCES `db_orders` (`orderid`) ON DELETE CASCADE)
+ [ SQL语句 ] : INSERT INTO `db_worker_order` (`wxid`,`w_deadline`,`w_payment`,`w_state`,`description`) VALUES ('wxid1','2017-12-27 16:20:40','900',0,0)
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000101s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000121s ]
+
+[ 2017-12-21T08:34:32+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/ordernew
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000206s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000060s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000111s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000961s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000105s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000773s ]
+SQL: INSERT INTO `db_orders` (`orderid`,`createtime`,`guest_wxid`,`guest_wxname`,`projectname`,`g_deadtime`,`moneytype`,`totalprice`,`guarantee`,`exchange`,`g_state`) VALUES ('cs_5a3b0198d2adc','2017-12-20 16:20:40','wxguestid','wxguestname','python abc','2017-12-27 23:57:40','USD','300.00','150.00','6.57',1) [ RunTime:0.002281s ]
+SQL: SHOW COLUMNS FROM `db_worker_order` [ RunTime:0.000415s ]
+SQL: INSERT INTO `db_worker_order` (`wxid`,`orderid`,`w_deadline`,`w_payment`,`w_state`,`description`) VALUES ('wxid1','cs_5a3b0198d2adc','2017-12-27 16:20:40','900',0,0) [ RunTime:0.001055s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000064s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000089s ]
+
+[ 2017-12-21T08:53:14+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Profile/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000157s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000051s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000092s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.009988s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000135s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000079s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000112s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000232s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009707s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009752s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000063s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000096s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000063s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000091s ]
+
+[ 2017-12-21T08:53:18+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000186s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000111s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000197s ]
+
+[ 2017-12-21T08:53:46+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000209s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000104s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000765s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000134s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000129s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000178s ]
+
+[ 2017-12-21T08:53:50+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Profile/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000113s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000056s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000100s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000711s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000106s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000086s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000130s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000187s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012245s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012304s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000073s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000116s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000076s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000130s ]
+
+[ 2017-12-21T08:53:52+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000124s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000023s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000046s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000404s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000124s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000057s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000083s ]
+
+[ 2017-12-21T08:55:16+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Profile/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000211s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000072s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000122s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000849s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000101s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000088s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000077s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000118s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012168s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012239s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000042s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000062s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000044s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000073s ]
+
+[ 2017-12-21T08:55:18+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000066s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000029s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000052s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000413s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000050s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000084s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000111s ]
+
+[ 2017-12-21T08:55:22+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000071s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000062s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000443s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000074s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000043s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000069s ]
+
+[ 2017-12-21T08:55:26+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000062s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000025s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000063s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000317s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000045s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000035s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000053s ]
+
+[ 2017-12-21T09:09:06+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000182s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000111s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000761s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000109s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000822s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000237s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000291s ]
+
+[ 2017-12-21T09:13:33+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Profile/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000093s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000032s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000056s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000477s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000077s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000041s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000086s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000122s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006231s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006260s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000038s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000055s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000061s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000088s ]
+
+[ 2017-12-21T09:13:36+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000062s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000031s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000053s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000338s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000050s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000306s ]
+SQL: SELECT db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname FROM `db_orders` left join db_worker_order on db_worker_order.orderid = db_orders.orderid   [ RunTime:0.000482s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000040s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000060s ]
+
+[ 2017-12-21T09:13:52+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000146s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000066s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000139s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000706s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000095s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000943s ]
+SQL: SELECT db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname FROM `db_orders` left join db_worker_order on db_worker_order.orderid = db_orders.orderid   [ RunTime:0.000093s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000098s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000146s ]
+
+[ 2017-12-21T09:16:00+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000267s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000165s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000251s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000382s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000051s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000318s ]
+SQL: SELECT db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname,db_worker_order.wxid FROM `db_orders` left join db_worker_order on db_worker_order.orderid = db_orders.orderid   [ RunTime:0.000248s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000042s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000066s ]
+
+[ 2017-12-21T09:27:38+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000128s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000060s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000106s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.001315s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000089s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000547s ]
+SQL: SELECT db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname,db_worker_order.wxid FROM `db_orders` left join db_worker_order on db_worker_order.orderid = db_orders.orderid left join db_workers on db_worker_order.wxid = db_workers.wxid   [ RunTime:0.000729s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000146s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000190s ]
+
+[ 2017-12-21T09:27:40+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000137s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000109s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000160s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000709s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000103s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000652s ]
+SQL: SELECT db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname,db_worker_order.wxid FROM `db_orders` left join db_worker_order on db_worker_order.orderid = db_orders.orderid left join db_workers on db_worker_order.wxid = db_workers.wxid   [ RunTime:0.000091s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000061s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000105s ]
+
+[ 2017-12-21T09:27:57+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000188s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000075s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000136s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000892s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000173s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000955s ]
+SQL: SELECT db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname,db_worker_order.wxid,db_workers.wxname FROM `db_orders` left join db_worker_order on db_worker_order.orderid = db_orders.orderid left join db_workers on db_worker_order.wxid = db_workers.wxid   [ RunTime:0.000421s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000069s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000103s ]
+
+[ 2017-12-21T09:31:35+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000096s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000047s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000081s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000534s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000077s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000511s ]
+SQL: SELECT db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname,db_orders.projectname,db_orders.g_deadtime,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_orders.exchange,db_orders.g_state,db_worker_order.wxid,db_workers.wxname FROM `db_orders` left join db_worker_order on db_worker_order.orderid = db_orders.orderid left join db_workers on db_worker_order.wxid = db_workers.wxid   [ RunTime:0.000503s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000060s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000094s ]
+
+[ 2017-12-21T09:31:36+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000086s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000073s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000570s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000084s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000566s ]
+SQL: SELECT db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname,db_orders.projectname,db_orders.g_deadtime,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_orders.exchange,db_orders.g_state,db_worker_order.wxid,db_workers.wxname FROM `db_orders` left join db_worker_order on db_worker_order.orderid = db_orders.orderid left join db_workers on db_worker_order.wxid = db_workers.wxid   [ RunTime:0.000084s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000051s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000091s ]
+
+[ 2017-12-21T09:33:43+08:00 ] 192.168.44.131 /csweb/DomainSystem/index.php/Order/orderlist/flag/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000177s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000049s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000088s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/html/csweb/DomainSystem/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `db_admin` [ RunTime:0.000891s ]
+SQL: SELECT * FROM `db_admin` WHERE `uid` = 'cs_5a37351ab9b09' LIMIT 1   [ RunTime:0.000098s ]
+SQL: SHOW COLUMNS FROM `db_orders` [ RunTime:0.000588s ]
+SQL: SELECT db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname,db_orders.projectname,db_orders.g_deadtime,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_orders.exchange,db_orders.g_state,db_worker_order.wxid,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_worker_order.description,db_workers.wxname FROM `db_orders` left join db_worker_order on db_worker_order.orderid = db_orders.orderid left join db_workers on db_worker_order.wxid = db_workers.wxid   [ RunTime:0.000593s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000116s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000160s ]
+

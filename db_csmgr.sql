@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 20, 2017 at 09:59 PM
+-- Generation Time: Dec 21, 2017 at 09:56 AM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
 
@@ -44,14 +44,29 @@ INSERT INTO `db_admin` (`uid`, `username`, `password`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `db_guests`
+--
+
+CREATE TABLE IF NOT EXISTS `db_guests` (
+  `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `wxname` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `paypalemail` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `paypalname` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`wxid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+
+--
 -- Table structure for table `db_orders`
 --
 
 CREATE TABLE IF NOT EXISTS `db_orders` (
-  `orderid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `createtime` date NOT NULL,
-  `guest_wxid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `guest_wxname` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `orderid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `createtime` datetime NOT NULL,
   `projectname` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
   `g_deadtime` datetime NOT NULL,
   `moneytype` char(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'USD',
@@ -61,6 +76,21 @@ CREATE TABLE IF NOT EXISTS `db_orders` (
   `g_state` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`orderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+--
+-- Table structure for table `db_guest_order`
+--
+
+CREATE TABLE IF NOT EXISTS `db_guest_order` (
+  `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `orderid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `remark` int(5) NOT NULL,
+  `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 
 -- --------------------------------------------------------
 
@@ -90,7 +120,7 @@ INSERT INTO `db_technologies` (`techid`, `content`, `description`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `db_workers` (
-  `wxid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `wxname` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
@@ -113,13 +143,13 @@ INSERT INTO `db_workers` (`wxid`, `wxname`, `email`, `description`, `addtime`) V
 --
 
 CREATE TABLE IF NOT EXISTS `db_worker_order` (
-  `wxid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `orderid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `w_deadline` datetime NOT NULL,
   `w_payment` decimal(10,2) NOT NULL,
   `w_state` int(11) NOT NULL DEFAULT '0',
   `remark` int(11) NOT NULL DEFAULT '5',
-  `description` int(11) NOT NULL,
+  `description` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
   KEY `wxid` (`wxid`),
   KEY `orderid` (`orderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -131,10 +161,11 @@ CREATE TABLE IF NOT EXISTS `db_worker_order` (
 --
 
 CREATE TABLE IF NOT EXISTS `db_worker_tech` (
-  `wxid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `techid` int(11) NOT NULL,
   KEY `wxid` (`wxid`),
-  KEY `techid` (`techid`)
+  KEY `techid` (`techid`),
+  PRIMARY key(`wxid`,`techid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -148,7 +179,12 @@ INSERT INTO `db_worker_tech` (`wxid`, `techid`) VALUES
 --
 -- Constraints for dumped tables
 --
-
+--
+-- Constraints for table `db_guest_order`
+--
+ALTER TABLE `db_guest_order`
+  ADD CONSTRAINT `db_guest_order_ibfk_1` FOREIGN KEY (`wxid`) REFERENCES `db_guests` (`wxid`) ON DELETE CASCADE,
+  ADD CONSTRAINT `db_guest_order_ibfk_2` FOREIGN KEY (`orderid`) REFERENCES `db_orders` (`orderid`) ON DELETE CASCADE;
 --
 -- Constraints for table `db_worker_order`
 --

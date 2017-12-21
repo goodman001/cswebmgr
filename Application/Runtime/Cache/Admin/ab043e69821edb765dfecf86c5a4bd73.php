@@ -315,7 +315,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN PAGE CONTENT-->
 <div class="row-fluid">
 	<div style="height: auto;" id="accordion1-1" class="accordion collapse">
-		<form role="form" action="<?php echo U('Worker/workernew');;?>" method="post" class="form-horizontal">
+		<form role="form" action="<?php echo U('Order/ordernew');;?>" method="post" class="form-horizontal">
 			<div class="control-group">
 				<label class="control-label">Create DateTime</label>
 				<div class="controls">

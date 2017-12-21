@@ -32,21 +32,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <link href="/csweb/DomainSystem/Public/metronic/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
     <link href="/csweb/DomainSystem/Public/metronic/media/css/chosen.css" rel="stylesheet" type="text/css" />
 <!-- END CORE PLUGINS -->
+    <link rel="stylesheet" type="text/css" media="screen"  href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
     <link href="/csweb/DomainSystem/Public/metronic/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/bootstrap-fileupload.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/jquery.gritter.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/chosen.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/select2_metro.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/jquery.tagsinput.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/clockface.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/bootstrap-wysihtml5.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/datepicker.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/timepicker.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/colorpicker.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/bootstrap-toggle-buttons.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/daterangepicker.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/datetimepicker.css" />
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic/media/css/multi-select-metro.css" />
     <!-- END begin global -->
     <!--favicon
     <link rel="shortcut icon" href="/csweb/DomainSystem/Public/metronic/media/image/favicon.ico"/>
@@ -154,18 +141,18 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
         </a>
         <ul class="sub-menu">
             <li>
-                <a href="<?php echo U('Order/orderlist?flag=no');;?>">
+                <a href="<?php echo U('Order/orderlist?flag=2');;?>">
                     Incomplete orders
                 </a>
             </li>
             <li>
-                <a href="<?php echo U('Worker/workeradd');;?>">
+                <a href="<?php echo U('Order/orderlist?flag=1');;?>">
                     Completed orders
                 </a>
             </li>
             <li>
-                <a href="<?php echo U('Worker/workeradd');;?>">
-                    All orders
+                <a href="<?php echo U('Order/orderlist?flag=0');;?>">
+                    ALL orders
                 </a>
             </li>
             <li>

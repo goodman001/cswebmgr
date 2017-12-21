@@ -4,7 +4,7 @@ use Think\Controller;
 class OrderController extends CommonController {
 	public function orderlist()
 	{
-		$search =I('post.search');
+		/*$search =I('post.search');
         $Model = M('order');
         if(!empty($search))
         {
@@ -34,6 +34,21 @@ class OrderController extends CommonController {
 		$this->assign('page',$show);// 
 		$this->assign('list',$list);
         $this->display(T('mgr/orders_list'));
+		*/
+		$Model = M('orders');
+		$flag =I('get.flag');
+		switch($flag){
+			case 1:
+				echo "completed orders";
+				break;
+			case 2:
+				echo "incomplte orders";
+				break;
+			default:
+				$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->field('db_orders.orderid,db_orders.createtime,db_orders.guest_wxid,db_orders.guest_wxname,db_orders.projectname,db_orders.g_deadtime,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_orders.exchange,db_orders.g_state, db_worker_order.wxid,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_worker_order.description,db_workers.wxname')->select();
+				dump($$orderinfolist);
+				echo "all";
+		}
 	}
 	public function orderaddpage(){
 		$Model = M('workers');
@@ -43,11 +58,37 @@ class OrderController extends CommonController {
 	}
 	public function ordernew(){
 		
-		uniqid('php_');
+		$orderid = uniqid('cs_');
+		$data['orderid'] = $orderid;
+		$data['createtime'] = I('post.createtime','','htmlspecialchars');//
+		$data['guest_wxid'] = I('post.guest_wxid','','htmlspecialchars');//
+		$data['guest_wxname'] = I('post.guest_wxname','','htmlspecialchars');//
+		$data['projectname'] = I('post.projectname','','htmlspecialchars');//
+		$data['g_deadtime'] = I('post.g_deadtime','','htmlspecialchars');//
+		$data['moneytype'] = I('post.moneytype','','htmlspecialchars');//
+		$data['totalprice'] = I('post.totalprice','','htmlspecialchars');//
+		$data['guarantee'] = I('post.guarantee','','htmlspecialchars');//
+		$data['exchange'] = I('post.exchange','','htmlspecialchars');//
+		$data['g_state'] = I('post.g_state','','htmlspecialchars');//
+		dump($data);
+		$Model = M('orders');
+		$Model->data($data)->add();
+		$map['wxid'] = I('post.wxid','','htmlspecialchars');//
+		$map['orderid'] = $orderid;//
+		$map['w_deadline'] = I('post.w_deadline','','htmlspecialchars');//
+		$map['w_payment'] = I('post.w_payment','','htmlspecialchars');//
+		$map['w_state'] = I('post.w_state','','htmlspecialchars');//
+		$map['description'] = I('post.description','','htmlspecialchars');//
+		dump($map);
+		$Order = M('worker_order');
+		$Order->data($map)->add();
+		$this->success('Add a new order successfully!',U('Order/orderlist'),1);
+		/*
 		$Model = M('workers');
         $workers = $Model->select();
 		$this->assign('workers',$workers);
         $this->display(T('mgr/orders_add'));
+		*/
 	}
 	
 	
