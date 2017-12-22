@@ -32,7 +32,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <link href="/csweb/DomainSystem/Public/metronic/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
     <link href="/csweb/DomainSystem/Public/metronic/media/css/chosen.css" rel="stylesheet" type="text/css" />
 <!-- END CORE PLUGINS -->
-    
+    <link rel="stylesheet" type="text/css" media="screen"  href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+    <link href="/csweb/DomainSystem/Public/metronic/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <!-- END begin global -->
     <!--favicon
     <link rel="shortcut icon" href="/csweb/DomainSystem/Public/metronic/media/image/favicon.ico"/>
@@ -113,14 +114,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <span class="selected"></span>
         </a>
     </li>
-    <li>
+    <li class="active">
         <a href="javascript:;">
             <i class="fa fa-user-circle" aria-hidden="true"></i>
             <span class="title">Customer Managerment</span>
             <span class="arrow "></span>
         </a>
         <ul class="sub-menu">
-            <li>
+            <li class="active">
                 <a href="<?php echo U('Customer/customerlist');;?>">
                     Customers List
                 </a>
@@ -131,7 +132,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             </li>
         </ul>
     </li>
-     <li class="active">
+     <li class="">
         <a href="<?php echo U('Order/orderlist');;?>">
             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
             <span class="title">Order Managerment</span>
@@ -292,8 +293,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <div class="row-fluid">
     <div class="span12">
         <h3 class="page-title">
-            Customer Managerment
-            <small> Customer Managerment</small>
+           Orders Managerment
+            <small> orders Managerment</small>
         </h3>
         <ul class="breadcrumb">
             <li>
@@ -314,54 +315,88 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN PAGE CONTENT-->
 <div class="row-fluid">
     <div class="span12">
-        <form role="form" action="<?php echo U('Order/orderlist');;?>" method="post" class="form-search">
-            <div class="control">
-                <input name = 'search' class="m-wrap" type="text" required><button type="submit" class="btn green" type="button">Search!</button>
+		<h4>Search optiones</h4>
+        <form role="form" action="<?php echo U('Worker/workerlist');;?>" method="post" class="form-search">
+            <div class="control alert alert-info">
+				<?php if(is_array($teches)): foreach($teches as $key=>$item): ?><label class="checkbox">
+						<div class="checkboxdiv"><span><input name="techsearch[]" type="checkbox" value="<?php echo ($item["techid"]); ?>" /> <?php echo ($item["content"]); ?> </span></div>
+					</label><?php endforeach; endif; ?>
+				<br>
+				<hr>
+                <button type="submit" class="btn green" type="button">Search!</button>
             </div>
         </form>
     </div>
 </div>
 <div class="row-fluid">
-    <div class="span12">
-    <table class="table table-striped table-hover">
+    <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
        <thead>
         <tr>
             <th>OrderID</th>
-            <th>Username</th>
-            <th>TransactionID</th>
-            <th>Issue Date</th>
-            <th>Status</th>
-            <th>Refund</th>
-            <th>Refund amount</th>
-            <th>Invoice date</th>
-            <th>Due date</th>
+            <th>Guest Wechat</th>
+            <th>Project</th>
+            <th>Guest Deadline</th>
+            <th>Total price</th>
+            <th>Guarantee</th>
+            <th>Exchange</th>
+            <th>Guest State</th>
+            <th>Worker</th>
+            <th>Worker deadline</th>
+            <th>Worker payment</th>
+            <th>Worker state</th>
+            <th>Remark</th>
+            <th>Description</th>
             <th></th>
         </tr>
        </thead>
        <tbody>
-        <?php if(is_array($list)): foreach($list as $key=>$vo): ?><tr>
-            <td><?php echo ($vo["orderID"]); ?></td>
-            <td><?php echo ($vo["username"]); ?></td>
-            <td><?php echo ($vo["transactionID"]); ?></td>
-            <td><?php echo ($vo["issuedate"]); ?></td>
-            <td><?php echo ($vo["status"]); ?></td>
-            <td><?php echo ($vo["refund"]); ?></td>
-            <td><?php echo ($vo["refundamount"]); ?></td>
-            <td><?php echo ($vo["invoicedate"]); ?></td>
-			<?php if($vo["status"] == 'pending'): ?><td>NULL</td>
-			<?php else: ?>
-				<td><?php echo ($vo["duedate"]); ?></td><?php endif; ?>
+        <?php if(is_array($orders)): foreach($orders as $key=>$vo): ?><tr>
+            <td><?php echo ($vo["orderid"]); ?></td>
+            <td><?php echo ($vo["gwxid"]); ?> : <?php echo ($vo["gwxname"]); ?></td>
+            <td><?php echo ($vo["projectname"]); ?></td>
+            <td><?php echo ($vo["g_deadtime"]); ?></td>
+            <td><?php echo ($vo["totalprice"]); echo ($vo["moneytype"]); ?></td>
+            <td><?php echo ($vo["guarantee"]); echo ($vo["moneytype"]); ?></td>
+            <td><?php echo ($vo["exchange"]); ?></td>
+            <td><?php echo ($vo["g_state"]); ?></td>
+            <td><?php echo ($vo["wxid"]); ?> : <?php echo ($vo["wxname"]); ?></td>
+            <td><?php echo ($vo["w_deadline"]); ?></td>
+            <td><?php echo ($vo["w_payment"]); ?>RMB</td>
+            <td><?php echo ($vo["w_state"]); ?>RMB</td>
+            <td><?php echo ($vo["gremark"]); ?></td>
+            <td><?php echo ($vo["description"]); ?></td>
             <td>
-                <a class="btn yellow easy-pie-chart-reload" href="<?php echo U('Order/orderdetail?orderid='.$vo['orderID'].'');;?>">
-                    view detail		
+                <!--
+                <a class="btn yellow easy-pie-chart-reload" href="<?php echo U('Worker/workereditpage?wxid='.$vo['wxid'].'');;?>">
+                    Edit	
                 </a>
+				<a class="btn yellow easy-pie-chart-reload" href="#confirmModal" data-toggle="modal">
+                    Delete
+                </a>
+				<div id="confirmModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="confirmModal3" aria-hidden="true" style="display:none" >
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+						<h3 id="confirmModal3"> Delete user window</h3>
+
+					</div>	
+					<div class="modal-body">
+						<p>Would you like to delete this Worker?</p>
+					</div>
+					<div class="modal-footer">
+						<a class="btn blue" href="<?php echo U('Worker/workerdelete?wxid='.$vo['wxid'].'');;?>" >Confirm</a>
+						<a class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+
+					</div>
+				</div>
+-->
             </td>
           </tr><?php endforeach; endif; ?>
        </tbody>
     </table>
-    <span><div class="page"><?php echo ($page); ?></div></span>
     </div>
 </div>
+
 <!-- END PAGE CONTENT-->
 </div>
 <!-- END PAGE CONTAINER-->
@@ -421,9 +456,16 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     </script>
 
 <script src="/csweb/DomainSystem/Public/metronic/media/js/app.js" type="text/javascript"></script>
-<script type="text/javascript" charset="utf-8">  
-	//MyValidator.init();  
-</script>
+<script src="/csweb/DomainSystem/Public/metronic/media/js/form-components.js"></script>  
+<script>
+        jQuery(document).ready(function () {
+
+        // initiate layout and plugins
+
+        App.init();
+        FormComponents.init();
+
+    });
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

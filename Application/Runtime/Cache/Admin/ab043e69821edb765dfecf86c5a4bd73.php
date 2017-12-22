@@ -435,7 +435,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			<div class="control-group">
 				<label class="control-label">Worker salary</label>
 				<div class="controls">
-					<input name="w_payment" type="number" value="0.00" min="0" step="0.01" class="m-wrap large" required>
+					<input name="w_payment" type="number" value="0.00" min="0" step="0.01" class="m-wrap large">
 					<span class="help-inline">Worker salary(RMB)</span>
 				</div>
 			</div>
@@ -451,6 +451,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						<option value="0" selected>worker is doing</option>
 						<option value="1">worker has completed and no pay</option>
 						<option value="2">worker has completed and paid</option>
+						<option value="3">worker is finding</option>
 					</select>
 				</div>
 			</div>
