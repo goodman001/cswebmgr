@@ -5,77 +5,76 @@ class WorkerController extends CommonController {
     public function workerlist()
     {
         $search =I('post.techsearch');
-		$Model = M('workers');
+    		$Model = M('workers');
         $techstr = "";
         if(!empty($search))
         {
-			
+
             $workers = $Model->order('addtime asc')->select();
-			//dump($workers);
-			$techstr = '';
-			foreach($search as $v){
-				$techstr = $v.','.$techstr;
-			}
-			$techstr = rtrim($techstr,",");
-			//dump($techstr);
-			$worklist = [];
-			foreach($workers as $k=>$v){
-				$MM = M('worker_tech');
-				
-				$techeslist = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.wxid')->where('db_worker_tech.wxid = "'.$v['wxid'].'" and db_worker_tech.techid in('.$techstr.')')->select();
-				//dump($techeslist);
-				if($techeslist != NULL){
-					array_push($worklist ,$techeslist[0]['wxid']);
-				}
-			}
-			//dump($worklist);
-			//$workliststr = rtrim($workliststr,",");
-			//dump($workliststr);
-			$workeroutput = [];
-			foreach($workers as $k=>$v){
-				$MM = M('worker_tech');
-				if(in_array($v['wxid'],$worklist)){
-					$teches = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.techid,db_technologies.content')->where('db_worker_tech.wxid = "'.$v['wxid'].'"')->select();
-					$v['techarr'] = $teches;
-					$workers[$k] = $v;
-					array_push($workeroutput ,$workers[$k]);
-				}
-			}
-			//dump($workeroutput);
-			$Mtech = M('technologies');
-			$teches = $Mtech->select();
-			$this->assign('workers',$workeroutput);
-            $this->assign('techstr',$techstr);
-			$this->assign('teches',$teches);
+            //dump($workers);
+            $techstr = '';
+            foreach($search as $v){
+            	$techstr = $v.','.$techstr;
+            }
+            $techstr = rtrim($techstr,",");
             //dump($techstr);
-			$this->display(T('admin/workers_list'));
-			
-        }else
-        {
+            $worklist = [];
+            foreach($workers as $k=>$v){
+            	$MM = M('worker_tech');
+
+            	$techeslist = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.wxid')->where('db_worker_tech.wxid = "'.$v['wxid'].'" and db_worker_tech.techid in('.$techstr.')')->select();
+            	//dump($techeslist);
+            	if($techeslist != NULL){
+            		array_push($worklist ,$techeslist[0]['wxid']);
+            	}
+            }
+      			//dump($worklist);
+      			//$workliststr = rtrim($workliststr,",");
+      			//dump($workliststr);
+      			$workeroutput = [];
+      			foreach($workers as $k=>$v){
+      				$MM = M('worker_tech');
+      				if(in_array($v['wxid'],$worklist)){
+      					$teches = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.techid,db_technologies.content')->where('db_worker_tech.wxid = "'.$v['wxid'].'"')->select();
+      					$v['techarr'] = $teches;
+      					$workers[$k] = $v;
+      					array_push($workeroutput ,$workers[$k]);
+      				}
+      			}
+            //dump($workeroutput);
+            $Mtech = M('technologies');
+            $teches = $Mtech->select();
+            $this->assign('workers',$workeroutput);
+            $this->assign('techstr',$techstr);
+            $this->assign('teches',$teches);
+            //dump($techstr);
+            $this->display(T('admin/workers_list'));
+          }else
+          {
             $workers = $Model->order('addtime asc')->select();
-			//dump($workers);
-			foreach($workers as $k=>$v){
-				$MM = M('worker_tech');
-				$map['wxid'] = $v['wxid'];
-				$teches = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.techid,db_technologies.content')->where('db_worker_tech.wxid = "'.$v['wxid'].'"')->select();
-				$v['techarr'] = $teches;
-				$workers[$k] = $v;
-			}
-			//dump($workers);
-			$Mtech = M('technologies');
-			$teches = $Mtech->select();
-			$this->assign('workers',$workers);
-			$this->assign('teches',$teches);
-			$this->display(T('admin/workers_list'));
-        }
+            //dump($workers);
+            foreach($workers as $k=>$v){
+              $MM = M('worker_tech');
+              $map['wxid'] = $v['wxid'];
+              $teches = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.techid,db_technologies.content')->where('db_worker_tech.wxid = "'.$v['wxid'].'"')->select();
+              $v['techarr'] = $teches;
+              $workers[$k] = $v;
+            }
+            //dump($workers);
+            $Mtech = M('technologies');
+            $teches = $Mtech->select();
+            $this->assign('workers',$workers);
+            $this->assign('teches',$teches);
+            $this->display(T('admin/workers_list'));
+          }
 		//dump($workers);
         //dump($workers);
-		
+
 		//print_r($list);
 		/**
 		* pages
 		**/
-		
+
 		/*$Page = new \Think\Page($count,42);// page object
 		$Page->setConfig('prev','prev');
 		$Page->setConfig('next','next');
@@ -83,13 +82,13 @@ class WorkerController extends CommonController {
 		$Page->setConfig('last','last page');
 		$Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER% ');
 		$show = $Page->show();// page output
-		$this->assign('page',$show);// 
+		$this->assign('page',$show);//
 		$this->assign('list',$list);
 		*/
-        //$this->display(T('mgr/workers_list'));	
+        //$this->display(T('mgr/workers_list'));
 		//print("list");
-		
-		
+
+
     }
 	/* add new worker */
     public function workernewpage()//show page
@@ -104,8 +103,8 @@ class WorkerController extends CommonController {
         $data_['wxid'] = I('post.wxid');
         $Model = M('workers');
         $content = $Model->where($data_)->find();
-		$teches = [];
-		$teches = I('post.tech','','htmlspecialchars');//
+	      $teches = [];
+    		$teches = I('post.tech','','htmlspecialchars');//
 		//dump($teches);
         if(empty($content))
         {
@@ -128,9 +127,9 @@ class WorkerController extends CommonController {
         else
         {
             $this->error('Worker has existed already!', U('Worker/workernewpage'),2);
-            
+
         }
-        
+
     }
 	/* edit worker*/
 	public function workereditpage(){
@@ -146,7 +145,7 @@ class WorkerController extends CommonController {
 			/* add to worker_tech*/
 			$MM = M('worker_tech');
 			$techesexit = $MM->join('inner join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.techid')->where('db_worker_tech.wxid = "'.$data_['wxid'].'"')->select();
-			
+
 			$techstr = '';
 			foreach($techesexit as $k=>$v){
 				$techstr = $v['techid'].",".$techstr;
@@ -155,14 +154,14 @@ class WorkerController extends CommonController {
 			$this->assign('teches',$teches);
 			$this->assign('techarr',$techstr);
 			$this->assign('worker',$worker);
-			$this->display(T('admin/workers_edit'));   
+			$this->display(T('admin/workers_edit'));
         }
         else
         {
             $this->error('Worker has no existed !', U('Worker/workerlist'),2);
-            
+
         }
-		
+
 	}
 	public function workerupdate()
     {
@@ -192,9 +191,9 @@ class WorkerController extends CommonController {
         else
         {
             $this->error('Worker has no existed !', U('Worker/workerlist'),2);
-            
+
         }
-        
+
     }
 	/* delete a worker */
 	public function workerdelete(){
@@ -202,6 +201,6 @@ class WorkerController extends CommonController {
 		$Model = M('workers');
 		$Model->where($data_)->delete();
 		$this->success('Worker has deleted successfully!', U('Worker/workerlist'),2);
-		
+
 	}
 }

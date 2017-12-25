@@ -520,9 +520,9 @@ License: You must have a valid license purchased only from themeforest(the above
 					Dashboard</a>
 				</li>
 				<li>
-					<a href="ecommerce_orders.html">
+					<a href="<?php echo U('Order/orderlist');;?>">
 					<i class="icon-basket"></i>
-					Orders</a>
+					Orders All</a>
 				</li>
 				<li>
 					<a href="ecommerce_orders_view.html">

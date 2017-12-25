@@ -4,6 +4,26 @@ use Think\Controller;
 class OrderController extends CommonController {
 	public function orderlist()
 	{
+		$pp = 0;
+		if(isset($_GET["p"])){
+			$pp = $_GET["p"];
+		}
+		$sortby = 10;
+		if(isset($_POST["sortby"])){
+			$sortby = $_POST["sortby"];
+		}
+		//$fromdate = date('Y-m-d',strtotime('1016-01-30'));//
+		//$todate = date('Y-m-d',strtotime('3016-01-30'));//
+		$fromdate = "1000-10-10 00:00:00";
+		echo $fromdate;
+		$todate = "3000-10-10 00:00:00";
+		if(isset($_POST["fromdate"]) && $_POST["fromdate"] != ""){
+			$fromdate = $_POST["fromdate"];
+		}
+		if(isset($_POST["todate"]) && $_POST["todate"] != ""){
+			$todate = $_POST["todate"];
+		}
+		echo $fromdate;
 		/*$search =I('post.search');
         $Model = M('order');
         if(!empty($search))
@@ -20,10 +40,10 @@ class OrderController extends CommonController {
             $list = $Model->where("id>=0")->order('issuedate desc')->page(I('get.p').',42')->select();
 		    $count = $Model->where("id>=0")->count();// get count of records
         }
-        
-		
+
+
 		//print_r($list);
-		
+
 		$Page = new \Think\Page($count,42);// page object
 		$Page->setConfig('prev','prev');
 		$Page->setConfig('next','next');
@@ -31,13 +51,14 @@ class OrderController extends CommonController {
 		$Page->setConfig('last','last page');
 		$Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER% ');
 		$show = $Page->show();// page output
-		$this->assign('page',$show);// 
+		$this->assign('page',$show);//
 		$this->assign('list',$list);
         $this->display(T('mgr/orders_list'));
 		*/
 		$Model = M('orders');
 		$flag =I('get.flag');
 		$orderinfolist = [];
+		$count = 0;
 		switch($flag){
 			case 1:
 				echo "completed orders";
@@ -48,47 +69,59 @@ class OrderController extends CommonController {
 			default:
 				//$orderinfolist = $Model->select();db_workers.wxname
 				//$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->field('db_orders.orderid')->select();
-				$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_orders.g_deadtime,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_orders.exchange,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->select();
-				
+				//echo $fromdate;
+				$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.'" AND db_orders.createtime <= "'.$todate.'"')->order('db_orders.createtime desc')->page($pp.',5')->select();
+				$count = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.'" AND db_orders.createtime <= "'.$todate.'"')->count();
+
 				//echo "hahah";
 				//echo "all";
 		}
 		//dump($orderinfolist);
+		//echo $count;
+		$Page = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数
+  	$Page->setConfig('prev','last');
+    $Page->setConfig('next','下一页');
+    $Page->setConfig('first','第一页');
+    $Page->setConfig('last','尾页');
+    $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER% ');
+  	$show = $Page->show();// 分页显示输出
+  	$this->assign('page',$show);// 赋值分页输出
 		$this->assign('orders',$orderinfolist);//
-		$this->display(T('mgr/orders_list'));	
+		$this->display(T('admin/orders_all'));
 	}
 	public function orderaddpage(){
 		$Model = M('workers');
         $workers = $Model->select();
 		$this->assign('workers',$workers);
-        $this->display(T('mgr/orders_add'));
+        $this->display(T('admin/orders_add'));
 	}
 	public function ordernew(){
-		
+
 		$orderid = uniqid('cs_');
 		$data['orderid'] = $orderid;
-		$data['createtime'] = I('post.createtime','','htmlspecialchars');//	
+		$data['createtime'] = date('Y-m-d H:i:s',time());//
 		$data['projectname'] = I('post.projectname','','htmlspecialchars');//
-		$data['g_deadtime'] = I('post.g_deadtime','','htmlspecialchars');//
 		$data['moneytype'] = I('post.moneytype','','htmlspecialchars');//
 		$data['totalprice'] = I('post.totalprice','','htmlspecialchars');//
 		$data['guarantee'] = I('post.guarantee','','htmlspecialchars');//
-		$data['exchange'] = I('post.exchange','','htmlspecialchars');//
 		$data['description'] = I('post.description','','htmlspecialchars');//
 		dump($data);
 		$Model = M('orders');
 		$Model->data($data)->add();
 		/*guest*/
 		$cond['wxid'] = I('post.guest_wxid','','htmlspecialchars');//
+		$guest_wxid = $cond['wxid'];
 		$cell['wxname'] = I('post.guest_wxname','','htmlspecialchars');//
 		$Model = M('guests');
 		dump($cond);
 		$guestinfo = $Model->where($cond)->find();
 		dump($guestinfo);
 		if(!empty($guestinfo)){
-			$Model->where($cond)->save($cell); 
+			echo "nonull";
+			$Model->where($cond)->save($cell);
 		}else
 		{
+			echo "null";
 			$cell['wxid'] = $guest_wxid;
 			$Model->data($cell)->add();
 		}
@@ -96,15 +129,16 @@ class OrderController extends CommonController {
 		$Model = M('guest_order');
 		$go['wxid'] = $guest_wxid;
 		$go['orderid'] = $orderid;
+		$go['g_deadline'] = I('post.g_deadtime','','htmlspecialchars');//
 		$go['g_state'] = I('post.g_state','','htmlspecialchars');//
 		$Model->data($go)->add();
-		/* worder_order */
+		/* worker_order */
 		$map['wxid'] = I('post.wxid','','htmlspecialchars');//
 		$map['orderid'] = $orderid;//
 		$map['w_deadline'] = I('post.w_deadline','','htmlspecialchars');//
 		$map['w_payment'] = I('post.w_payment','','htmlspecialchars');//
 		$map['w_state'] = I('post.w_state','','htmlspecialchars');//
-		
+
 		dump($map);
 		if($map['wxid'] != ""){
 			$Order = M('worker_order');
@@ -118,8 +152,8 @@ class OrderController extends CommonController {
         $this->display(T('mgr/orders_add'));
 		*/
 	}
-	
-	
+
+
 	public function orderdetail()
 	{
 		$data['orderID'] = I('get.orderid');
@@ -140,24 +174,24 @@ class OrderController extends CommonController {
 			$items = $Model->where($ct1)->select();
 			$this->assign('items',$items);//
 			$this->display(T('mgr/orders_detail'));
-            
-			
+
+
 		}else
         {
             R('Order/orderlist');
         }
-		
+
 	}
 	public function orderdel()
 	{
 		$orderid = I('get.orderid');
-		
+
 		/*del item*/
 		$Model =  M('item');
 		$ct00['orderID'] = $orderid;
 		$items = $Model->where($ct00)->select();
 		$Model->where($ct00)->delete();//del item
-		
+
 		/*del domain*/
 		foreach($items as &$val)
 		{
@@ -180,8 +214,8 @@ class OrderController extends CommonController {
 		$ct0['orderID'] = $orderid;
 		$Model =  M('item');
 		$itemCount = $Model->where($ct0)->count();
-		
-		
+
+
 		$ct00['id'] = $itemid;
 		$ct00['orderID'] = $orderid;
 		$items = $Model->where($ct00)->find();
@@ -190,7 +224,7 @@ class OrderController extends CommonController {
 		$ctd['domainname'] = $items['domainname'];
 		$Mdomain->where($ctd)->delete();//del domain
 		if($itemCount == 1)
-		{		
+		{
 			$ct1['orderID'] = $orderid;
 			$M2 = M('order');
 			$M2->where($ct1)->delete();
@@ -214,7 +248,7 @@ class OrderController extends CommonController {
 			/*update order due time*/
 			$Model-> where($data)->setField('status','active');
 			$Model-> where($data)->setField('duedate',$nowtime);
-			/*update domain*/	
+			/*update domain*/
 			$Model =  M('item');
 			$items = $Model->where($data)->select();
 			foreach($items as &$val)
@@ -238,11 +272,11 @@ class OrderController extends CommonController {
 					$Mdomain->where($ctd)->setField('nextduedate',date('Y-m-d', strtotime('+'.$val['years'].' year', strtotime($content['issuedate']))));//issuedate
 				}
 
-				
+
 			}
 			$this->success('Accept the order successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
 		}
-		
+
 	}
 	public function orderrefund()
 	{
@@ -250,7 +284,7 @@ class OrderController extends CommonController {
 		$data['orderID'] = $orderid;
 		$Mtrans =  M('transaction');
 		$trans = $Mtrans->where($data)->find();
-		
+
 		$Model =  M('order');
 		$content = $Model->where($data)->find();
 		if(!empty($content))
@@ -271,7 +305,7 @@ class OrderController extends CommonController {
 			}
 			$this->success('Refund the order successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
 		}
-		
+
 	}
 	public function ordercancle()
 	{
@@ -295,7 +329,7 @@ class OrderController extends CommonController {
 			}
 			$this->success('Cancel the order successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
 		}
-		
+
 	}
 	public function itemedit()
 	{
@@ -314,7 +348,7 @@ class OrderController extends CommonController {
 			$price = $val['price'];
 			$years = $val['years'];
 			$sum = $sum + $price * $years;
-			
+
 		}
 		$cc['settleamount'] = $sum;
 		$M3 = M('transaction');
@@ -331,7 +365,7 @@ class OrderController extends CommonController {
 		$condition['status'] = 'Y';
 		$crs = $Mr->field('registrar')->where($condition)->select();
 		shuffle($crs);
-		
+
 		/*get price*/
 		/*$price = 0;
 		$Mt = M('fakedomains');
@@ -374,7 +408,7 @@ class OrderController extends CommonController {
             }else
             {
                 $price = $content2['price'];//increase 20%
-            }   
+            }
         }else
         {
             $Model = M('configure');
@@ -383,17 +417,17 @@ class OrderController extends CommonController {
         }
 		//print_r($ct);
 		$registrar = $crs[0]['registrar'];
-		$data['registrar'] = $registrar;	
+		$data['registrar'] = $registrar;
 		$data['price'] = $price;
 		$data['years'] = I('post.years');
-		
+
 		/*check domain available*/
 		//check item
 		$Model =  M('item');
 		$ct['domainname'] = $data['domainname'];
 		$ct['orderID'] = $data['orderID'];
 		$itemnum = $Model->where($ct)->count();
-		
+
 	    $msg = getWhois($data['domainname']);
         $flag =  $msg[1];
 		#print($flag);
@@ -427,7 +461,7 @@ class OrderController extends CommonController {
 		#print($itemnum);
 		if($showflag ==1 && $itemnum == 0)
 		{
-			
+
 			$Model->data($data)->add();
 			$ct1['orderID'] = $orderid;
 			$items = $Model->where($ct1)->select();
@@ -454,7 +488,7 @@ class OrderController extends CommonController {
 			$expiry_db = '';
 			$nextdue_db = '';
 			$registrationdate = '';
-			
+
 			$datadb['domainname'] = $data['domainname'];
 			$datadb['username'] = $userinfo['username'];
 			$datadb['registrar'] = $registrar;
@@ -465,7 +499,7 @@ class OrderController extends CommonController {
 			$datadb['mainforward'] = '';
 			$datadb['DNSmgr'] = '';
 			$datadb['orderID'] = $orderid;
-			
+
 			/*get domain registation profile*/
 			$datadb['email'] = $userinfo['email'];//get email
 			$datadb['firstname'] = $userinfo['firstname'];//get firstname
@@ -486,15 +520,15 @@ class OrderController extends CommonController {
 			$datadb['ns4'] = "ns4.namserver.com";//get firstname
 			$DoM = M('domainmgr');
 			$DoM->data($datadb)->add();
-			
+
 			$this->success('Add new item into the order successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
 		}else
 		{
 			$this->error('Add new item into the order failure!',U('Order/orderdetail?orderid='.$orderid.''),1);
 		}
-		
+
 	}
-	
-	
-	
+
+
+
 }

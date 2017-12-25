@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
--- http://www.phpmyadmin.net
+-- version 4.7.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 22, 2017 at 05:45 PM
--- Server version: 5.5.54-0ubuntu0.14.04.1
--- PHP Version: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
+-- Generation Time: Dec 25, 2017 at 05:08 PM
+-- Server version: 5.6.36
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_csmgr`
@@ -26,12 +28,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `db_admin`
 --
 
-CREATE TABLE IF NOT EXISTS `db_admin` (
+CREATE TABLE `db_admin` (
   `uid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `code` int(11) NOT NULL,
-  PRIMARY KEY (`uid`)
+  `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -47,14 +48,13 @@ INSERT INTO `db_admin` (`uid`, `username`, `password`, `code`) VALUES
 -- Table structure for table `db_guests`
 --
 
-CREATE TABLE IF NOT EXISTS `db_guests` (
+CREATE TABLE `db_guests` (
   `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `wxname` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `paypalemail` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `paypalname` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`wxid`)
+  `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -62,6 +62,8 @@ CREATE TABLE IF NOT EXISTS `db_guests` (
 --
 
 INSERT INTO `db_guests` (`wxid`, `wxname`, `email`, `paypalemail`, `paypalname`, `description`) VALUES
+('ggkkkid', 'ggkkkidname', '', '', '', ''),
+('ggxxidid', 'ggxxnamename', '', '', '', ''),
 ('guesttest', 'guesttestname', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -70,25 +72,25 @@ INSERT INTO `db_guests` (`wxid`, `wxname`, `email`, `paypalemail`, `paypalname`,
 -- Table structure for table `db_guest_order`
 --
 
-CREATE TABLE IF NOT EXISTS `db_guest_order` (
+CREATE TABLE `db_guest_order` (
   `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `orderid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `g_deadline` datetime NOT NULL,
   `g_state` int(11) NOT NULL DEFAULT '0',
   `remark` int(5) NOT NULL DEFAULT '5',
-  `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  KEY `db_guest_order_ibfk_1` (`wxid`),
-  KEY `db_guest_order_ibfk_2` (`orderid`)
+  `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `db_guest_order`
 --
 
-INSERT INTO `db_guest_order` (`wxid`, `orderid`, `g_state`, `remark`, `description`) VALUES
-('guesttest', 'cs_5a3c55d438958', 0, 5, ''),
-('guesttest', 'cs_5a3c5632b8ec0', 0, 5, ''),
-('guesttest', 'cs_5a3c56f80a0fa', 0, 5, ''),
-('guesttest', 'cs_5a3c58481de5e', 0, 5, '');
+INSERT INTO `db_guest_order` (`wxid`, `orderid`, `g_deadline`, `g_state`, `remark`, `description`) VALUES
+('guesttest', 'cs_5a3c55d438958', '0000-00-00 00:00:00', 0, 5, ''),
+('guesttest', 'cs_5a3c5632b8ec0', '0000-00-00 00:00:00', 0, 5, ''),
+('guesttest', 'cs_5a3c56f80a0fa', '0000-00-00 00:00:00', 0, 5, ''),
+('guesttest', 'cs_5a3c58481de5e', '0000-00-00 00:00:00', 0, 5, ''),
+('ggkkkid', 'cs_5a410dc69357c', '2012-12-21 15:30:00', 0, 5, '');
 
 -- --------------------------------------------------------
 
@@ -96,29 +98,30 @@ INSERT INTO `db_guest_order` (`wxid`, `orderid`, `g_state`, `remark`, `descripti
 -- Table structure for table `db_orders`
 --
 
-CREATE TABLE IF NOT EXISTS `db_orders` (
+CREATE TABLE `db_orders` (
   `orderid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `createtime` datetime NOT NULL,
   `projectname` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  `g_deadtime` datetime NOT NULL,
   `moneytype` char(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'USD',
   `totalprice` decimal(10,2) NOT NULL DEFAULT '0.00',
   `guarantee` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `exchange` decimal(10,2) NOT NULL DEFAULT '1.00',
-  `description` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`orderid`)
+  `description` varchar(225) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `db_orders`
 --
 
-INSERT INTO `db_orders` (`orderid`, `createtime`, `projectname`, `g_deadtime`, `moneytype`, `totalprice`, `guarantee`, `exchange`, `description`) VALUES
-('cs_5a3c55d438958', '2017-12-21 16:43:29', 'projectname', '2017-12-21 16:43:29', 'USD', 300.00, 150.00, 6.65, ''),
-('cs_5a3c5632b8ec0', '2017-12-21 16:43:29', 'projectname', '2017-12-21 16:43:29', 'USD', 300.00, 150.00, 6.65, ''),
-('cs_5a3c56f80a0fa', '2017-12-21 16:50:10', 'pptest', '2017-12-21 16:50:10', 'USD', 300.00, 150.00, 6.65, ''),
-('cs_5a3c58481de5e', '2017-12-21 16:50:10', 'pptest', '2017-12-21 16:50:10', 'USD', 300.00, 150.00, 6.65, ''),
-('cs_5a3c587e88727', '2017-12-21 16:50:10', 'pptest', '2017-12-21 16:50:10', 'USD', 300.00, 150.00, 6.65, '');
+INSERT INTO `db_orders` (`orderid`, `createtime`, `projectname`, `moneytype`, `totalprice`, `guarantee`, `description`) VALUES
+('cs_5a3c55d438958', '2017-12-21 00:00:00', 'projectname', 'USD', '300.00', '150.00', ''),
+('cs_5a3c5632b8ec0', '2017-12-21 00:00:00', 'projectname', 'USD', '300.00', '150.00', ''),
+('cs_5a3c56f80a0fa', '2017-12-21 00:00:00', 'pptest', 'USD', '300.00', '150.00', ''),
+('cs_5a3c58481de5e', '2017-12-21 00:00:00', 'pptest', 'USD', '300.00', '150.00', ''),
+('cs_5a3c587e88727', '2017-12-21 00:00:00', 'pptest', 'USD', '300.00', '150.00', ''),
+('cs_5a410be53d28d', '2017-12-25 00:00:00', 'projectname', 'USD', '300.00', '150.00', ''),
+('cs_5a410cc15ff82', '2017-12-25 00:00:00', 'ppname', 'USD', '300.00', '150.00', ''),
+('cs_5a410d4c2900f', '2017-12-25 00:00:00', 'ppname', 'USD', '300.00', '150.00', ''),
+('cs_5a410dc69357c', '2017-12-25 00:00:00', 'ppppopopopop', 'USD', '300.00', '150.00', '');
 
 -- --------------------------------------------------------
 
@@ -126,11 +129,10 @@ INSERT INTO `db_orders` (`orderid`, `createtime`, `projectname`, `g_deadtime`, `
 -- Table structure for table `db_technologies`
 --
 
-CREATE TABLE IF NOT EXISTS `db_technologies` (
+CREATE TABLE `db_technologies` (
   `techid` int(11) NOT NULL,
   `content` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`techid`)
+  `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -147,13 +149,12 @@ INSERT INTO `db_technologies` (`techid`, `content`, `description`) VALUES
 -- Table structure for table `db_workers`
 --
 
-CREATE TABLE IF NOT EXISTS `db_workers` (
+CREATE TABLE `db_workers` (
   `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `wxname` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `addtime` datetime NOT NULL,
-  PRIMARY KEY (`wxid`)
+  `addtime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -170,15 +171,13 @@ INSERT INTO `db_workers` (`wxid`, `wxname`, `email`, `description`, `addtime`) V
 -- Table structure for table `db_worker_order`
 --
 
-CREATE TABLE IF NOT EXISTS `db_worker_order` (
+CREATE TABLE `db_worker_order` (
   `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `orderid` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `w_deadline` datetime NOT NULL,
   `w_payment` decimal(10,2) NOT NULL,
   `w_state` int(11) NOT NULL DEFAULT '0',
-  `description` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  KEY `wxid` (`wxid`),
-  KEY `orderid` (`orderid`)
+  `description` varchar(225) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -186,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `db_worker_order` (
 --
 
 INSERT INTO `db_worker_order` (`wxid`, `orderid`, `w_deadline`, `w_payment`, `w_state`, `description`) VALUES
-('wxid1', 'cs_5a3c55d438958', '2017-12-21 16:43:29', 150.00, 3, '');
+('wxid1', 'cs_5a3c55d438958', '2017-12-21 16:43:29', '150.00', 3, '');
 
 -- --------------------------------------------------------
 
@@ -194,12 +193,9 @@ INSERT INTO `db_worker_order` (`wxid`, `orderid`, `w_deadline`, `w_payment`, `w_
 -- Table structure for table `db_worker_tech`
 --
 
-CREATE TABLE IF NOT EXISTS `db_worker_tech` (
+CREATE TABLE `db_worker_tech` (
   `wxid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `techid` int(11) NOT NULL,
-  PRIMARY KEY (`wxid`,`techid`),
-  KEY `wxid` (`wxid`),
-  KEY `techid` (`techid`)
+  `techid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -209,6 +205,62 @@ CREATE TABLE IF NOT EXISTS `db_worker_tech` (
 INSERT INTO `db_worker_tech` (`wxid`, `techid`) VALUES
 ('wxxx', 0),
 ('wxid1', 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `db_admin`
+--
+ALTER TABLE `db_admin`
+  ADD PRIMARY KEY (`uid`);
+
+--
+-- Indexes for table `db_guests`
+--
+ALTER TABLE `db_guests`
+  ADD PRIMARY KEY (`wxid`);
+
+--
+-- Indexes for table `db_guest_order`
+--
+ALTER TABLE `db_guest_order`
+  ADD KEY `db_guest_order_ibfk_1` (`wxid`),
+  ADD KEY `db_guest_order_ibfk_2` (`orderid`);
+
+--
+-- Indexes for table `db_orders`
+--
+ALTER TABLE `db_orders`
+  ADD PRIMARY KEY (`orderid`);
+
+--
+-- Indexes for table `db_technologies`
+--
+ALTER TABLE `db_technologies`
+  ADD PRIMARY KEY (`techid`);
+
+--
+-- Indexes for table `db_workers`
+--
+ALTER TABLE `db_workers`
+  ADD PRIMARY KEY (`wxid`);
+
+--
+-- Indexes for table `db_worker_order`
+--
+ALTER TABLE `db_worker_order`
+  ADD KEY `wxid` (`wxid`),
+  ADD KEY `orderid` (`orderid`);
+
+--
+-- Indexes for table `db_worker_tech`
+--
+ALTER TABLE `db_worker_tech`
+  ADD PRIMARY KEY (`wxid`,`techid`),
+  ADD KEY `wxid` (`wxid`),
+  ADD KEY `techid` (`techid`);
 
 --
 -- Constraints for dumped tables
@@ -234,6 +286,7 @@ ALTER TABLE `db_worker_order`
 ALTER TABLE `db_worker_tech`
   ADD CONSTRAINT `db_worker_tech_ibfk_1` FOREIGN KEY (`wxid`) REFERENCES `db_workers` (`wxid`) ON DELETE CASCADE,
   ADD CONSTRAINT `db_worker_tech_ibfk_2` FOREIGN KEY (`techid`) REFERENCES `db_technologies` (`techid`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
