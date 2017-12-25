@@ -25,26 +25,26 @@ License: You must have a valid license purchased only from themeforest(the above
 <meta content="" name="author"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 
 	<!-- BEGIN PAGE LEVEL STYLES -->
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
 	<!-- END PAGE LEVEL STYLES -->
-	
+
 
 <!-- BEGIN THEME STYLES -->
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -67,7 +67,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="index.html">
-			<img src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
+			<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 			</div>
@@ -1350,11 +1350,11 @@ License: You must have a valid license purchased only from themeforest(the above
 						</div>
 						<div class="portlet-body">
 							<div class="table-container">
-								<div class="row">
+								<div class="row well">
 									<form role="form" action="<?php echo U('Worker/workerlist');;?>" method="post">
 									<div class="col-md-12 col-sm-12">
-										#Technologies: 
-										<?php if(is_array($teches)): foreach($teches as $key=>$item): if(in_array(($item["techid"]), is_array($techstr)?$techstr:explode(',',$techstr))): ?><input type="checkbox" name="techsearch[]" class="group-checkable" value="<?php echo ($item["techid"]); ?>" checked><?php echo ($item["content"]); ?> 
+										#Technologies:
+										<?php if(is_array($teches)): foreach($teches as $key=>$item): if(in_array(($item["techid"]), is_array($techstr)?$techstr:explode(',',$techstr))): ?><input type="checkbox" name="techsearch[]" class="group-checkable" value="<?php echo ($item["techid"]); ?>" checked><?php echo ($item["content"]); ?>
 											<?php else: ?>
 												<input type="checkbox" name="techsearch[]" class="group-checkable" value="<?php echo ($item["techid"]); ?>" ><?php echo ($item["content"]); endif; endforeach; endif; ?>
 									</div>
@@ -1434,7 +1434,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												<a class="btn btn-xs purple" href="#confirmModal<?php echo ($vo['wxid']); ?>" data-toggle="modal">
 													<i class="fa fa-times"></i>
 												</a>
-												
+
 													<div class="modal fade modal-overflow in" id="confirmModal<?php echo ($vo['wxid']); ?>" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
 														<div class="modal-dialog">
 															<div class="modal-content">
@@ -1462,7 +1462,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</tbody>
 									</table>
 								</div>
-								
+
 							</div>
 						</div>
 					</div>
@@ -1493,32 +1493,32 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../../assets/global/plugins/respond.min.js"></script>
 <script src="../../assets/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
-	<script type="text/javascript" src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-	<script type="text/javascript" src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
-	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-	
+	<script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
+	<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
-			jQuery(document).ready(function() {    
+			jQuery(document).ready(function() {
            Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
 			});
