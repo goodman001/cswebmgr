@@ -6,6 +6,7 @@ class WorkerController extends CommonController {
     {
         $search =I('post.techsearch');
 		$Model = M('workers');
+        $techstr = "";
         if(!empty($search))
         {
 			
@@ -44,8 +45,10 @@ class WorkerController extends CommonController {
 			$Mtech = M('technologies');
 			$teches = $Mtech->select();
 			$this->assign('workers',$workeroutput);
+            $this->assign('techstr',$techstr);
 			$this->assign('teches',$teches);
-			$this->display(T('mgr/workers_list'));
+            //dump($techstr);
+			$this->display(T('admin/workers_list'));
 			
         }else
         {
@@ -63,7 +66,7 @@ class WorkerController extends CommonController {
 			$teches = $Mtech->select();
 			$this->assign('workers',$workers);
 			$this->assign('teches',$teches);
-			$this->display(T('mgr/workers_list'));
+			$this->display(T('admin/workers_list'));
         }
 		//dump($workers);
         //dump($workers);
@@ -89,12 +92,12 @@ class WorkerController extends CommonController {
 		
     }
 	/* add new worker */
-    public function workeradd()//show page
+    public function workernewpage()//show page
     {
 		$Model = M('technologies');
         $content = $Model->select();
 		$this->assign('teches',$content);
-        $this->display(T('mgr/workers_add'));
+        $this->display(T('admin/workers_add'));
     }
     public function workernew()
     {
@@ -120,11 +123,11 @@ class WorkerController extends CommonController {
 				$map['techid'] = $v;
 				$Model->data($map)->add();
 			}
-            $this->success('Add a new Worker successfully!',U('Worker/workeradd'),1);
+            $this->success('Add a new Worker successfully!',U('Worker/workerlist'),1);
         }
         else
         {
-            $this->error('Worker has existed already!', U('Worker/workeradd'),2);
+            $this->error('Worker has existed already!', U('Worker/workernewpage'),2);
             
         }
         
@@ -148,11 +151,11 @@ class WorkerController extends CommonController {
 			foreach($techesexit as $k=>$v){
 				$techstr = $v['techid'].",".$techstr;
 			}
-			dump($techstr);
+			//dump($techstr);
 			$this->assign('teches',$teches);
 			$this->assign('techarr',$techstr);
 			$this->assign('worker',$worker);
-			$this->display(T('mgr/workers_edit'));   
+			$this->display(T('admin/workers_edit'));   
         }
         else
         {
@@ -184,11 +187,11 @@ class WorkerController extends CommonController {
 				$map['techid'] = $v;
 				$Model->data($map)->add();
 			}
-            $this->success('Update Worker ^ '.$data['wxname'].' ^ successfully!',U('Worker/workereditpage?wxid='.$data_['wxid'].''),3);
+            $this->success('Update Worker ^ '.$data['wxname'].' ^ successfully!',U('Worker/workerlist'),3);
         }
         else
         {
-            $this->error('Worker has no existed !', U('Worker/workereditpage?wxid='.$data_['wxid'].''),2);
+            $this->error('Worker has no existed !', U('Worker/workerlist'),2);
             
         }
         

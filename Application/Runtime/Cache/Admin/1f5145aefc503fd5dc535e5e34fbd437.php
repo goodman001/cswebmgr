@@ -32,7 +32,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <link href="/csweb/DomainSystem/Public/metronic/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
     <link href="/csweb/DomainSystem/Public/metronic/media/css/chosen.css" rel="stylesheet" type="text/css" />
 <!-- END CORE PLUGINS -->
-    
+    <link rel="stylesheet" type="text/css" media="screen"  href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+    <link href="/csweb/DomainSystem/Public/metronic/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <!-- END begin global -->
     <!--favicon
     <link rel="shortcut icon" href="/csweb/DomainSystem/Public/metronic/media/image/favicon.ico"/>
@@ -426,9 +427,16 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     </script>
 
 <script src="/csweb/DomainSystem/Public/metronic/media/js/app.js" type="text/javascript"></script>
-<script type="text/javascript" charset="utf-8">  
-	//MyValidator.init();  
-</script>
+<script src="/csweb/DomainSystem/Public/metronic/media/js/form-components.js"></script>  
+<script>
+        jQuery(document).ready(function () {
+
+        // initiate layout and plugins
+
+        App.init();
+        FormComponents.init();
+
+    });
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

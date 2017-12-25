@@ -31,14 +31,17 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 <link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
-<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
-<!-- END PAGE LEVEL PLUGIN STYLES -->
-<!-- BEGIN PAGE STYLES -->
-<link href="/csweb/DomainSystem/Public/metronic3_7/assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
-<!-- END PAGE STYLES -->
+
+	<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+	<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
+	<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
+	<link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
+	<!-- END PAGE LEVEL PLUGIN STYLES -->
+	<!-- BEGIN PAGE STYLES -->
+	<link href="/csweb/DomainSystem/Public/metronic3_7/assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
+	<!-- END PAGE STYLES -->
+	
+
 <!-- BEGIN THEME STYLES -->
 <link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="/csweb/DomainSystem/Public/metronic3_7/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
@@ -59,7 +62,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
+<body class="page-header-fixed page-quick-sidebar-over-content">
 <!-- BEGIN HEADER -->
 <div class="page-header -i navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
@@ -520,6 +523,40 @@ License: You must have a valid license purchased only from themeforest(the above
 					<a href="ecommerce_orders.html">
 					<i class="icon-basket"></i>
 					Orders</a>
+				</li>
+				<li>
+					<a href="ecommerce_orders_view.html">
+					<i class="icon-tag"></i>
+					Order View</a>
+				</li>
+				<li>
+					<a href="ecommerce_products.html">
+					<i class="icon-handbag"></i>
+					Products</a>
+				</li>
+				<li>
+					<a href="ecommerce_products_edit.html">
+					<i class="icon-pencil"></i>
+					Product Edit</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="javascript:;">
+			<i class="icon-basket"></i>
+			<span class="title">Workers</span>
+			<span class="arrow "></span>
+			</a>
+			<ul class="sub-menu">
+				<li>
+					<a href="ecommerce_index.html">
+					<i class="icon-home"></i>
+					Dashboard</a>
+				</li>
+				<li>
+					<a href="<?php echo U('Worker/workerlist');;?>">
+					<i class="icon-basket"></i>
+					Workers</a>
 				</li>
 				<li>
 					<a href="ecommerce_orders_view.html">
@@ -3367,6 +3404,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<i class="icon-arrow-up"></i>
 	</div>
 </div>
+
 <!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
@@ -3386,49 +3424,52 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
-<!-- IMPORTANT! fullcalendar depends on jquery-ui.min.js for drag & drop support -->
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/pages/scripts/index.js" type="text/javascript"></script>
-<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
-<script>
-jQuery(document).ready(function() {    
-   Metronic.init(); // init metronic core componets
-   Layout.init(); // init layout
-   QuickSidebar.init(); // init quick sidebar
-Demo.init(); // init demo features
-   Index.init();   
-   Index.initDashboardDaterange();
-   Index.initJQVMAP(); // init index page's custom scripts
-   Index.initCalendar(); // init index page's custom scripts
-   Index.initCharts(); // init index page's custom scripts
-   Index.initChat();
-   Index.initMiniCharts();
-   Tasks.initDashboardWidget();
-});
-</script>
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
+	<!-- IMPORTANT! fullcalendar depends on jquery-ui.min.js for drag & drop support -->
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+	<!-- END PAGE LEVEL PLUGINS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/pages/scripts/index.js" type="text/javascript"></script>
+	<script src="/csweb/DomainSystem/Public/metronic3_7/assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+	<!-- END PAGE LEVEL SCRIPTS -->
+	<script>
+	jQuery(document).ready(function() {    
+	   Metronic.init(); // init metronic core componets
+	   Layout.init(); // init layout
+	   QuickSidebar.init(); // init quick sidebar
+	Demo.init(); // init demo features
+	   Index.init();   
+	   Index.initDashboardDaterange();
+	   Index.initJQVMAP(); // init index page's custom scripts
+	   Index.initCalendar(); // init index page's custom scripts
+	   Index.initCharts(); // init index page's custom scripts
+	   Index.initChat();
+	   Index.initMiniCharts();
+	   Tasks.initDashboardWidget();
+	});
+	</script>
+
+
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
