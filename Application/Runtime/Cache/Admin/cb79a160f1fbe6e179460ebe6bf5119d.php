@@ -25,32 +25,32 @@ License: You must have a valid license purchased only from themeforest(the above
 <meta content="" name="author"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 
 	<!-- BEGIN PAGE LEVEL STYLES -->
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
 	<!-- END PAGE LEVEL STYLES -->
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/css/clockface.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/css/clockface.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
 
 
 <!-- BEGIN THEME STYLES -->
-<link href="/cswebmgr/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -73,7 +73,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="index.html">
-			<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
+			<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 			</div>
@@ -214,7 +214,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -228,7 +228,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -242,7 +242,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -256,7 +256,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -270,7 +270,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -387,7 +387,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 				<li class="dropdown dropdown-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="/cswebmgr/Public/metronic3_7/assets/admin/layout/img/avatar3_small.jpg"/>
+					<img alt="" class="img-circle" src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/img/avatar3_small.jpg"/>
 					<span class="username username-hide-on-mobile">
 					Nick </span>
 					<i class="fa fa-angle-down"></i>
@@ -522,11 +522,27 @@ License: You must have a valid license purchased only from themeforest(the above
 					<i class="icon-home"></i>
 					Dashboard</a>
 				</li>
-				<li class="active">
-					<a href="<?php echo U('Order/orderlist');;?>">
-					<i class="icon-basket"></i>
-					Orders All</a>
-				</li>
+				<?php if($go == 1): ?><li class="active">
+						<a href="<?php echo U('Order/orderlist_incomplete');;?>">
+						<i class="icon-basket"></i>
+						Orders Incomplete</a>
+					</li>
+					<li>
+						<a href="<?php echo U('Order/orderlist');;?>">
+						<i class="icon-basket"></i>
+						Orders All</a>
+					</li>
+				<?php else: ?>
+					<li>
+						<a href="<?php echo U('Order/orderlist_incomplete');;?>">
+						<i class="icon-basket"></i>
+						Orders Incomplete</a>
+					</li>
+					<li class="active" >
+						<a href="<?php echo U('Order/orderlist');;?>">
+						<i class="icon-basket"></i>
+						Orders All</a>
+					</li><?php endif; ?>
 				<li>
 					<a href="ecommerce_orders_view.html">
 					<i class="icon-tag"></i>
@@ -1282,7 +1298,9 @@ License: You must have a valid license purchased only from themeforest(the above
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="<?php echo U('Order/orderlist?flag=3');;?>">Orders All</a>
+						<?php if($go == 1): ?><a href="<?php echo U('Order/orderlist_incomplete');;?>">Orders Incompleted</a>
+						<?php else: ?>
+							<a href="<?php echo U('Order/orderlist?flag=3');;?>">Orders All</a><?php endif; ?>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
@@ -1335,37 +1353,36 @@ License: You must have a valid license purchased only from themeforest(the above
 							</div>
 						</div>
 						<div class="portlet-body form">
-							<form class="form-horizontal" action="<?php echo U('Order/ordernew');;?>" method="post"  role="form">
-                <div class="form-body">
+							<form class="form-horizontal" action="<?php echo U('Order/orderupdate?go='.$go.'');;?>" method="post"  role="form">
+                				<div class="form-body">
 									<div class="form-group">
 										<label class="col-md-3 control-label">Order ID</label>
 										<div class="col-md-9">
 											<input name="orderid" type="text" value="<?php echo ($orderinfo["orderid"]); ?>" class="form-control input-inline input-medium" readonly>
 										</div>
 									</div>
-								<div class="form-body">
 									<div class="form-group">
 										<label class="col-md-3 control-label">Guest Wechat ID</label>
 										<div class="col-md-9">
-											<input name="guest_wxid" type="text" placeholder="Guest Wechat ID" value="<?php echo ($orderinfo["gwxid"]); ?>" class="form-control input-inline input-medium" required>
+											<input name="guest_wxid" type="text" placeholder="Guest Wechat ID" value="<?php echo ($orderinfo["gwxid"]); ?>" class="form-control input-inline input-medium" readonly>
 											<span class="help-inline">
 											guest's wechat id. </span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest Wechat Name</label>
 										<div class="col-md-9">
 											<input name="guest_wxname" type="text" placeholder="Guest Wechat Name" class="form-control input-inline input-medium" value="<?php echo ($orderinfo["gwxname"]); ?>" required>
 											<span class="help-inline"> guest's wechat name. </span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Project Name</label>
 										<div class="col-md-9">
 											<input name="projectname" type="text" placeholder="Project name" class="form-control" value="<?php echo ($orderinfo["projectname"]); ?>" required>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest deadline</label>
 										<div class="col-md-3">
 											<div class="input-group date form_meridian_datetimenew" data-date="2012-12-21">
@@ -1377,11 +1394,11 @@ License: You must have a valid license purchased only from themeforest(the above
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Currency Type</label>
 										<div class="col-md-9">
 											<select name="moneytype" class="form-control input-inline input-medium">
-                        <option value="<?php echo ($orderinfo["moneytype"]); ?>" selected><?php echo ($orderinfo["moneytype"]); ?></option>
+												<option value="<?php echo ($orderinfo["moneytype"]); ?>" selected><?php echo ($orderinfo["moneytype"]); ?></option>
 												<option value="USD">USD</option>
 												<option value="RMB">RMB</option>
 												<option value="EUR">EUR</option>
@@ -1392,14 +1409,14 @@ License: You must have a valid license purchased only from themeforest(the above
 											</select>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Total Price</label>
 										<div class="col-md-9">
 											<input name="totalprice" type="number" min="0" step="0.01" class="form-control input-inline input-medium" value="<?php echo ($orderinfo["totalprice"]); ?>" required>
 											<span class="help-inline"> guest's total price. </span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guarantee</label>
 										<div class="col-md-9">
 											<input name="guarantee" type="number" min="0" step="0.01" class="form-control input-inline input-medium" value="<?php echo ($orderinfo["guarantee"]); ?>" required>
@@ -1417,21 +1434,21 @@ License: You must have a valid license purchased only from themeforest(the above
 										2. worker has completed and no pay
 										3. worker has completed and paid
 									-->
-									<div class="form-group">
+									<div class="form-group  has-error">
 										<label class="col-md-3 control-label">Guest state</label>
 										<div class="col-md-9">
 											<select name="g_state" class="form-control input-inline input-medium">
-                        <?php if($orderinfo["g_state"] == 0 ): ?><option value="0" selected>Guest have no paid gurrentee</option>
-  												<option value="1">Guest have paid gurrentee</option>
-  												<option value="2">Guest have pain all money</option>
-                        <?php elseif($name == 1): ?>
-                          <option value="0">Guest have no paid gurrentee</option>
-  												<option value="1" selected>Guest have paid gurrentee</option>
-  												<option value="2">Guest have pain all money</option>
-                        <?php else: ?>
-                          <option value="0">Guest have no paid gurrentee</option>
-  												<option value="1">Guest have paid gurrentee</option>
-  												<option value="2" selected>Guest have pain all money</option><?php endif; ?>
+												<?php if($orderinfo["g_state"] == 0 ): ?><option value="0" selected>Guest have no paid gurrentee</option>
+																		<option value="1">Guest have paid gurrentee</option>
+																		<option value="2">Guest have pain all money</option>
+												<?php elseif($name == 1): ?>
+												  <option value="0">Guest have no paid gurrentee</option>
+																		<option value="1" selected>Guest have paid gurrentee</option>
+																		<option value="2">Guest have pain all money</option>
+												<?php else: ?>
+												  <option value="0">Guest have no paid gurrentee</option>
+																		<option value="1">Guest have paid gurrentee</option>
+																		<option value="2" selected>Guest have pain all money</option><?php endif; ?>
 
 											</select>
 										</div>
@@ -1440,10 +1457,12 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="form-group">
 										<label class="col-md-3 control-label">Select worker</label>
 										<div class="col-md-9">
+											<input name="oriid" type="hidden" value="<?php echo ($orderinfo[wxid]); ?>" readonly>
 											<select name="wxid" class="form-control input-inline input-medium">
-												<?php if(is_array($workers)): foreach($workers as $key=>$vo): if($orderinfo[wxid] == $vo[wxid]): ?><option value="<?php echo ($vo["wxid"]); ?>" selected><?php echo ($vo["wxid"]); ?> : <?php echo ($vo["wxname"]); ?></option>
-                          <?php else: ?>
-                            <option value="<?php echo ($vo["wxid"]); ?>"><?php echo ($vo["wxid"]); ?> : <?php echo ($vo["wxname"]); ?></option><?php endif; endforeach; endif; ?>
+												<?php if(is_array($workers)): foreach($workers as $key=>$vo): ?><option value="">Please Choose a worker</option>
+													<?php if($orderinfo[wxid] == $vo[wxid]): ?><option value="<?php echo ($vo["wxid"]); ?>" selected><?php echo ($vo["wxid"]); ?> : <?php echo ($vo["wxname"]); ?></option>
+													<?php else: ?>
+														<option value="<?php echo ($vo["wxid"]); ?>"><?php echo ($vo["wxid"]); ?> : <?php echo ($vo["wxname"]); ?></option><?php endif; endforeach; endif; ?>
 											</select>
 										</div>
 									</div>
@@ -1462,7 +1481,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="form-group">
 										<label class="col-md-3 control-label">Worker salary</label>
 										<div class="col-md-9">
-											<input name="w_payment" type="number"  min="0" step="0.01" class="form-control input-inline input-medium" value="<?php echo ($orderinfo["w_payment"]); ?>" required>
+											<input name="w_payment" type="number"  min="0" step="0.01" class="form-control input-inline input-medium" value="<?php echo ($orderinfo["w_payment"]); ?>">
 											<span class="help-inline"> Worker salary. </span>
 										</div>
 									</div>
@@ -1470,36 +1489,32 @@ License: You must have a valid license purchased only from themeforest(the above
 										<label class="col-md-3 control-label">Worker state</label>
 										<div class="col-md-9">
 											<select name="w_state" class="form-control input-inline input-medium">
-												<option value="0">null</option>
-												<option value="1">worker is doing</option>
-												<option value="2">worker has completed and no pay</option>
-												<option value="3">worker has completed and paid</option>
-                        <?php if($orderinfo["w_state"] == 0 ): ?><option value="0" selected>null</option>
-  												<option value="1">worker is doing</option>
-  												<option value="2">worker has completed and no pay</option>
-  												<option value="3">worker has completed and paid</option>
-                        <?php elseif($orderinfo["w_state"] == 1): ?>
-                          <option value="0">null</option>
-                          <option value="1" selected>worker is doing</option>
-                          <option value="2">worker has completed and no pay</option>
-                          <option value="3">worker has completed and paid</option>
-                        <?php elseif($orderinfo["w_state"] == 2): ?>
-                          <option value="0">null</option>
-                          <option value="1">worker is doing</option>
-                          <option value="2" selected>worker has completed and no pay</option>
-                          <option value="3">worker has completed and paid</option>
-                        <?php else: ?>
-                          <option value="0">null</option>
-                          <option value="1">worker is doing</option>
-                          <option value="2">worker has completed and no pay</option>
-                          <option value="3" selected>worker has completed and paid</option><?php endif; ?>
+												<?php if($orderinfo["w_state"] == 0 ): ?><option value="0" selected>null</option>
+																		<option value="1">worker is doing</option>
+																		<option value="2">worker has completed and no pay</option>
+																		<option value="3">worker has completed and paid</option>
+												<?php elseif($orderinfo["w_state"] == 1): ?>
+												  <option value="0">null</option>
+												  <option value="1" selected>worker is doing</option>
+												  <option value="2">worker has completed and no pay</option>
+												  <option value="3">worker has completed and paid</option>
+												<?php elseif($orderinfo["w_state"] == 2): ?>
+												  <option value="0">null</option>
+												  <option value="1">worker is doing</option>
+												  <option value="2" selected>worker has completed and no pay</option>
+												  <option value="3">worker has completed and paid</option>
+												<?php else: ?>
+												  <option value="0">null</option>
+												  <option value="1">worker is doing</option>
+												  <option value="2">worker has completed and no pay</option>
+												  <option value="3" selected>worker has completed and paid</option><?php endif; ?>
 											</select>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3 control-label">Description</label>
 										<div class="col-md-9">
-											<textarea name="description" class="form-control input-inline input-medium" rows="3"><?php echo ($orderinfo["description"]); ?></textarea>
+											<textarea name="description" class="form-control input-inline input-medium" rows="3"> <?php echo ($orderinfo["description"]); ?></textarea>
 										</div>
 									</div>
 								</div>
@@ -1507,7 +1522,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button type="submit" class="btn green">Submit</button>
-											<button type="button" class="btn default">Cancel</button>
+											<a href="<?php echo U('Order/orderlist');;?>" type="button" class="btn default">Cancel</a>
 										</div>
 									</div>
 								</div>
@@ -1543,41 +1558,41 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/respond.min.js"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/excanvas.min.js"></script> 
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/respond.min.js"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/js/clockface.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/js/clockface.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
-	<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-	<script src="/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/components-pickers.js"></script>
+	<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
+	<script src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+	<script src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/components-pickers.js"></script>
 
 		<!-- END PAGE LEVEL SCRIPTS -->
 		<script>

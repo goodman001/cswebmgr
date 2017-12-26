@@ -77,11 +77,29 @@
 					<i class="icon-home"></i>
 					Dashboard</a>
 				</li>
-				<li class="active">
-					<a href="{:U('Order/orderlist');}">
-					<i class="icon-basket"></i>
-					Orders All</a>
-				</li>
+				<if condition="$go eq 1">
+					<li class="active">
+						<a href="{:U('Order/orderlist_incomplete');}">
+						<i class="icon-basket"></i>
+						Orders Incomplete</a>
+					</li>
+					<li>
+						<a href="{:U('Order/orderlist');}">
+						<i class="icon-basket"></i>
+						Orders All</a>
+					</li>
+				<else />
+					<li>
+						<a href="{:U('Order/orderlist_incomplete');}">
+						<i class="icon-basket"></i>
+						Orders Incomplete</a>
+					</li>
+					<li class="active" >
+						<a href="{:U('Order/orderlist');}">
+						<i class="icon-basket"></i>
+						Orders All</a>
+					</li>
+				</if>
 				<li>
 					<a href="ecommerce_orders_view.html">
 					<i class="icon-tag"></i>
@@ -831,7 +849,11 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="{:U('Order/orderlist?flag=3');}">Orders All</a>
+						<if condition="$go eq 1">
+							<a href="{:U('Order/orderlist_incomplete');}">Orders Incompleted</a>
+						<else />
+							<a href="{:U('Order/orderlist?flag=3');}">Orders All</a>
+						</if>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
@@ -884,9 +906,9 @@
 							</div>
 						</div>
 						<div class="portlet-body form">
-							<form class="form-horizontal" action="{:U('Order/ordernew');}" method="post"  role="form">
+							<form class="form-horizontal" action="{:U('Order/ordernew?go='.$go.'');}" method="post"  role="form">
 								<div class="form-body">
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest Wechat ID</label>
 										<div class="col-md-9">
 											<input name="guest_wxid" type="text" placeholder="Guest Wechat ID" class="form-control input-inline input-medium" required>
@@ -894,20 +916,20 @@
 											guest's wechat id. </span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest Wechat Name</label>
 										<div class="col-md-9">
 											<input name="guest_wxname" type="text" placeholder="Guest Wechat Name" class="form-control input-inline input-medium" required>
 											<span class="help-inline"> guest's wechat name. </span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Project Name</label>
 										<div class="col-md-9">
 											<input name="projectname" type="text" placeholder="Project name" class="form-control" required>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest deadline</label>
 										<div class="col-md-3">
 											<div class="input-group date form_meridian_datetimenew" data-date="2012-12-21">
@@ -919,7 +941,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Currency Type</label>
 										<div class="col-md-9">
 											<select name="moneytype" class="form-control input-inline input-medium">
@@ -933,14 +955,14 @@
 											</select>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Total Price</label>
 										<div class="col-md-9">
 											<input name="totalprice" type="number" value="0.00" min="0" step="0.01" class="form-control input-inline input-medium" required>
 											<span class="help-inline"> guest's total price. </span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guarantee</label>
 										<div class="col-md-9">
 											<input name="guarantee" type="number" value="0.00" min="0" step="0.01" class="form-control input-inline input-medium" required>
@@ -958,7 +980,7 @@
 										2. worker has completed and no pay
 										3. worker has completed and paid
 									-->
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest state</label>
 										<div class="col-md-9">
 											<select name="g_state" class="form-control input-inline input-medium">
@@ -1003,7 +1025,7 @@
 										<label class="col-md-3 control-label">Worker state</label>
 										<div class="col-md-9">
 											<select name="w_state" class="form-control input-inline input-medium">
-												<option value="0">null</option>
+												<option value="0">Unset</option>
 												<option value="1">worker is doing</option>
 												<option value="2">worker has completed and no pay</option>
 												<option value="3">worker has completed and paid</option>

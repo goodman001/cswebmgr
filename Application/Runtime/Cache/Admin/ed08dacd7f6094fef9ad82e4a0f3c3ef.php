@@ -25,33 +25,32 @@ License: You must have a valid license purchased only from themeforest(the above
 <meta content="" name="author"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 
 	<!-- BEGIN PAGE LEVEL STYLES -->
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
 	<!-- END PAGE LEVEL STYLES -->
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/css/clockface.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/admin/pages/css/pagecode.css"/>
-
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/css/clockface.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/pages/css/pagecode.css"/>
 
 <!-- BEGIN THEME STYLES -->
-<link href="/cswebmgr/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -74,7 +73,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="index.html">
-			<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
+			<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 			</div>
@@ -215,7 +214,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -229,7 +228,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -243,7 +242,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -257,7 +256,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -271,7 +270,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -388,7 +387,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 				<li class="dropdown dropdown-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="/cswebmgr/Public/metronic3_7/assets/admin/layout/img/avatar3_small.jpg"/>
+					<img alt="" class="img-circle" src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/img/avatar3_small.jpg"/>
 					<span class="username username-hide-on-mobile">
 					Nick </span>
 					<i class="fa fa-angle-down"></i>
@@ -523,6 +522,12 @@ License: You must have a valid license purchased only from themeforest(the above
 					<i class="icon-home"></i>
 					Dashboard</a>
 				</li>
+				<li>
+					<a href="<?php echo U('Order/orderlist_incomplete');;?>">
+					<i class="icon-basket"></i>
+					<span class="badge badge-danger"><?php echo ($cin); ?></span>
+					Orders Incomplete</a>
+				</li>
 				<li class="active">
 					<a href="<?php echo U('Order/orderlist?flag=3');;?>">
 					<i class="icon-basket"></i>
@@ -531,6 +536,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<li>
 					<a href="ecommerce_orders_view.html">
 					<i class="icon-tag"></i>
+					
 					Order View</a>
 				</li>
 				<li>
@@ -1269,7 +1275,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div class="page-content">
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Workers <small>workers listing</small>
+			Orders <small>orders listing</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -1416,18 +1422,16 @@ License: You must have a valid license purchased only from themeforest(the above
 									<table class="table table-striped table-bordered table-hover  " id="datatable_orders">
 									<thead>
 									<tr role="row" class="heading">
-										<th width="">Date</th>
-										<th width="15%">G_Wechat</th>
-										<th width="10%">Project</th>
-										<th width="10%">G_Deadline</th>
+										<th width="2%"></th>
+										<th width="8%">Create Date</th>
+										<th width="12%"><i class="fa fa-wechat font-green"></i> Guest Wechat</th>
+										<th >Project</th>
+										<th width="8%">G_Deadline</th>
 										<th width="10%">Payment</th>
-										<th>G_State</th>
-										<th width="10%">Worker</th>
+										<th width="12%"><i class="fa fa-wechat font-red"></i> Worker Wechat</th>
 										<th width="10%">W_deadline</th>
-										<th width="10%">W_pay</th>
-										<th>W_state</th>
-										<th width="10%">Tips</th>
-										<th width="10%">Actions</th>
+										<th width="10%">Worker status</th>
+										<th width="9%">Actions</th>
 									</tr>
 									</thead>
 									<!--
@@ -1442,36 +1446,97 @@ License: You must have a valid license purchased only from themeforest(the above
 										3. worker has completed and paid
 									-->
 									<tbody>
-										<?php if(is_array($orders)): foreach($orders as $key=>$vo): ?><tr role="row">
+										<?php if(is_array($orders)): foreach($orders as $key=>$vo): if(($vo["g_state"] == 2) AND ($vo["w_state"] == 3) ): ?><tr role="row" class="danger">
+													<td><i class="fa fa-check-square-o font-red"></i></td>
+											<?php else: ?>
+												<tr role="row">
+													<td><i class="fa fa-bug font-green"></i></td><?php endif; ?>
 												<td><small><?php echo ($vo["createtime"]); ?></small></td>
 												<td><small>
-													<i class="fa fa-caret-right"></i><?php echo ($vo["gwxid"]); ?>
+													<span class="badge badge-danger">U</span> <?php echo ($vo["gwxid"]); ?>
 													<br>
-													<i class="fa fa-caret-right"></i><?php echo ($vo["gwxname"]); ?>
+													<span class="badge badge-danger">N</span>  <?php echo ($vo["gwxname"]); ?>
 													</small>
 												</td>
 												<td><small><?php echo ($vo["projectname"]); ?></small></td>
 												<td><small><?php echo ($vo["g_deadline"]); ?></small></td>
-												<td><small><?php echo ($vo["totalprice"]); echo ($vo["moneytype"]); ?><br><?php echo ($vo["guarantee"]); echo ($vo["moneytype"]); ?></small></td>
 												<td>
-													<?php switch($vo["g_state"]): case "0": ?><span class="label label-sm label-danger">no gurrentee</span><?php break;?>
-														<?php case "1": ?><span class="label label-sm label-danger">paid gurrentee</span><?php break;?>
-														<?php default: ?><span class="label label-sm label-success">paid all</span><?php endswitch;?>
+													<small>
+														<i class="fa fa-angle-right"></i> <?php echo ($vo["totalprice"]); echo ($vo["moneytype"]); ?>
+														<br>
+														<i class="fa fa-angle-right"></i> <?php echo ($vo["guarantee"]); echo ($vo["moneytype"]); ?>
+													</small>
+													<br>
+													<?php switch($vo["g_state"]): case "0": ?><span class="label label-sm label-danger"><i class="fa fa-volume-up"></i> No gurrentee</span><?php break;?>
+														<?php case "1": ?><span class="label label-sm label-danger"><i class="fa fa-volume-up"></i> Only gurrentee</span><?php break;?>
+														<?php default: ?><span class="label label-sm label-success"><i class="fa fa-volume-up"></i> Have paid All</span><?php endswitch;?>
 												</td>
-												<td><?php echo ($vo["wxid"]); ?> <?php echo ($vo["wxname"]); ?></td>
-												<td><small><?php echo ($vo["w_deadline"]); ?></small></td>
-												<td><small><?php echo ($vo["w_payment"]); ?>RMB</small></td>
 												<td>
-													<?php switch($vo["w_state"]): case "1": ?><span class="label label-sm label-danger">doing</span><?php break;?>
-														<?php case "2": ?><span class="label label-sm label-danger">done && nopaid</span><?php break;?>
-														<?php case "3": ?><span class="label label-sm label-success">done && paid</span><?php break;?>
-														<?php default: ?><span class="label label-sm label-success"></span><?php endswitch;?>
+													<small>
+														<?php if($vo["wxid"] != '' ): ?><span class="badge badge-danger">U</span> <?php echo ($vo["wxid"]); ?> 
+															<br>
+															<span class="badge badge-danger">N</span> <?php echo ($vo["wxname"]); ?>
+														<?php else: ?>
+															<span class="label label-sm label-default"> unset </span><?php endif; ?>
+													</small>
 												</td>
-												<td><small><?php echo ($vo["description"]); ?></small></td>
+												<td>
+													<small>
+														<?php if($vo["w_deadline"] != '' ): echo ($vo["w_deadline"]); ?>
+														<?php else: ?>
+															<span class="label label-sm label-default"> unset </span><?php endif; ?>
+													</small>
+												</td>
+												<td>
+													<small>
+														<?php if($vo["w_payment"] != '' ): ?><i class="fa fa-angle-right"></i> <?php echo ($vo["w_payment"]); ?>RMB
+														<?php else: ?>
+															<i class="fa fa-angle-right"></i> <span class="label label-sm label-default"> unset </span><?php endif; ?>
+													</small>
+													<br>
+													<?php switch($vo["w_state"]): case "1": ?><span class="label label-sm label-danger"><i class="fa fa-volume-up"></i>  doing</span><?php break;?>
+														<?php case "2": ?><span class="label label-sm label-danger"><i class="fa fa-volume-up"></i>  done & no paid</span><?php break;?>
+														<?php case "3": ?><span class="label label-sm label-success"><i class="fa fa-volume-up"></i>  done & paid</span><?php break;?>
+														<?php default: ?><span class="label label-sm label-default"><i class="fa fa-volume-up"></i> unset </span><?php endswitch;?>
+												</td>
 												<td>
 													<a class="btn  btn-xs red" href="<?php echo U('Order/ordereditpage?orderid='.$vo['orderid'].'');;?>">
 														<i class="fa fa-edit"></i>
 													</a>
+													<a class="btn btn-xs purple" href="#confirmModal<?php echo ($vo['orderid']); ?>" data-toggle="modal">
+														<i class="fa fa-times"></i>
+													</a>
+
+														<div class="modal fade modal-overflow in" id="confirmModal<?php echo ($vo['orderid']); ?>" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+															<div class="modal-dialog">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+																		<h4 class="modal-title">Delete warning</h4>
+																	</div>
+																	<div class="modal-body">
+																		<p>Are you sure to delete this order: #<?php echo ($vo['orderid']); ?> ?</p>
+
+																	</div>
+																	<div class="modal-footer">
+																		<a class="btn default" data-dismiss="modal"> Cancel </a>
+																		<a href="<?php echo U('Order/orderdelete?orderid='.$vo['orderid'].'');;?>" type="button" class="btn blue"> Delete </a>
+																	</div>
+																</div>
+																<!-- /.modal-content -->
+															</div>
+														<!-- /.modal-dialog -->
+														</div>
+													<?php if($vo["description"] != '' ): ?><a href="<?php echo U('Order/orderdetailpage?orderid='.$vo['orderid'].'');;?>" class="btn btn-xs yellow">
+															<i class="fa fa-list-ul">
+															</i>
+														</a>
+													<?php else: ?>
+														<a href="<?php echo U('Order/orderdetailpage?orderid='.$vo['orderid'].'');;?>" class="btn btn-xs yellow">
+															<i class="fa fa-search">
+																
+															</i>
+														</a><?php endif; ?>
 												</td>
 											</tr><?php endforeach; endif; ?>
 									</tbody>
@@ -1508,47 +1573,47 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/respond.min.js"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/excanvas.min.js"></script> 
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/respond.min.js"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/js/clockface.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/js/clockface.js"></script>
+<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/components-pickers.js"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/components-pickers.js"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/components-pickers.js"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/components-pickers.js"></script>
 
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>

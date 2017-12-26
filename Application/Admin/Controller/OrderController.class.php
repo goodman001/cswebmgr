@@ -88,6 +88,9 @@ class OrderController extends CommonController {
 				//echo "hahah";
 				//echo "all";
 		}
+		/* incomplete orders*/
+		$cin = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_guest_order.g_state != 2 OR db_worker_order.w_state != 3')->count();
+		$this->assign('cin',$cin);// 赋值分页输出
 		//dump($orderinfolist);
 		//echo $count;
 		$Page = new \Think\Page($count,3);// 实例化分页类 传入总记录数和每页显示的记录数
@@ -109,7 +112,12 @@ class OrderController extends CommonController {
 		$Model = M('workers');
         $workers = $Model->select();
 		$this->assign('workers',$workers);
-        $this->display(T('admin/orders_add'));
+		if(isset($_GET["go"])){
+			$this->assign('go',1);// 赋值分页输出
+		}else{
+        	$this->assign('go',0);// 赋值分页输出
+		}
+		$this->display(T('admin/orders_add'));
 	}
 	public function ordernew(){
 
@@ -121,7 +129,7 @@ class OrderController extends CommonController {
 		$data['totalprice'] = I('post.totalprice','','htmlspecialchars');//
 		$data['guarantee'] = I('post.guarantee','','htmlspecialchars');//
 		$data['description'] = I('post.description','','htmlspecialchars');//
-		dump($data);
+		//dump($data);
 		$Model = M('orders');
 		$Model->data($data)->add();
 		/*guest*/
@@ -129,9 +137,9 @@ class OrderController extends CommonController {
 		$guest_wxid = $cond['wxid'];
 		$cell['wxname'] = I('post.guest_wxname','','htmlspecialchars');//
 		$Model = M('guests');
-		dump($cond);
+		//dump($cond);
 		$guestinfo = $Model->where($cond)->find();
-		dump($guestinfo);
+		//dump($guestinfo);
 		if(!empty($guestinfo)){
 			echo "nonull";
 			$Model->where($cond)->save($cell);
@@ -155,12 +163,17 @@ class OrderController extends CommonController {
 		$map['w_payment'] = I('post.w_payment','','htmlspecialchars');//
 		$map['w_state'] = I('post.w_state','','htmlspecialchars');//
 
-		dump($map);
+		//dump($map);
 		if($map['wxid'] != ""){
 			$Order = M('worker_order');
 			$Order->data($map)->add();
 		}
-		$this->success('Add a new order successfully!',U('Order/orderlist'),1);
+		if(isset($_GET["go"]) && $_GET["go"] == 1){
+			$this->success('Add a new order successfully!',U('Order/orderlist_incomplete'),1);
+		}else{
+        	$this->success('Add a new order successfully!',U('Order/orderlist'),1);
+		}
+		//$this->success('Add a new order successfully!',U('Order/orderlist'),1);
 		/*
 		$Model = M('workers');
         $workers = $Model->select();
@@ -173,11 +186,16 @@ class OrderController extends CommonController {
 		//dump($condition);
 		$Model = M('orders');
 		$orderinfo = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.orderid =  "'.$orderid.'"' )->find();
-		dump($orderinfo);
+		//dump($orderinfo);
 		$this->assign("orderinfo",$orderinfo);
 		$Model = M('workers');
-    $workers = $Model->select();
+		$workers = $Model->select();
 		$this->assign('workers',$workers);
+		if(isset($_GET["go"])){
+			$this->assign('go',1);// 赋值分页输出
+		}else{
+        	$this->assign('go',0);// 赋值分页输出
+		}
 		$this->display(T('admin/orders_edit'));
 		/*
 		$Model = M('workers');
@@ -186,384 +204,181 @@ class OrderController extends CommonController {
         $this->display(T('admin/orders_add'));
 				*/
 	}
+	public function orderupdate(){
+		$orderid = I('post.orderid','','htmlspecialchars');
+		$ORDER = M('orders');
+		$condition['orderid'] = $orderid;
+		$orderinfo = $ORDER->where($condition)->find();
+		//dump($orderinfo);
+		if(!empty($orderinfo)){
+			$data['projectname'] = I('post.projectname','','htmlspecialchars');//
+			$data['moneytype'] = I('post.moneytype','','htmlspecialchars');//
+			$data['totalprice'] = I('post.totalprice','','htmlspecialchars');//
+			$data['guarantee'] = I('post.guarantee','','htmlspecialchars');//
+			$data['description'] = I('post.description','','htmlspecialchars');//
+			$ORDER->where($condition)->save($data);
+			$GUEST = M('guests');
+			$cond['wxid'] = I('post.guest_wxid','','htmlspecialchars');//
+			$guestinfo = $GUEST->where($cond)->find();
+			
+			if(!empty($guestinfo)){
+				//echo "nonull";
+				$cell['wxname'] = I('post.guest_wxname','','htmlspecialchars');//
+				$GUEST->where($cond)->save($cell);
+				
+				/*guest_order*/
+				$GUESTORDER = M('guest_order');
+				$go['wxid'] = $cond['wxid'];
+				$go['orderid'] = $orderid;
+				$goadd['g_deadline'] = I('post.g_deadtime','','htmlspecialchars');//
+				$goadd['g_state'] = I('post.g_state','','htmlspecialchars');//
+				$guestorders = $GUESTORDER->where($go)->find();
+				if(!empty($guestorders)){
+					$GUESTORDER->where($go)->save($goadd);
+					//dump($guestinfo);
+					/*worker*/
+					/* worker_order */
+					$map['wxid'] = I('post.wxid','','htmlspecialchars');//
+					$map['orderid'] = $orderid;//
+					$mapadd['w_deadline'] = I('post.w_deadline','','htmlspecialchars');//
+					$mapadd['w_payment'] = I('post.w_payment','','htmlspecialchars');//
+					$mapadd['w_state'] = I('post.w_state','','htmlspecialchars');//
 
-
-
-
-
-	public function orderdetail()
-	{
-		$data['orderID'] = I('get.orderid');
-        $Model = M('order');
-		$content = $Model->where($data)->find();
-		if(!empty($content))//exist email
-		{
-			$this->assign('order',$content);//
-			/*transaction*/
-			$Model = M('transaction');
-			$ct0['orderID'] = $data['orderID'];
-			$trans = $Model->where($ct0)->find();
-			//print_r($trans);
-			$this->assign('trans',$trans);//
-			/*items*/
-			$Model = M('item');
-			$ct1['orderID'] = $data['orderID'];
-			$items = $Model->where($ct1)->select();
-			$this->assign('items',$items);//
-			$this->display(T('mgr/orders_detail'));
-
-
-		}else
-        {
-            R('Order/orderlist');
-        }
-
-	}
-	public function orderdel()
-	{
-		$orderid = I('get.orderid');
-
-		/*del item*/
-		$Model =  M('item');
-		$ct00['orderID'] = $orderid;
-		$items = $Model->where($ct00)->select();
-		$Model->where($ct00)->delete();//del item
-
-		/*del domain*/
-		foreach($items as &$val)
-		{
-			$ctd['domainname'] = $val['domainname'];
-			$Mdomain = M('domainmgr');
-			$Mdomain->where($ctd)->delete();//del domain
-		}
-		/*del transaction order*/
-		$ct1['orderID'] = $orderid;
-		$M2 = M('order');
-		$M2->where($ct1)->delete();
-		$M3 = M('transaction');
-		$M3->where($ct1)->delete();
-		$this->success('Delete the order successfully!',U('Order/orderlist'),1);
-	}
-	public function delitem()
-	{
-		$itemid = I('get.itemid');
-		$orderid = I('get.orderid');
-		$ct0['orderID'] = $orderid;
-		$Model =  M('item');
-		$itemCount = $Model->where($ct0)->count();
-
-
-		$ct00['id'] = $itemid;
-		$ct00['orderID'] = $orderid;
-		$items = $Model->where($ct00)->find();
-		$Model->where($ct00)->delete();//del item
-		$Mdomain = M('domainmgr');
-		$ctd['domainname'] = $items['domainname'];
-		$Mdomain->where($ctd)->delete();//del domain
-		if($itemCount == 1)
-		{
-			$ct1['orderID'] = $orderid;
-			$M2 = M('order');
-			$M2->where($ct1)->delete();
-			$M3 = M('transaction');
-			$M3->where($ct1)->delete();
-			$this->success('Delete the only item successfully!Order is empty',U('Order/orderlist'),1);
-		}else
-		{
-			$this->success('Delete item successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
-		}
-	}
-	public function orderaccept()
-	{
-		$orderid = I('get.orderid');
-		$data['orderID'] = $orderid;
-		$Model =  M('order');
-		$content = $Model->where($data)->find();
-		$nowtime = date('Y-m-d H:i:s',time());
-		if(!empty($content))
-		{
-			/*update order due time*/
-			$Model-> where($data)->setField('status','active');
-			$Model-> where($data)->setField('duedate',$nowtime);
-			/*update domain*/
-			$Model =  M('item');
-			$items = $Model->where($data)->select();
-			foreach($items as &$val)
-			{
-				$ctd['domainname'] = $val['domainname'];
-				$Mdomain = M('domainmgr');
-				$ctd1['domainname'] = $val['domainname'];
-				$ctd1['renew'] = 1;
-				$infod = $Mdomain->where($ctd1)->find();
-				if(!empty($infod)){
-					$Mdomain->where($ctd)->setField('renew',0);//
-					$Mdomain->where($ctd)->setField('status','active');//active domain
-					$years = 1;
-					$Mdomain->where($ctd)->setField('expirydate',date('Y-m-d', strtotime('+'.$years.' year', strtotime($infod["expirydate"]))));//expirydate
-					$Mdomain->where($ctd)->setField('nextduedate',date('Y-m-d', strtotime('+'.$years.' year', strtotime($infod['nextduedate']))));//issuedate
-				}else
-				{
-					$Mdomain->where($ctd)->setField('status','active');//active domain
-					$Mdomain->where($ctd)->setField('registrationdate',$nowtime);//registartiton date
-					$Mdomain->where($ctd)->setField('expirydate',date('Y-m-d', strtotime('+'.$val['years'].' year', strtotime($nowtime))));//expirydate
-					$Mdomain->where($ctd)->setField('nextduedate',date('Y-m-d', strtotime('+'.$val['years'].' year', strtotime($content['issuedate']))));//issuedate
-				}
-
-
-			}
-			$this->success('Accept the order successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
-		}
-
-	}
-	public function orderrefund()
-	{
-		$orderid = I('get.orderid');
-		$data['orderID'] = $orderid;
-		$Mtrans =  M('transaction');
-		$trans = $Mtrans->where($data)->find();
-
-		$Model =  M('order');
-		$content = $Model->where($data)->find();
-		if(!empty($content))
-		{
-			/*update order due time*/
-			$Model-> where($data)->setField('status','cancel');
-			$Model-> where($data)->setField('refund','Y');
-			$Model-> where($data)->setField('refundamount',$trans['settleamount']);
-			/*item*/
-			$Model =  M('item');
-			$items = $Model->where($data)->select();
-			/*set domain*/
-			foreach($items as &$val)
-			{
-				$ctd['domainname'] = $val['domainname'];
-				$Mdomain = M('domainmgr');
-				$Mdomain->where($ctd)->setField('status','suspend');//
-			}
-			$this->success('Refund the order successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
-		}
-
-	}
-	public function ordercancle()
-	{
-		$orderid = I('get.orderid');
-		$data['orderID'] = $orderid;
-		$Model =  M('order');
-		$content = $Model->where($data)->find();
-		if(!empty($content))
-		{
-			/*update order due time*/
-			$Model-> where($data)->setField('status','cancel');
-			/*del item*/
-			$Model =  M('item');
-			$items = $Model->where($data)->select();
-			/*del domain*/
-			foreach($items as &$val)
-			{
-				$ctd['domainname'] = $val['domainname'];
-				$Mdomain = M('domainmgr');
-				$Mdomain->where($ctd)->delete();//del domain
-			}
-			$this->success('Cancel the order successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
-		}
-
-	}
-	public function itemedit()
-	{
-		$orderid = I('get.orderid');
-		$itemid = I('get.itemid');
-		$data['price'] = I('post.price');
-		$data['years'] = I('post.years');
-		$map['id'] = $itemid;
-		$ct['orderID'] = $orderid;
-		$Model =  M('item');
-		$Model->where($map)->save($data);
-		$items = $Model->where($ct)->select();
-		$sum = 0.0;
-		foreach($items as &$val)
-		{
-			$price = $val['price'];
-			$years = $val['years'];
-			$sum = $sum + $price * $years;
-
-		}
-		$cc['settleamount'] = $sum;
-		$M3 = M('transaction');
-		$M3->where($ct)->save($cc);
-		$this->success('Update the order successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
-	}
-	public function itemadd()
-	{
-		$orderid = I('get.orderid');
-		$data['domainname'] = str_replace('www.','',I('post.domainname'));
-		$data['orderID'] = $orderid;
-		/*get registar*/
-		$Mr = M('registrar');
-		$condition['status'] = 'Y';
-		$crs = $Mr->field('registrar')->where($condition)->select();
-		shuffle($crs);
-
-		/*get price*/
-		/*$price = 0;
-		$Mt = M('fakedomains');
-        $dprice["domainname"] = $data['domainname'];
-        $presult = $Mt->where($dprice)->find();
-        if(!empty($presult))
-        {
-            $pieces = explode(".", $data['domainname']);
-            $Model = M('premium');
-            $dcp["domainname"] = array('like','%.'.$pieces[count($pieces)-1]);
-            $content2 = $Model->where($dcp)->find();
-            if(!empty($content2))
-            {
-                $price = $content2['price']*($content2['rate']+1);//increase 20%
-            }else
-            {
-                $Model = M('configure');
-                $re = $Model->field('domainprice')->where('id=1')->find();
-                $price = $re['domainprice'];
-            }
-        }else
-        {
-            $Model = M('configure');
-            $re = $Model->field('domainprice')->where('id=1')->find();
-            $price = $re['domainprice'];
-        }*/
-		$price = 0;
-		$pieces = explode(".", $data['domainname']);
-        $Model = M('premium');
-        $dcp["domainname"] = array('like','%.'.$pieces[count($pieces)-1]);
-        $content2 = $Model->where($dcp)->find();
-        if(!empty($content2))
-        {
-            $Mt = M('fakedomains');
-            $dprice["domainname"] = $data['domainname'];
-            $presult = $Mt->where($dprice)->find();
-            if(!empty($presult))
-            {
-                $price = $content2['price']*($content2['rate']+1);//increase rateing
-            }else
-            {
-                $price = $content2['price'];//increase 20%
-            }
-        }else
-        {
-            $Model = M('configure');
-            $re = $Model->field('domainprice')->where('id=1')->find();
-            $price = $re['domainprice'];
-        }
-		//print_r($ct);
-		$registrar = $crs[0]['registrar'];
-		$data['registrar'] = $registrar;
-		$data['price'] = $price;
-		$data['years'] = I('post.years');
-
-		/*check domain available*/
-		//check item
-		$Model =  M('item');
-		$ct['domainname'] = $data['domainname'];
-		$ct['orderID'] = $data['orderID'];
-		$itemnum = $Model->where($ct)->count();
-
-	    $msg = getWhois($data['domainname']);
-        $flag =  $msg[1];
-		#print($flag);
-		$showflag = 0;
-		if($flag == "Y"){
-			$map["domainname"] = $data['domainname'];
-			$Md = M('domainmgr');
-			$content = $Md->field('domainname,nextduedate,status')->where($map)->find();
-			if(!empty($content))
-			{
-				$duedate = strtotime($content['nextduedate']);
-				$now = time();
-				if($content['status'] != 'suspend')
-				{
-					if($content['status'] != 'pending')
-					{
-						if($now > $duedate)// domain : pending(renew/wait to check) active suspend
-						{
-							$showflag = 1;
+					
+					$WORKEROORDER = M('worker_order');
+					if($map['wxid'] != ""){
+						//echo "fef";
+						//dump($map);
+						$workorder = $WORKEROORDER->where($map)->find();
+						if(!empty($workorder)){
+							$WORKEROORDER->where($map)->save($mapadd);
+						}else{
+							$map['w_deadline'] = I('post.w_deadline','','htmlspecialchars');//
+							$map['w_payment'] = I('post.w_payment','','htmlspecialchars');//
+							$map['w_state'] = I('post.w_state','','htmlspecialchars');//
+							$WORKEROORDER->data($map)->add();
 						}
+						//dump($ii);
+					}else
+					{
+						$map['wxid'] = I('post.oriid','','htmlspecialchars');//
+						$WORKEROORDER->where($map)->delete();
 					}
-
+					if(isset($_GET["go"]) && $_GET["go"] == 1){
+						//$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
+						$this->success('Update order #'.$orderid.' successfully!',U('Order/orderlist_incomplete'),1);
+					}else{
+						$this->success('Update order #'.$orderid.' successfully!',U('Order/orderlist'),1);
+					}
+					//$this->success('Update order #'.$orderid.' successfully!',U('Order/orderlist'),1);
+					
+				}else{
+					if(isset($_GET["go"]) && $_GET["go"] == 1){
+						$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
+					}else{
+						$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist'),1);
+					}
+					//$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist'),1);
 				}
-
+				//$Model->data($go)->add();
+				
 			}else
 			{
-				$showflag = 1;
+				if(isset($_GET["go"]) && $_GET["go"] == 1){
+					$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
+				}else{
+					$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist'),1);
+				}
+				
+			}
+		}else{
+			if(isset($_GET["go"]) && $_GET["go"] == 1){
+				$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
+			}else{
+				$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist'),1);
 			}
 		}
-		#print($showflag);
-		#print($itemnum);
-		if($showflag ==1 && $itemnum == 0)
-		{
-
-			$Model->data($data)->add();
-			$ct1['orderID'] = $orderid;
-			$items = $Model->where($ct1)->select();
-			$sum = 0.0;
-			foreach($items as &$val)
-			{
-				$price = $val['price'];
-				$years = $val['years'];
-				$sum = $sum + $price * $years;
-
-			}
-			$cc['settleamount'] = $sum;
-			$M3 = M('transaction');
-			$M3->where($ct1)->save($cc);
-			/*add domain*/
-			$ct2['orderID'] = $orderid;
-			$M4 =  M('order');
-			$content = $M4->where($ct2)->find();
-			$paystatus = $content['status'];
-			$cuser['username'] = $content['username'];//get username
-			$User = M('users');
-			$userinfo = $User->where($cuser)->find();
-			$nowtime = date('Y-m-d H:i:s',time());
-			$expiry_db = '';
-			$nextdue_db = '';
-			$registrationdate = '';
-
-			$datadb['domainname'] = $data['domainname'];
-			$datadb['username'] = $userinfo['username'];
-			$datadb['registrar'] = $registrar;
-			$datadb['registrationdate'] = $registrationdate;
-			$datadb['expirydate'] = $expiry_db;
-			$datadb['nextduedate'] = $nextdue_db;
-			$datadb['status'] = $paystatus;
-			$datadb['mainforward'] = '';
-			$datadb['DNSmgr'] = '';
-			$datadb['orderID'] = $orderid;
-
-			/*get domain registation profile*/
-			$datadb['email'] = $userinfo['email'];//get email
-			$datadb['firstname'] = $userinfo['firstname'];//get firstname
-			$datadb['lastname'] = $userinfo['lastname'];//get firstname
-			$datadb['company'] = $userinfo['company'];//get firstname
-			$datadb['jobtitle'] = $userinfo['jobtitle'];//get firstname
-			$datadb['address1'] = $userinfo['address1'];//get firstname
-			$datadb['address2'] = $userinfo['address2'];//get firstname
-			$datadb['city'] = $userinfo['city'];//get firstname
-			$datadb['state'] = $userinfo['state'];//get firstname
-			$datadb['postcode'] = $userinfo['postcode'];//get firstname
-			$datadb['country'] = $userinfo['country'];//get firstname
-			$datadb['phone'] = $userinfo['phone'];//get firstname
-			$datadb['fax'] = $userinfo['fax'];//get firstname
-			$datadb['ns1'] = "ns1.namserver.com";//get firstname
-			$datadb['ns2'] = "ns2.namserver.com";//get firstname
-			$datadb['ns3'] = "ns3.namserver.com";//get firstname
-			$datadb['ns4'] = "ns4.namserver.com";//get firstname
-			$DoM = M('domainmgr');
-			$DoM->data($datadb)->add();
-
-			$this->success('Add new item into the order successfully!',U('Order/orderdetail?orderid='.$orderid.''),1);
-		}else
-		{
-			$this->error('Add new item into the order failure!',U('Order/orderdetail?orderid='.$orderid.''),1);
+		/*
+		$data['projectname'] = I('post.projectname','','htmlspecialchars');//
+		$data['moneytype'] = I('post.moneytype','','htmlspecialchars');//
+		$data['totalprice'] = I('post.totalprice','','htmlspecialchars');//
+		$data['guarantee'] = I('post.guarantee','','htmlspecialchars');//
+		$data['description'] = I('post.description','','htmlspecialchars');//
+		*/
+		//dump($data);
+	}
+	public function orderdelete(){
+		$data['orderid'] = I('get.orderid');
+		$Model = M('orders');
+		$Model->where($data)->delete();
+		if(isset($_GET["go"]) && $_GET["go"] == 1){
+			//$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
+			$this->success('Delete order #'.$data['orderid'].' successfully!',U('Order/orderlist_incomplete'),1);
+		}else{
+			$this->success('Delete order #'.$data['orderid'].' successfully!',U('Order/orderlist'),1);
 		}
+		//$this->success('Delete order #'.$data['orderid'].' successfully!',U('Order/orderlist'),1);
+	}
+	public function orderdetailpage()
+	{
+		$orderid = I('get.orderid');
+		$Model = M('orders');
+		$orderinfo = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.orderid =  "'.$orderid.'"' )->find();
+		//dump($orderinfo);
+		$this->assign("orderinfo",$orderinfo);
+		if(isset($_GET["go"])){
+			$this->assign('go',1);// 赋值分页输出
+		}else{
+        	$this->assign('go',0);// 赋值分页输出
+		}
+		$this->display(T('admin/orders_detail'));
 
+	}
+	/*in complete*/
+	public function orderlist_incomplete()
+	{
+		$pp = 0;
+		if(isset($_GET["p"])){
+			$pp = $_GET["p"];
+		}
+		$flag =2;
+		//$fromdate = date('Y-m-d',strtotime('1016-01-30'));//
+		//$todate = date('Y-m-d',strtotime('3016-01-30'));//
+		$fromdate = "1000-10-10 00:00:00";
+		//echo $fromdate;
+		$todate = "3000-10-10 00:00:00";
+		$newfrom = "";
+		$newto = "";
+		if(isset($_GET["fromdate"]) && $_GET["fromdate"] != ""){
+			$fromdate = $_GET["fromdate"];
+			$newfrom = $fromdate;
+
+		}
+		if(isset($_GET["todate"]) && $_GET["todate"] != ""){
+			$todate = $_GET["todate"];
+			$newto = $todate;
+		}
+		$Model = M('orders');
+		$orderinfolist = [];
+		$count = 0;
+		$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->order('db_orders.createtime desc')->page($pp.',3')->select();
+				$count = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->count();
+		//dump($orderinfolist);
+		//echo $count;
+		$Page = new \Think\Page($count,3);// 实例化分页类 传入总记录数和每页显示的记录数
+		$Page->setConfig('prev','last');
+		$Page->setConfig('next','next');
+		$Page->setConfig('first','first');
+		$Page->setConfig('last','last');
+		$Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER% ');
+		$show = $Page->show();// 分页显示输出
+		$this->assign('page',$show);// 赋值分页输出
+		$this->assign('orders',$orderinfolist);//
+		/*search default*/
+		$this->assign('fflag',$flag);// 赋值分页输出
+		$this->assign('newfrom',$newfrom);// 赋值分页输出
+		$this->assign('newto',$newto);// 赋值分页输出
+		$this->display(T('admin/orders_incomplete'));
 	}
 
 

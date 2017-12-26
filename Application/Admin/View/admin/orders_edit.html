@@ -77,11 +77,29 @@
 					<i class="icon-home"></i>
 					Dashboard</a>
 				</li>
-				<li class="active">
-					<a href="{:U('Order/orderlist');}">
-					<i class="icon-basket"></i>
-					Orders All</a>
-				</li>
+				<if condition="$go eq 1">
+					<li class="active">
+						<a href="{:U('Order/orderlist_incomplete');}">
+						<i class="icon-basket"></i>
+						Orders Incomplete</a>
+					</li>
+					<li>
+						<a href="{:U('Order/orderlist');}">
+						<i class="icon-basket"></i>
+						Orders All</a>
+					</li>
+				<else />
+					<li>
+						<a href="{:U('Order/orderlist_incomplete');}">
+						<i class="icon-basket"></i>
+						Orders Incomplete</a>
+					</li>
+					<li class="active" >
+						<a href="{:U('Order/orderlist');}">
+						<i class="icon-basket"></i>
+						Orders All</a>
+					</li>
+				</if>
 				<li>
 					<a href="ecommerce_orders_view.html">
 					<i class="icon-tag"></i>
@@ -831,7 +849,11 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="{:U('Order/orderlist?flag=3');}">Orders All</a>
+						<if condition="$go eq 1">
+							<a href="{:U('Order/orderlist_incomplete');}">Orders Incompleted</a>
+						<else />
+							<a href="{:U('Order/orderlist?flag=3');}">Orders All</a>
+						</if>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
@@ -884,37 +906,36 @@
 							</div>
 						</div>
 						<div class="portlet-body form">
-							<form class="form-horizontal" action="{:U('Order/ordernew');}" method="post"  role="form">
-                <div class="form-body">
+							<form class="form-horizontal" action="{:U('Order/orderupdate?go='.$go.'');}" method="post"  role="form">
+                				<div class="form-body">
 									<div class="form-group">
 										<label class="col-md-3 control-label">Order ID</label>
 										<div class="col-md-9">
 											<input name="orderid" type="text" value="{$orderinfo.orderid}" class="form-control input-inline input-medium" readonly>
 										</div>
 									</div>
-								<div class="form-body">
 									<div class="form-group">
 										<label class="col-md-3 control-label">Guest Wechat ID</label>
 										<div class="col-md-9">
-											<input name="guest_wxid" type="text" placeholder="Guest Wechat ID" value="{$orderinfo.gwxid}" class="form-control input-inline input-medium" required>
+											<input name="guest_wxid" type="text" placeholder="Guest Wechat ID" value="{$orderinfo.gwxid}" class="form-control input-inline input-medium" readonly>
 											<span class="help-inline">
 											guest's wechat id. </span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest Wechat Name</label>
 										<div class="col-md-9">
 											<input name="guest_wxname" type="text" placeholder="Guest Wechat Name" class="form-control input-inline input-medium" value="{$orderinfo.gwxname}" required>
 											<span class="help-inline"> guest's wechat name. </span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Project Name</label>
 										<div class="col-md-9">
 											<input name="projectname" type="text" placeholder="Project name" class="form-control" value="{$orderinfo.projectname}" required>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest deadline</label>
 										<div class="col-md-3">
 											<div class="input-group date form_meridian_datetimenew" data-date="2012-12-21">
@@ -926,11 +947,11 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Currency Type</label>
 										<div class="col-md-9">
 											<select name="moneytype" class="form-control input-inline input-medium">
-                        <option value="{$orderinfo.moneytype}" selected>{$orderinfo.moneytype}</option>
+												<option value="{$orderinfo.moneytype}" selected>{$orderinfo.moneytype}</option>
 												<option value="USD">USD</option>
 												<option value="RMB">RMB</option>
 												<option value="EUR">EUR</option>
@@ -941,14 +962,14 @@
 											</select>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Total Price</label>
 										<div class="col-md-9">
 											<input name="totalprice" type="number" min="0" step="0.01" class="form-control input-inline input-medium" value="{$orderinfo.totalprice}" required>
 											<span class="help-inline"> guest's total price. </span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guarantee</label>
 										<div class="col-md-9">
 											<input name="guarantee" type="number" min="0" step="0.01" class="form-control input-inline input-medium" value="{$orderinfo.guarantee}" required>
@@ -966,23 +987,23 @@
 										2. worker has completed and no pay
 										3. worker has completed and paid
 									-->
-									<div class="form-group">
+									<div class="form-group  has-error">
 										<label class="col-md-3 control-label">Guest state</label>
 										<div class="col-md-9">
 											<select name="g_state" class="form-control input-inline input-medium">
-                        <if condition="$orderinfo.g_state eq 0 ">
-                          <option value="0" selected>Guest have no paid gurrentee</option>
-  												<option value="1">Guest have paid gurrentee</option>
-  												<option value="2">Guest have pain all money</option>
-                        <elseif condition="$name eq 1"/>
-                          <option value="0">Guest have no paid gurrentee</option>
-  												<option value="1" selected>Guest have paid gurrentee</option>
-  												<option value="2">Guest have pain all money</option>
-                        <else />
-                          <option value="0">Guest have no paid gurrentee</option>
-  												<option value="1">Guest have paid gurrentee</option>
-  												<option value="2" selected>Guest have pain all money</option>
-                        </if>
+												<if condition="$orderinfo.g_state eq 0 ">
+												  <option value="0" selected>Guest have no paid gurrentee</option>
+																		<option value="1">Guest have paid gurrentee</option>
+																		<option value="2">Guest have pain all money</option>
+												<elseif condition="$name eq 1"/>
+												  <option value="0">Guest have no paid gurrentee</option>
+																		<option value="1" selected>Guest have paid gurrentee</option>
+																		<option value="2">Guest have pain all money</option>
+												<else />
+												  <option value="0">Guest have no paid gurrentee</option>
+																		<option value="1">Guest have paid gurrentee</option>
+																		<option value="2" selected>Guest have pain all money</option>
+												</if>
 
 											</select>
 										</div>
@@ -991,13 +1012,15 @@
 									<div class="form-group">
 										<label class="col-md-3 control-label">Select worker</label>
 										<div class="col-md-9">
+											<input name="oriid" type="hidden" value="{$orderinfo[wxid]}" readonly>
 											<select name="wxid" class="form-control input-inline input-medium">
 												<foreach name="workers" item="vo">
-                          <if condition="$orderinfo[wxid] eq $vo[wxid]">
-											      <option value="{$vo.wxid}" selected>{$vo.wxid} : {$vo.wxname}</option>
-                          <else />
-                            <option value="{$vo.wxid}">{$vo.wxid} : {$vo.wxname}</option>
-                          </if>
+													<option value="">Please Choose a worker</option>
+													<if condition="$orderinfo[wxid] eq $vo[wxid]">
+																		  <option value="{$vo.wxid}" selected>{$vo.wxid} : {$vo.wxname}</option>
+													<else />
+														<option value="{$vo.wxid}">{$vo.wxid} : {$vo.wxname}</option>
+													</if>
 												</foreach>
 											</select>
 										</div>
@@ -1017,7 +1040,7 @@
 									<div class="form-group">
 										<label class="col-md-3 control-label">Worker salary</label>
 										<div class="col-md-9">
-											<input name="w_payment" type="number"  min="0" step="0.01" class="form-control input-inline input-medium" value="{$orderinfo.w_payment}" required>
+											<input name="w_payment" type="number"  min="0" step="0.01" class="form-control input-inline input-medium" value="{$orderinfo.w_payment}">
 											<span class="help-inline"> Worker salary. </span>
 										</div>
 									</div>
@@ -1025,31 +1048,27 @@
 										<label class="col-md-3 control-label">Worker state</label>
 										<div class="col-md-9">
 											<select name="w_state" class="form-control input-inline input-medium">
-												<option value="0">null</option>
-												<option value="1">worker is doing</option>
-												<option value="2">worker has completed and no pay</option>
-												<option value="3">worker has completed and paid</option>
-                        <if condition="$orderinfo.w_state eq 0 ">
-                          <option value="0" selected>null</option>
-  												<option value="1">worker is doing</option>
-  												<option value="2">worker has completed and no pay</option>
-  												<option value="3">worker has completed and paid</option>
-                        <elseif condition="$orderinfo.w_state eq 1"/>
-                          <option value="0">null</option>
-                          <option value="1" selected>worker is doing</option>
-                          <option value="2">worker has completed and no pay</option>
-                          <option value="3">worker has completed and paid</option>
-                        <elseif condition="$orderinfo.w_state eq 2"/>
-                          <option value="0">null</option>
-                          <option value="1">worker is doing</option>
-                          <option value="2" selected>worker has completed and no pay</option>
-                          <option value="3">worker has completed and paid</option>
-                        <else />
-                          <option value="0">null</option>
-                          <option value="1">worker is doing</option>
-                          <option value="2">worker has completed and no pay</option>
-                          <option value="3" selected>worker has completed and paid</option>
-                        </if>
+												<if condition="$orderinfo.w_state eq 0 ">
+												  <option value="0" selected>null</option>
+																		<option value="1">worker is doing</option>
+																		<option value="2">worker has completed and no pay</option>
+																		<option value="3">worker has completed and paid</option>
+												<elseif condition="$orderinfo.w_state eq 1"/>
+												  <option value="0">null</option>
+												  <option value="1" selected>worker is doing</option>
+												  <option value="2">worker has completed and no pay</option>
+												  <option value="3">worker has completed and paid</option>
+												<elseif condition="$orderinfo.w_state eq 2"/>
+												  <option value="0">null</option>
+												  <option value="1">worker is doing</option>
+												  <option value="2" selected>worker has completed and no pay</option>
+												  <option value="3">worker has completed and paid</option>
+												<else />
+												  <option value="0">null</option>
+												  <option value="1">worker is doing</option>
+												  <option value="2">worker has completed and no pay</option>
+												  <option value="3" selected>worker has completed and paid</option>
+												</if>
 											</select>
 										</div>
 									</div>
@@ -1064,7 +1083,7 @@
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button type="submit" class="btn green">Submit</button>
-											<button type="button" class="btn default">Cancel</button>
+											<a href="{:U('Order/orderlist');}" type="button" class="btn default">Cancel</a>
 										</div>
 									</div>
 								</div>
