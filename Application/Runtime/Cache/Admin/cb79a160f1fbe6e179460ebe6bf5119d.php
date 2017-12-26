@@ -43,7 +43,6 @@ License: You must have a valid license purchased only from themeforest(the above
 	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
 	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
 	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/admin/pages/css/pagecode.css"/>
 
 
 <!-- BEGIN THEME STYLES -->
@@ -524,7 +523,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					Dashboard</a>
 				</li>
 				<li class="active">
-					<a href="<?php echo U('Order/orderlist?flag=3');;?>">
+					<a href="<?php echo U('Order/orderlist');;?>">
 					<i class="icon-basket"></i>
 					Orders All</a>
 				</li>
@@ -557,7 +556,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<i class="icon-home"></i>
 					Dashboard</a>
 				</li>
-				<li>
+				<li class="active">
 					<a href="<?php echo U('Worker/workerlist');;?>">
 					<i class="icon-basket"></i>
 					Worker info</a>
@@ -1269,7 +1268,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div class="page-content">
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Workers <small>workers listing</small>
+			Orders <small>edit order</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -1284,6 +1283,10 @@ License: You must have a valid license purchased only from themeforest(the above
 					</li>
 					<li>
 						<a href="<?php echo U('Order/orderlist?flag=3');;?>">Orders All</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Edit Order</a>
 					</li>
 				</ul>
 				<div class="page-toolbar">
@@ -1313,123 +1316,96 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
-				<div class="col-md-12">
-					<!-- Begin: life time stats -->
-					<div class="portlet">
+				<div class="col-md-12 ">
+					<!-- BEGIN SAMPLE FORM PORTLET-->
+					<div class="portlet box purple ">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-shopping-cart"></i>All Orders Listing
+								<i class="fa fa-gift"></i> OrderID #<?php echo ($orderinfo["orderid"]); ?>
 							</div>
-							<div class="actions">
-								<a href="<?php echo U('Order/orderaddpage');;?>" class="btn default yellow-stripe">
-									<i class="fa fa-plus"></i>
-									<span class="hidden-480"> New Order </span>
+							<div class="tools">
+								<a href="" class="collapse">
 								</a>
-								<div class="btn-group">
-									<a class="btn default yellow-stripe dropdown-toggle" href="javascript:;" data-toggle="dropdown">
-									<i class="fa fa-share"></i>
-									<span class="hidden-480">
-									Tools </span>
-									<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu pull-right">
-										<li>
-											<a href="javascript:;">
-											Export to Excel </a>
-										</li>
-										<li>
-											<a href="javascript:;">
-											Export to CSV </a>
-										</li>
-										<li>
-											<a href="javascript:;">
-											Export to XML </a>
-										</li>
-										<li class="divider">
-										</li>
-										<li>
-											<a href="javascript:;">
-											Print Invoices </a>
-										</li>
-									</ul>
-								</div>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="" class="reload">
+								</a>
+								<a href="" class="remove">
+								</a>
 							</div>
 						</div>
-						<div class="portlet-body">
-							<div class="table-container">
-								<div class="row">
-									<form role="form" action="<?php echo U('Order/orderlist?p=1');;?>" method="GET">
-									<div class="col-md-12 col-sm-12">
-										<div class="form-group">
-											<div class="col-md-2 col-sm-12">
-													<select name="flag" class="form-control">
-														<?php if($fflag == 1 ): ?><option value="3">All orders</option>
-															<option value="1" selected>Complete orders</option>
-															<option value="2">Incomplete orders</option>
-														<?php elseif($fflag == 2 ): ?>
-															<option value="3">All orders</option>
-															<option value="1" >Complete orders</option>
-															<option value="2" selected>Incomplete orders</option>
-														<?php elseif($fflag == 3 ): ?>
-															<option value="3" selected>All orders</option>
-															<option value="1" >Complete orders</option>
-															<option value="2">Incomplete orders</option>
-														<?php else: ?>
-															<option value="3">All orders</option>
-															<option value="1">Complete orders</option>
-															<option value="2">Incomplete orders</option><?php endif; ?>
-
-													</select>
-
-												<!-- /input-group -->
-											</div>
-											<div class="col-md-3 col-sm-12">
-												<div class="input-group date form_meridian_date" data-date="2012-12-21T15:25:00Z">
-													<input name="fromdate" type="text" size="10" class="form-control input-inline" placeholder="From" value="<?php echo ($newfrom); ?>" readonly>
-													<span class="input-group-btn">
-													<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
-													<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
-													</span>
-												</div>
-												<!-- /input-group -->
-											</div>
-											<div class="col-md-3 col-sm-12">
-												<div class="input-group date form_meridian_date" data-date="2012-12-21T15:25:00Z">
-													<input name="todate" type="text" size="10" class="form-control input-inline" placeholder="To" value="<?php echo ($newto); ?>" readonly>
-													<span class="input-group-btn">
-													<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
-													<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
-													</span>
-												</div>
-												<!-- /input-group -->
-											</div>
-											<div class="col-md-4 col-sm-12">
-												<button class="btn yellow table-group-action-submit"><i class="fa fa-search"></i> Search</button>
-												<a class="btn red filter-cancel" type="reset" href="<?php echo U('Order/orderlist?p=1');;?>"><i class="fa fa-times"></i> Reset</a>
-												<!-- /input-group -->
+						<div class="portlet-body form">
+							<form class="form-horizontal" action="<?php echo U('Order/ordernew');;?>" method="post"  role="form">
+                <div class="form-body">
+									<div class="form-group">
+										<label class="col-md-3 control-label">Order ID</label>
+										<div class="col-md-9">
+											<input name="orderid" type="text" value="<?php echo ($orderinfo["orderid"]); ?>" class="form-control input-inline input-medium" readonly>
+										</div>
+									</div>
+								<div class="form-body">
+									<div class="form-group">
+										<label class="col-md-3 control-label">Guest Wechat ID</label>
+										<div class="col-md-9">
+											<input name="guest_wxid" type="text" placeholder="Guest Wechat ID" value="<?php echo ($orderinfo["gwxid"]); ?>" class="form-control input-inline input-medium" required>
+											<span class="help-inline">
+											guest's wechat id. </span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Guest Wechat Name</label>
+										<div class="col-md-9">
+											<input name="guest_wxname" type="text" placeholder="Guest Wechat Name" class="form-control input-inline input-medium" value="<?php echo ($orderinfo["gwxname"]); ?>" required>
+											<span class="help-inline"> guest's wechat name. </span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Project Name</label>
+										<div class="col-md-9">
+											<input name="projectname" type="text" placeholder="Project name" class="form-control" value="<?php echo ($orderinfo["projectname"]); ?>" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Guest deadline</label>
+										<div class="col-md-3">
+											<div class="input-group date form_meridian_datetimenew" data-date="2012-12-21">
+												<input name="g_deadtime" type="text" size="10" class="form-control input-inline " placeholder="Guest deadline" value="<?php echo ($orderinfo["g_deadline"]); ?>" required>
+												<span class="input-group-btn">
+												<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+												<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
 											</div>
 										</div>
 									</div>
-									</form>
-								</div>
-								<div class="table-scrollable">
-									<table class="table table-striped table-bordered table-hover  " id="datatable_orders">
-									<thead>
-									<tr role="row" class="heading">
-										<th width="">Date</th>
-										<th width="15%">G_Wechat</th>
-										<th width="10%">Project</th>
-										<th width="10%">G_Deadline</th>
-										<th width="10%">Payment</th>
-										<th>G_State</th>
-										<th width="10%">Worker</th>
-										<th width="10%">W_deadline</th>
-										<th width="10%">W_pay</th>
-										<th>W_state</th>
-										<th width="10%">Tips</th>
-										<th width="10%">Actions</th>
-									</tr>
-									</thead>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Currency Type</label>
+										<div class="col-md-9">
+											<select name="moneytype" class="form-control input-inline input-medium">
+                        <option value="<?php echo ($orderinfo["moneytype"]); ?>" selected><?php echo ($orderinfo["moneytype"]); ?></option>
+												<option value="USD">USD</option>
+												<option value="RMB">RMB</option>
+												<option value="EUR">EUR</option>
+												<option value="CAD">CAD</option>
+												<option value="HKD">HKD</option>
+												<option value="AUD">AUD</option>
+												<option value="SGD">SGD</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Total Price</label>
+										<div class="col-md-9">
+											<input name="totalprice" type="number" min="0" step="0.01" class="form-control input-inline input-medium" value="<?php echo ($orderinfo["totalprice"]); ?>" required>
+											<span class="help-inline"> guest's total price. </span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Guarantee</label>
+										<div class="col-md-9">
+											<input name="guarantee" type="number" min="0" step="0.01" class="form-control input-inline input-medium" value="<?php echo ($orderinfo["guarantee"]); ?>" required>
+											<span class="help-inline"> guest's guarantee price. </span>
+										</div>
+									</div>
 									<!--
 										0. guest have no paid gurrentee
 										1. guest have paid gurrentee
@@ -1441,50 +1417,109 @@ License: You must have a valid license purchased only from themeforest(the above
 										2. worker has completed and no pay
 										3. worker has completed and paid
 									-->
-									<tbody>
-										<?php if(is_array($orders)): foreach($orders as $key=>$vo): ?><tr role="row">
-												<td><small><?php echo ($vo["createtime"]); ?></small></td>
-												<td><small>
-													<i class="fa fa-caret-right"></i><?php echo ($vo["gwxid"]); ?>
-													<br>
-													<i class="fa fa-caret-right"></i><?php echo ($vo["gwxname"]); ?>
-													</small>
-												</td>
-												<td><small><?php echo ($vo["projectname"]); ?></small></td>
-												<td><small><?php echo ($vo["g_deadline"]); ?></small></td>
-												<td><small><?php echo ($vo["totalprice"]); echo ($vo["moneytype"]); ?><br><?php echo ($vo["guarantee"]); echo ($vo["moneytype"]); ?></small></td>
-												<td>
-													<?php switch($vo["g_state"]): case "0": ?><span class="label label-sm label-danger">no gurrentee</span><?php break;?>
-														<?php case "1": ?><span class="label label-sm label-danger">paid gurrentee</span><?php break;?>
-														<?php default: ?><span class="label label-sm label-success">paid all</span><?php endswitch;?>
-												</td>
-												<td><?php echo ($vo["wxid"]); ?> <?php echo ($vo["wxname"]); ?></td>
-												<td><small><?php echo ($vo["w_deadline"]); ?></small></td>
-												<td><small><?php echo ($vo["w_payment"]); ?>RMB</small></td>
-												<td>
-													<?php switch($vo["w_state"]): case "1": ?><span class="label label-sm label-danger">doing</span><?php break;?>
-														<?php case "2": ?><span class="label label-sm label-danger">done && nopaid</span><?php break;?>
-														<?php case "3": ?><span class="label label-sm label-success">done && paid</span><?php break;?>
-														<?php default: ?><span class="label label-sm label-success"></span><?php endswitch;?>
-												</td>
-												<td><small><?php echo ($vo["description"]); ?></small></td>
-												<td>
-													<a class="btn  btn-xs red" href="<?php echo U('Order/ordereditpage?orderid='.$vo['orderid'].'');;?>">
-														<i class="fa fa-edit"></i>
-													</a>
-												</td>
-											</tr><?php endforeach; endif; ?>
-									</tbody>
-									</table>
-								</div>
-								<div class="row page">
-									<?php echo ($page); ?>
-								</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Guest state</label>
+										<div class="col-md-9">
+											<select name="g_state" class="form-control input-inline input-medium">
+                        <?php if($orderinfo["g_state"] == 0 ): ?><option value="0" selected>Guest have no paid gurrentee</option>
+  												<option value="1">Guest have paid gurrentee</option>
+  												<option value="2">Guest have pain all money</option>
+                        <?php elseif($name == 1): ?>
+                          <option value="0">Guest have no paid gurrentee</option>
+  												<option value="1" selected>Guest have paid gurrentee</option>
+  												<option value="2">Guest have pain all money</option>
+                        <?php else: ?>
+                          <option value="0">Guest have no paid gurrentee</option>
+  												<option value="1">Guest have paid gurrentee</option>
+  												<option value="2" selected>Guest have pain all money</option><?php endif; ?>
 
-							</div>
+											</select>
+										</div>
+									</div>
+									<hr>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Select worker</label>
+										<div class="col-md-9">
+											<select name="wxid" class="form-control input-inline input-medium">
+												<?php if(is_array($workers)): foreach($workers as $key=>$vo): if($orderinfo[wxid] == $vo[wxid]): ?><option value="<?php echo ($vo["wxid"]); ?>" selected><?php echo ($vo["wxid"]); ?> : <?php echo ($vo["wxname"]); ?></option>
+                          <?php else: ?>
+                            <option value="<?php echo ($vo["wxid"]); ?>"><?php echo ($vo["wxid"]); ?> : <?php echo ($vo["wxname"]); ?></option><?php endif; endforeach; endif; ?>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Worker deadline</label>
+										<div class="col-md-3">
+											<div class="input-group date form_meridian_datetimenew" data-date="2012-12-21">
+												<input name="w_deadline" type="text" size="10" class="form-control input-inline " placeholder="Worker deadline" value="<?php echo ($orderinfo["w_deadline"]); ?>" readonly>
+												<span class="input-group-btn">
+												<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+												<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Worker salary</label>
+										<div class="col-md-9">
+											<input name="w_payment" type="number"  min="0" step="0.01" class="form-control input-inline input-medium" value="<?php echo ($orderinfo["w_payment"]); ?>" required>
+											<span class="help-inline"> Worker salary. </span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Worker state</label>
+										<div class="col-md-9">
+											<select name="w_state" class="form-control input-inline input-medium">
+												<option value="0">null</option>
+												<option value="1">worker is doing</option>
+												<option value="2">worker has completed and no pay</option>
+												<option value="3">worker has completed and paid</option>
+                        <?php if($orderinfo["w_state"] == 0 ): ?><option value="0" selected>null</option>
+  												<option value="1">worker is doing</option>
+  												<option value="2">worker has completed and no pay</option>
+  												<option value="3">worker has completed and paid</option>
+                        <?php elseif($orderinfo["w_state"] == 1): ?>
+                          <option value="0">null</option>
+                          <option value="1" selected>worker is doing</option>
+                          <option value="2">worker has completed and no pay</option>
+                          <option value="3">worker has completed and paid</option>
+                        <?php elseif($orderinfo["w_state"] == 2): ?>
+                          <option value="0">null</option>
+                          <option value="1">worker is doing</option>
+                          <option value="2" selected>worker has completed and no pay</option>
+                          <option value="3">worker has completed and paid</option>
+                        <?php else: ?>
+                          <option value="0">null</option>
+                          <option value="1">worker is doing</option>
+                          <option value="2">worker has completed and no pay</option>
+                          <option value="3" selected>worker has completed and paid</option><?php endif; ?>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Description</label>
+										<div class="col-md-9">
+											<textarea name="description" class="form-control input-inline input-medium" rows="3"><?php echo ($orderinfo["description"]); ?></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-3 col-md-9">
+											<button type="submit" class="btn green">Submit</button>
+											<button type="button" class="btn default">Cancel</button>
+										</div>
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
-					<!-- End: life time stats -->
+					<!-- END SAMPLE FORM PORTLET-->
+					<!-- BEGIN SAMPLE FORM PORTLET-->
+
+					<!-- END SAMPLE FORM PORTLET-->
+					<!-- BEGIN SAMPLE FORM PORTLET-->
+
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->
@@ -1531,35 +1566,28 @@ License: You must have a valid license purchased only from themeforest(the above
 	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/js/clockface.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/components-pickers.js"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/components-pickers.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/js/clockface.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<!-- END PAGE LEVEL PLUGINS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
+	<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+	<script src="/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/components-pickers.js"></script>
 
-	<!-- END PAGE LEVEL SCRIPTS -->
-	<script>
-		jQuery(document).ready(function() {
-			// initiate layout and plugins
-			Metronic.init(); // init metronic core components
-			Layout.init(); // init current layout
-			Demo.init(); // init demo features
-			ComponentsPickers.init();
-        });
-		</script>
+		<!-- END PAGE LEVEL SCRIPTS -->
+		<script>
+			jQuery(document).ready(function() {
+				// initiate layout and plugins
+				Metronic.init(); // init metronic core components
+				Layout.init(); // init current layout
+				ComponentsPickers.init();
+	        });
+			</script>
 
 
 <!-- END JAVASCRIPTS -->

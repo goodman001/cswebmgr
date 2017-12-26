@@ -8,22 +8,27 @@ class OrderController extends CommonController {
 		if(isset($_GET["p"])){
 			$pp = $_GET["p"];
 		}
-		$sortby = 10;
-		if(isset($_POST["sortby"])){
-			$sortby = $_POST["sortby"];
+		$flag =3;
+		if(isset($_GET["flag"])){
+			$flag =I('get.flag');;
 		}
 		//$fromdate = date('Y-m-d',strtotime('1016-01-30'));//
 		//$todate = date('Y-m-d',strtotime('3016-01-30'));//
 		$fromdate = "1000-10-10 00:00:00";
-		echo $fromdate;
+		//echo $fromdate;
 		$todate = "3000-10-10 00:00:00";
-		if(isset($_POST["fromdate"]) && $_POST["fromdate"] != ""){
-			$fromdate = $_POST["fromdate"];
+		$newfrom = "";
+		$newto = "";
+		if(isset($_GET["fromdate"]) && $_GET["fromdate"] != ""){
+			$fromdate = $_GET["fromdate"];
+			$newfrom = $fromdate;
+
 		}
-		if(isset($_POST["todate"]) && $_POST["todate"] != ""){
-			$todate = $_POST["todate"];
+		if(isset($_GET["todate"]) && $_GET["todate"] != ""){
+			$todate = $_GET["todate"];
+			$newto = $todate;
 		}
-		echo $fromdate;
+		//echo $todate;
 		/*$search =I('post.search');
         $Model = M('order');
         if(!empty($search))
@@ -56,37 +61,48 @@ class OrderController extends CommonController {
         $this->display(T('mgr/orders_list'));
 		*/
 		$Model = M('orders');
-		$flag =I('get.flag');
 		$orderinfolist = [];
 		$count = 0;
 		switch($flag){
 			case 1:
-				echo "completed orders";
+				//echo "completed orders";
+				$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND db_guest_order.g_state = 3 AND db_worker_order.w_state = 3')->order('db_orders.createtime desc')->page($pp.',3')->select();
+				$count = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->count();
 				break;
 			case 2:
-				echo "incomplte orders";
+				//echo "incomplte orders";
+				//echo "completed orders";
+				//$todate = "2017-12-25 00:00:00";
+				$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->order('db_orders.createtime desc')->page($pp.',3')->select();
+				$count = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->count();
 				break;
 			default:
 				//$orderinfolist = $Model->select();db_workers.wxname
 				//$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->field('db_orders.orderid')->select();
 				//echo $fromdate;
-				$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.'" AND db_orders.createtime <= "'.$todate.'"')->order('db_orders.createtime desc')->page($pp.',5')->select();
-				$count = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.'" AND db_orders.createtime <= "'.$todate.'"')->count();
+				//$fromdate = "2017-12-25 00:00:00";
+				//$todate = "2017-12-28 00:00:00";
+				$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->order('db_orders.createtime desc')->page($pp.',3')->select();
+				$count = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->count();
 
 				//echo "hahah";
 				//echo "all";
 		}
 		//dump($orderinfolist);
 		//echo $count;
-		$Page = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数
-  	$Page->setConfig('prev','last');
-    $Page->setConfig('next','下一页');
-    $Page->setConfig('first','第一页');
-    $Page->setConfig('last','尾页');
-    $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER% ');
-  	$show = $Page->show();// 分页显示输出
-  	$this->assign('page',$show);// 赋值分页输出
+		$Page = new \Think\Page($count,3);// 实例化分页类 传入总记录数和每页显示的记录数
+		$Page->setConfig('prev','last');
+		$Page->setConfig('next','next');
+		$Page->setConfig('first','first');
+		$Page->setConfig('last','last');
+		$Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER% ');
+		$show = $Page->show();// 分页显示输出
+		$this->assign('page',$show);// 赋值分页输出
 		$this->assign('orders',$orderinfolist);//
+		/*search default*/
+		$this->assign('fflag',$flag);// 赋值分页输出
+		$this->assign('newfrom',$newfrom);// 赋值分页输出
+		$this->assign('newto',$newto);// 赋值分页输出
 		$this->display(T('admin/orders_all'));
 	}
 	public function orderaddpage(){
@@ -152,6 +168,27 @@ class OrderController extends CommonController {
         $this->display(T('mgr/orders_add'));
 		*/
 	}
+	public function ordereditpage(){
+		$orderid = I('get.orderid','','htmlspecialchars');//
+		//dump($condition);
+		$Model = M('orders');
+		$orderinfo = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.orderid =  "'.$orderid.'"' )->find();
+		dump($orderinfo);
+		$this->assign("orderinfo",$orderinfo);
+		$Model = M('workers');
+    $workers = $Model->select();
+		$this->assign('workers',$workers);
+		$this->display(T('admin/orders_edit'));
+		/*
+		$Model = M('workers');
+        $workers = $Model->select();
+		$this->assign('workers',$workers);
+        $this->display(T('admin/orders_add'));
+				*/
+	}
+
+
+
 
 
 	public function orderdetail()

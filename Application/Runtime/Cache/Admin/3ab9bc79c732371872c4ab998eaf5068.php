@@ -211,7 +211,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -225,7 +225,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -239,7 +239,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -253,7 +253,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -267,7 +267,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -384,7 +384,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 				<li class="dropdown dropdown-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="../../assets/admin/layout/img/avatar3_small.jpg"/>
+					<img alt="" class="img-circle" src="/cswebmgr/Public/metronic3_7/assets/admin/layout/img/avatar3_small.jpg"/>
 					<span class="username username-hide-on-mobile">
 					Nick </span>
 					<i class="fa fa-angle-down"></i>
@@ -3409,8 +3409,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
-<script src="../../assets/global/plugins/respond.min.js"></script>
-<script src="../../assets/global/plugins/excanvas.min.js"></script> 
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/respond.min.js"></script>
+<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
 <script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
