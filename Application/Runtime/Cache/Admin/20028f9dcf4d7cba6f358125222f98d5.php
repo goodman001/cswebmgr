@@ -25,26 +25,26 @@ License: You must have a valid license purchased only from themeforest(the above
 <meta content="" name="author"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 
 	<!-- BEGIN PAGE LEVEL STYLES -->
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
 	<!-- END PAGE LEVEL STYLES -->
 
 
 <!-- BEGIN THEME STYLES -->
-<link href="/cswebmgr/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="/cswebmgr/Public/metronic3_7/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -67,7 +67,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="index.html">
-			<img src="/cswebmgr/Public/metronic3_7/assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
+			<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 			</div>
@@ -208,7 +208,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -222,7 +222,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -236,7 +236,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -250,7 +250,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -264,7 +264,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -381,7 +381,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 				<li class="dropdown dropdown-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="../../assets/admin/layout/img/avatar3_small.jpg"/>
+					<img alt="" class="img-circle" src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/img/avatar3_small.jpg"/>
 					<span class="username username-hide-on-mobile">
 					Nick </span>
 					<i class="fa fa-angle-down"></i>
@@ -1382,10 +1382,10 @@ License: You must have a valid license purchased only from themeforest(the above
 									<thead>
 									<tr role="row" class="heading">
 										<th width="10%">
-											 WX&nbsp;ID#
+											 WxID#
 										</th>
 										<th width="10%">
-											 WX&nbsp;Name
+											 WxName
 										</th>
 										<th width="15%">
 											 Email
@@ -1400,7 +1400,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<th width="5%">
 											 Income
 										</th>
-										<th width="15%">
+										<th width="10%">
 											 Addtime
 										</th>
 										<th width="5%">
@@ -1422,10 +1422,18 @@ License: You must have a valid license purchased only from themeforest(the above
 												<td>
 													<?php if(is_array($vo["techarr"])): foreach($vo["techarr"] as $key=>$vv): ?><span class="label label-sm label-success" style="margin-right:3px;"><?php echo ($vv["content"]); ?> </span><?php endforeach; endif; ?>
 												</td>
-												<td>x</td>
-												<td>xRMB</td>
+												<td><?php echo ($vo["remark"]); ?></td>
+												<td>
+													<?php echo ($vo["income"]); ?> RMB
+												</td>
 												<td><?php echo ($vo["addtime"]); ?></td>
-												<td>x</td>
+												<td>
+													<?php echo ($vo["orderall"]); ?>
+													<br>
+													<?php echo ($vo["ordercomplete"]); ?>
+													<br>
+													<?php echo ($vo["orderincomplete"]); ?>
+												</td>
 												<td><?php echo ($vo["description"]); ?></td>
 												<td>
 												<a class="btn  btn-xs red" href="<?php echo U('Worker/workereditpage?wxid='.$vo['wxid'].'');;?>">
@@ -1490,31 +1498,31 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
-<script src="../../assets/global/plugins/respond.min.js"></script>
-<script src="../../assets/global/plugins/excanvas.min.js"></script> 
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/respond.min.js"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+	<script type="text/javascript" src="/csweb/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
-	<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+	<script src="/csweb/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
+	<script src="/csweb/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
 
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>

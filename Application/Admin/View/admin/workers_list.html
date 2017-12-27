@@ -936,10 +936,10 @@
 									<thead>
 									<tr role="row" class="heading">
 										<th width="10%">
-											 WX&nbsp;ID#
+											 WxID#
 										</th>
 										<th width="10%">
-											 WX&nbsp;Name
+											 WxName
 										</th>
 										<th width="15%">
 											 Email
@@ -954,7 +954,7 @@
 										<th width="5%">
 											 Income
 										</th>
-										<th width="15%">
+										<th width="10%">
 											 Addtime
 										</th>
 										<th width="5%">
@@ -979,10 +979,18 @@
 														<span class="label label-sm label-success" style="margin-right:3px;">{$vv.content} </span>
 													</foreach>
 												</td>
-												<td>x</td>
-												<td>xRMB</td>
+												<td>{$vo.remark}</td>
+												<td>
+													{$vo.income} RMB
+												</td>
 												<td>{$vo.addtime}</td>
-												<td>x</td>
+												<td>
+													{$vo.orderall}
+													<br>
+													{$vo.ordercomplete}
+													<br>
+													{$vo.orderincomplete}
+												</td>
 												<td>{$vo.description}</td>
 												<td>
 												<a class="btn  btn-xs red" href="{:U('Worker/workereditpage?wxid='.$vo['wxid'].'');}">

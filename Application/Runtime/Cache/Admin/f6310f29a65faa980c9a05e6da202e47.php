@@ -525,6 +525,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<li class="active">
 					<a href="<?php echo U('Order/orderlist_incomplete');;?>">
 					<i class="icon-basket"></i>
+					<span class="badge badge-danger"><?php echo ($cin); ?></span>
 					Orders Incomplete</a>
 				</li>
 				<li>
@@ -1359,6 +1360,17 @@ License: You must have a valid license purchased only from themeforest(the above
 								</div>
 							</div>
 						</div>
+						<!--
+										0. guest have no paid gurrentee
+										1. guest have paid gurrentee
+										2. guest have pain all money
+									-->
+									<!--
+										0. no
+										1. worker is doing
+										2. worker has completed and no pay
+										3. worker has completed and paid
+									-->
 						<div class="portlet-body">
 							<div class="table-container">
 								<div class="row">

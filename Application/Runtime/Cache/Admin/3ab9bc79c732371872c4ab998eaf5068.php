@@ -520,6 +520,11 @@ License: You must have a valid license purchased only from themeforest(the above
 					Dashboard</a>
 				</li>
 				<li>
+					<a href="<?php echo U('Order/orderlist_incomplete');;?>">
+					<i class="icon-basket"></i>
+					Orders Incomplete</a>
+				</li>
+				<li>
 					<a href="<?php echo U('Order/orderlist');;?>">
 					<i class="icon-basket"></i>
 					Orders All</a>

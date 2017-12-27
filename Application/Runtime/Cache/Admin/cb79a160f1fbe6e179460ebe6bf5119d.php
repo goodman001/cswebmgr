@@ -1522,7 +1522,9 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button type="submit" class="btn green">Submit</button>
-											<a href="<?php echo U('Order/orderlist');;?>" type="button" class="btn default">Cancel</a>
+											<?php if($go == 1): ?><a href="<?php echo U('Order/orderlist_incomplete');;?>" type="button" class="btn default">Cancel</a>
+											<?php else: ?>
+												<a href="<?php echo U('Order/orderlist');;?>" type="button" class="btn default">Cancel</a><?php endif; ?>
 										</div>
 									</div>
 								</div>
