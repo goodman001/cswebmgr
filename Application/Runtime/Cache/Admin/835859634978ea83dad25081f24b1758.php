@@ -36,6 +36,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
 	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
+  <link href="/cswebmgr/Public/metronic3_7/assets/admin/pages/css/todo.css" rel="stylesheet" type="text/css"/>
 	<!-- END PAGE LEVEL STYLES -->
 
 
@@ -1069,7 +1070,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div class="page-content">
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Workers <small>workers listing</small>
+			Worker #<?php echo ($workerinfo["wxid"]); ?> <small>worker detail</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -1084,6 +1085,10 @@ License: You must have a valid license purchased only from themeforest(the above
 					</li>
 					<li>
 						<a href="<?php echo U('Worker/workerlist');;?>">Worker info</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Worker Detail</a>
 					</li>
 				</ul>
 				<div class="page-toolbar">
@@ -1113,180 +1118,255 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
-				<div class="col-md-12">
-					<!-- Begin: life time stats -->
-					<div class="portlet">
-						<div class="portlet-title">
-							<div class="caption">
-								<i class="fa fa-shopping-cart"></i>Worker Listing
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
+					<div class="dashboard-stat red-intense">
+						<div class="visual">
+							<i class="fa fa-briefcase fa-icon-medium"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 <?php echo ($workerinfo["income"]); ?> RMB
 							</div>
-							<div class="actions">
-								<a href="<?php echo U('Worker/workernewpage');;?>" class="btn default yellow-stripe">
-									<i class="fa fa-plus"></i>
-									<span class="hidden-480"> New worker </span>
-								</a>
-								<div class="btn-group">
-									<a class="btn default yellow-stripe dropdown-toggle" href="javascript:;" data-toggle="dropdown">
-									<i class="fa fa-share"></i>
-									<span class="hidden-480">
-									Tools </span>
-									<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu pull-right">
-										<li>
-											<a href="javascript:;">
-											Export to Excel </a>
-										</li>
-										<li>
-											<a href="javascript:;">
-											Export to CSV </a>
-										</li>
-										<li>
-											<a href="javascript:;">
-											Export to XML </a>
-										</li>
-										<li class="divider">
-										</li>
-										<li>
-											<a href="javascript:;">
-											Print Invoices </a>
-										</li>
-									</ul>
+							<div class="desc">
+								 Total Income
+							</div>
+						</div>
+						<a class="more" href="javascript:;">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+					<div class="dashboard-stat green-haze">
+						<div class="visual">
+							<i class="fa fa-group fa-icon-medium"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 <?php echo ($workerinfo["orderincomplete"]); ?>
+							</div>
+							<div class="desc">
+								 Incomplete Projects
+							</div>
+						</div>
+						<a class="more" href="javascript:;">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+					<div class="dashboard-stat blue-madison">
+						<div class="visual">
+							<i class="fa fa-shopping-cart"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 <?php echo ($workerinfo["orderall"]); ?>
+							</div>
+							<div class="desc">
+								 Total Projects
+							</div>
+						</div>
+						<a class="more" href="javascript:;">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN TODO SIDEBAR -->
+					<div>
+						<div class="todo-sidebar">
+							<div class="portlet light">
+								<div class="portlet-title">
+									<div class="caption" data-toggle="collapse" data-target=".todo-project-list-content">
+										<span class="caption-subject font-green-sharp bold uppercase">
+											<i class="icon-user-following"></i> Worker profile
+										</span>
+									</div>
+								</div>
+								<div class="portlet-body todo-project-list-content" style="height: auto;">
+									<div class="todo-project-list">
+										<ul class="nav nav-pills nav-stacked">
+											<li>
+												<i class="fa fa-wechat"></i> <?php echo ($workerinfo["wxid"]); ?> </a>
+											</li>
+											<li>
+												<i class="fa fa-user"></i> <?php echo ($workerinfo["wxname"]); ?> </a>
+											</li>
+											<li>
+												<i class="fa fa-envelope-o"></i> <?php echo ($workerinfo["email"]); ?> </a>
+											</li>
+											<li>
+												<i class="fa fa-star-o"></i> <?php echo ($workerinfo["remark"]); ?> </a>
+											</li>
+											<li>
+												<i class="fa fa-clock-o"></i> <?php echo ($workerinfo["addtime"]); ?> </a>
+											</li>
+
+											<li>
+												<i class="fa fa-cog"></i>Technologies
+											</li>
+											<li>
+												<?php if(is_array($workerinfo["teches"])): foreach($workerinfo["teches"] as $key=>$item): ?>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-terminal"></i><?php echo ($item["content"]); ?><br><?php endforeach; endif; ?>
+
+											</li>
+											<li>
+												<div class="todo-tasklist-item-text">
+															 <i class="fa fa-comments-o"></i> <?php echo ($workerinfo["description"]); ?>
+												</div>
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="portlet-body">
-							<div class="table-container">
-								<div class="row well">
-									<form role="form" action="<?php echo U('Worker/workerlist');;?>" method="post">
-									<div class="col-md-12 col-sm-12">
-										#Technologies:
-										<?php if(is_array($teches)): foreach($teches as $key=>$item): if(in_array(($item["techid"]), is_array($techstr)?$techstr:explode(',',$techstr))): ?><input type="checkbox" name="techsearch[]" class="group-checkable" value="<?php echo ($item["techid"]); ?>" checked><?php echo ($item["content"]); ?>
-											<?php else: ?>
-												<input type="checkbox" name="techsearch[]" class="group-checkable" value="<?php echo ($item["techid"]); ?>" ><?php echo ($item["content"]); endif; endforeach; endif; ?>
+						<!-- END TODO SIDEBAR -->
+						<!-- BEGIN TODO CONTENT -->
+						<div class="todo-content">
+							<div class="portlet light">
+								<!-- PROJECT HEAD -->
+								<div class="portlet-title">
+									<div class="caption">
+										<i class="icon-bar-chart font-green-sharp"></i>
+										<span class="caption-subject font-green-sharp bold uppercase"> PROJECTS</span>
 									</div>
-									<div class="col-md-12 col-sm-12">
-										<div class="dataTables_paginate paging_bootstrap_extended" id="datatable_orders_paginate">
-											#Sort conditions:
-											<select class="table-group-action-input form-control input-inline input-small input-sm">
-												<option value="10">addtime asc</option>
-												<option value="11">addtime desc</option>
-												<option value="20">remark desc</option>
-												<option value="21">remark asc</option>
-												<option value="30">income desc</option>
-												<option value="31">income asc</option>
-												<option value="50">projects desc</option>
-												<option value="51">projects asc</option>
-											</select>
-											<button class="btn btn-sm yellow table-group-action-submit"><i class="fa fa-search"></i> Search</button>
-											<a href="<?php echo U('Worker/workerlist');;?>" class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i> Reset</a>
+									<div class="actions">
+										<div class="btn-group">
+											<a class="btn green-haze btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+											MANAGE <i class="fa fa-angle-down"></i>
+											</a>
+											<ul class="dropdown-menu pull-right">
+												<li>
+													<a href="javascript:;">
+													<i class="i"></i> New Task </a>
+												</li>
+												<li class="divider">
+												</li>
+												<li>
+													<a href="javascript:;">
+													Pending <span class="badge badge-danger">
+													4 </span>
+													</a>
+												</li>
+												<li>
+													<a href="javascript:;">
+													Completed <span class="badge badge-success">
+													12 </span>
+													</a>
+												</li>
+												<li>
+													<a href="javascript:;">
+													Overdue <span class="badge badge-warning">
+													9 </span>
+													</a>
+												</li>
+												<li class="divider">
+												</li>
+												<li>
+													<a href="javascript:;">
+													<i class="i"></i> Delete Project </a>
+												</li>
+											</ul>
 										</div>
 									</div>
-									</form>
 								</div>
-								<div class="table-scrollable">
-									<table class="table table-striped table-bordered table-hover " id="datatable_orders">
-									<thead>
-									<tr role="row" class="heading">
-										<th width="15%">
-											 WeChat
-										</th>
-										<th >
-											 Email
-										</th>
-										<th width="15%">
-											 Technologies
-										</th>
+								<!-- end PROJECT HEAD -->
+								<div class="portlet-body">
+									<div class="row">
 
-										<th width="5%">
-											 Remark
-										</th>
-										<th width="10%">
-											 Income
-										</th>
-										<th width="10%">
-											 Addtime
-										</th>
-										<th width="15%">
-											 Project
-										</th>
-										<th width="10%">
-											 Description
-										</th>
-										<th width="10%">
-											 Actions
-										</th>
-									</tr>
-									</thead>
-									<tbody>
-										<?php if(is_array($workers)): foreach($workers as $key=>$vo): ?><tr role="row">
-												<td>
-													<i class="fa fa-dot-circle-o"></i> <?php echo ($vo["wxname"]); ?>
-													<br>
-													<i class="fa fa-circle-o"></i> <?php echo ($vo["wxid"]); ?>
-												</td>
-												<td><?php echo ($vo["email"]); ?></td>
-												<td>
-													<?php if(is_array($vo["techarr"])): foreach($vo["techarr"] as $key=>$vv): ?><span class="label label-sm label-success" style="margin-right:3px;"><?php echo ($vv["content"]); ?> </span><br><?php endforeach; endif; ?>
-												</td>
-												<td><?php echo ($vo["remark"]); ?></td>
-												<td>
-													<?php echo ($vo["income"]); ?> RMB
-												</td>
-												<td><?php echo ($vo["addtime"]); ?></td>
-												<td>
-													<span class="label label-sm label-info">ALL projects:  <?php echo ($vo["orderall"]); ?></span>
-													<br>
-													<span class="label label-sm label-success">Complete projects:  <?php echo ($vo["ordercomplete"]); ?></span>
-													<br>
-													<span class="label label-sm label-danger">Incomplete projects:  <?php echo ($vo["orderincomplete"]); ?></span>
+										<div class="col-md-6 col-sm-8">
+											<h4><i class="fa fa-list-ul"></i> Incomplete projects</h4>
+											<div class="scroller" style="max-height: 1000px;" data-always-visible="0" data-rail-visible="0" data-handle-color="#dae3e7">
+												<?php if(is_array($workerinfo["orderincomelist"])): foreach($workerinfo["orderincomelist"] as $key=>$item): ?><div class="form-group">
+														<div class="col-md-12">
+															<ul class="media-list">
+																<li class="media">
+																		<?php if(($item["g_state"] == 2) AND ($item["w_state"] == 2) ): ?><div class="media-body todo-comment todo-tasklist-item todo-tasklist-item-border-red">
+																		<?php else: ?>
+																			<div class="media-body todo-comment todo-tasklist-item todo-tasklist-item-border-green"><?php endif; ?>
+																		<p class="todo-comment-head">
+																			<span class="todo-comment-username">
+																				<i class="fa fa-check-square"></i>&nbsp;<?php echo ($item["projectname"]); ?></span>
+																		</p>
+																		<p class="todo-text-color">
+																			<span class="label label-sm label-success circle">W</span> <?php echo ($item["w_deadline"]); ?>
+																			<br><span class="label label-sm label-danger circle">G</span><strong> <?php echo ($item["g_deadline"]); ?></strong>
+																			<br>
+																			<i class="fa fa-volume-up"></i>
+																			<?php switch($item["g_state"]): case "0": ?><span class="label label-sm label-danger">Guest No gurrentee</span><?php break;?>
+																				<?php case "1": ?><span class="label label-sm label-danger">Guest Only gurrentee</span><?php break;?>
+																				<?php default: ?><span class="label label-sm label-success"> Guest Have paid All</span><?php endswitch;?>
+																			<?php switch($item["w_state"]): case "1": ?><span class="label label-sm label-danger">Worker doing</span><?php break;?>
+																				<?php case "2": ?><span class="label label-sm label-danger">Worker done & no paid</span><?php break;?>
+																				<?php case "3": ?><span class="label label-sm label-success">Woker done & paid</span><?php break;?>
+																				<?php default: ?><span class="label label-sm label-default">Worker unset </span><?php endswitch;?>
+																			<br>
+																			<span class="label label-sm label-info circle">P</span> <?php echo ($item["totalprice"]); ?> <?php echo ($item["moneytype"]); ?>/<?php echo ($item["guarantee"]); ?> <?php echo ($item["moneytype"]); ?>
+																			<br>
+																			<span class="label label-sm label-warning circle">S</span> <?php echo ($item["w_payment"]); ?>RMB
+																		</p>
+																		<div class="todo-tasklist-controls pull-left">
+																			<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo ($item["createtime"]); ?> </span>
+																			<a href="<?php echo U('Order/orderdetailpage?go=1&orderid='.$item['orderid'].'');;?>" class="btn btn-xs grey-cascade">
+																				 <i class="fa fa-link"></i> View
+																			</a>
+																		</div>
+																		<!-- Nested media object -->
+																	</div>
 
-												</td>
-												<td><?php echo ($vo["description"]); ?></td>
-												<td>
-												<a class="btn  btn-xs red" href="<?php echo U('Worker/workereditpage?wxid='.$vo['wxid'].'');;?>">
-													<i class="fa fa-edit"></i>
-												</a>
-												<a class="btn btn-xs purple" href="#confirmModal<?php echo ($vo['wxid']); ?>" data-toggle="modal">
-													<i class="fa fa-times"></i>
-												</a>
-												<a href="<?php echo U('Worker/workerdetailpage?wxid='.$vo['wxid'].'');;?>" class="btn btn-xs yellow">
-													<i class="fa fa-search">
-													</i>
-												</a>
-													<div class="modal fade modal-overflow in" id="confirmModal<?php echo ($vo['wxid']); ?>" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-														<div class="modal-dialog">
-															<div class="modal-content">
-																<div class="modal-header">
-																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-																	<h4 class="modal-title">Delete warning</h4>
-																</div>
-																<div class="modal-body">
-																	<p>Are you sure to delete this worker?</p>
-																	<p><?php echo ($vo['wxid']); ?> : <?php echo ($vo['wxname']); ?></p>
-
-																</div>
-																<div class="modal-footer">
-																	<a class="btn default" data-dismiss="modal"> Cancel </a>
-																	<a href="<?php echo U('Worker/workerdelete?wxid='.$vo['wxid'].'');;?>" type="button" class="btn blue"> Delete </a>
-																</div>
-															</div>
-															<!-- /.modal-content -->
+																</li>
+															</ul>
 														</div>
-													<!-- /.modal-dialog -->
-													</div>
+													</div><?php endforeach; endif; ?>
 
-												</td>
-											</tr><?php endforeach; endif; ?>
-									</tbody>
-									</table>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-4">
+											<h4><i class="fa fa-list-ul"></i> All projects</h4>
+											<div class="scroller" style="max-height: 600px;" data-always-visible="0" data-rail-visible="0" data-handle-color="#dae3e7">
+												<div class="todo-tasklist">
+													<?php if(is_array($workerinfo["orderlist"])): foreach($workerinfo["orderlist"] as $key=>$item): if(($item["g_state"] == 2) AND ($item["w_state"] == 3) ): ?><div class="todo-tasklist-item todo-tasklist-item-border-green">
+														<?php else: ?>
+															<div class="todo-tasklist-item todo-tasklist-item-border-red"><?php endif; ?>
+
+															<div class="todo-tasklist-item-title">
+																  <i class="fa fa-check-square-o"></i>
+																	&nbsp;<?php echo ($item["projectname"]); ?>
+															</div>
+															<div class="todo-tasklist-item-text">
+																<i class="fa fa-volume-up"></i>
+																<?php switch($item["g_state"]): case "0": ?><span class="label label-sm label-danger">Guest No gurrentee</span><?php break;?>
+																	<?php case "1": ?><span class="label label-sm label-danger">Guest Only gurrentee</span><?php break;?>
+																	<?php default: ?><span class="label label-sm label-success"> Guest Have paid All</span><?php endswitch;?>
+																<?php switch($item["w_state"]): case "1": ?><span class="label label-sm label-danger">Worker doing</span><?php break;?>
+																	<?php case "2": ?><span class="label label-sm label-danger">Worker done & no paid</span><?php break;?>
+																	<?php case "3": ?><span class="label label-sm label-success">Woker done & paid</span><?php break;?>
+																	<?php default: ?><span class="label label-sm label-default">Worker unset </span><?php endswitch;?>
+																<br>
+																<span class="label label-sm label-info circle">P</span> <?php echo ($item["totalprice"]); ?> <?php echo ($item["moneytype"]); ?>/<?php echo ($item["guarantee"]); ?> <?php echo ($item["moneytype"]); ?>
+																<span class="label label-sm label-warning circle">S</span> <?php echo ($item["w_payment"]); ?>RMB
+															</div>
+															<div class="todo-tasklist-controls pull-left">
+																<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo ($item["createtime"]); ?> </span>
+																<a href="<?php echo U('Order/orderdetailpage?go=1&orderid='.$item['orderid'].'');;?>" class="btn btn-xs grey-cascade">
+																	 <i class="fa fa-link"></i> View
+																</a>
+															</div>
+														</div><?php endforeach; endif; ?>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-
 							</div>
 						</div>
+						<!-- END TODO CONTENT -->
 					</div>
-					<!-- End: life time stats -->
 				</div>
+				<!-- END PAGE CONTENT-->
 			</div>
 			<!-- END PAGE CONTENT-->
 		</div>
@@ -1325,23 +1405,23 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<!-- END PAGE LEVEL PLUGINS -->
-	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
-	<script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-
-	<!-- END PAGE LEVEL SCRIPTS -->
-	<script>
-			jQuery(document).ready(function() {
-           Metronic.init(); // init metronic core components
-Layout.init(); // init current layout
-			});
-		</script>
+  <script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
+  <script src="/cswebmgr/Public/metronic3_7/assets/admin/pages/scripts/todo.js" type="text/javascript"></script>
+  <!-- END PAGE PLUGINS & SCRIPTS -->
+  <script src="/cswebmgr/Public/metronic3_7/assets/global/scripts/metronic.js" type="text/javascript"></script>
+  <script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+  <script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+  <script src="/cswebmgr/Public/metronic3_7/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+  <script>
+      jQuery(document).ready(function() {
+          Metronic.init(); // init metronic core components
+  Layout.init(); // init current layout
+  QuickSidebar.init(); // init quick sidebar
+  Demo.init(); // init demo features
+  Todo.init(); // init todo page
+      });
+  </script>
 
 
 <!-- END JAVASCRIPTS -->

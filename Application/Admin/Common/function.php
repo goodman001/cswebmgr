@@ -1,19 +1,18 @@
 <?php
-/*function getWhois($domain){
-	$msg = array();
-	Vendor('PHPWhois.PHPWhoisAutoload');//load the lib to get the whois infomation
-	$phpwhois = new PHPWhois($domain);
-	$whois_answer = $phpwhois ->info();
-	$msg[0] = $whois_answer;
-	$msg[0] = str_replace("\n","<br>",$msg[0]);
-	$flag = $phpwhois->isAvailable();
-	if(strstr($whois_answer,"No match for")||strstr($whois_answer,"No Domain exists"))
-	{
-		$msg[1] =  "Y";//we can use it!
-	}else{
-		$msg[1] =  "N";//we can not use it
-	}
-	return $msg;
-
-
-}*/
+/**
+ *
+ * @params array $array target array
+ * @params string $field field
+ * @params string $sort flag SORT_DESC ；SORT_ASC 
+ */
+function arraySequence($array, $field, $sort = 'SORT_DESC')
+{
+    $arrSort = array();
+    foreach ($array as $uniqid => $row) {
+        foreach ($row as $key => $value) {
+            $arrSort[$key][$uniqid] = $value;
+        }
+    }
+    array_multisort($arrSort[$field], constant($sort), $array);
+    return $array;
+}

@@ -2,6 +2,23 @@
 namespace Admin\Controller;
 use Think\Controller;
 class ConfigureController extends CommonController {
+	public function editExchangeRate(){
+		/*
+		USD to RMB
+		EUR ...
+		CAD ...
+		HKD ...
+		AUD ...
+		SGD ...
+		*/
+		$usd = I('get.usd');
+		$eur = I('get.eur');
+		$cad = I('get.cad');
+		$hkd = I('get.hkd');
+		$aud = I('get.aud');
+		$sgd = I('get.sgd');
+
+	}
 	public function general_web()
 	{
 		$this->display(T('mgr/configure_general_web'));
@@ -17,7 +34,7 @@ class ConfigureController extends CommonController {
 	public function general_domain()
 	{
 		$this->display(T('mgr/configure_general_domain'));
-	} 
+	}
 	public function general_mail()
 	{
 		$this->display(T('mgr/configure_general_mail'));
@@ -58,13 +75,13 @@ class ConfigureController extends CommonController {
 		$Page->setConfig('last','last page');
 		$Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER% ');
 		$show = $Page->show();// page output
-		$this->assign('page',$show);// 
+		$this->assign('page',$show);//
 		$this->assign('list',$list);
 		/*role id list*/
 		$Mrole = M('auth_group');
 		$rolelist = $Mrole->where('id>=2')->select();
 		$this->assign('rolelist',$rolelist);//
-		
+
         $this->display(T('mgr/configure_admins_list'));
 	}
 	public function admindetail()
@@ -79,21 +96,21 @@ class ConfigureController extends CommonController {
 			$roleinfo = $Mrole->where($map)->find();
 			/*get role list*/
 			$rolelist = $Mrole->where('id>=2')->select();
-			
+
 			/*group infomation*/
 			$Maccess = M('auth_group_access');
 			$ct['uid'] = $data['uid'];
 			$groupinfo = $Maccess->where($ct)->find();
-			
-			
+
+
 			$this->assign('profiles',$content);
 			$this->assign('roleinfo',$roleinfo);//
 			$this->assign('rolelist',$rolelist);//
 			$this->assign('rolelist',$rolelist);//
 			$this->assign('groupid',$groupinfo['group_id']);//
 			$this->display(T('mgr/configure_admins_detail'));
-            
-			
+
+
 		}else
         {
             R('Configure/adminlist');
@@ -110,11 +127,11 @@ class ConfigureController extends CommonController {
 		{
 			$this->error('Do not delete the super administrators!',U('Configure/adminlist'),1);
 		}else{
-			$Maccess->where($ct)->delete();//del user 
+			$Maccess->where($ct)->delete();//del user
 			/* admins */
 			$Model = M('admins');
 			$map['uid'] = $adminid;
-			$Model->where($map)->delete();//del user 
+			$Model->where($map)->delete();//del user
 			$this->success('Delete the administrator successfully!',U('Configure/adminlist'),1);
 		}
 	}
@@ -126,8 +143,8 @@ class ConfigureController extends CommonController {
 		$mac['uid'] = $adminid;
 		$mupdate['group_id'] = I('post.role');
 		$accessinfo = $Maccess->where($mac)->save($mupdate);
-		
-		
+
+
 		$data['username'] = I('post.username');
 		$data['firstname'] = I('post.firstname');
 		$data['lastname'] = I('post.lastname');
@@ -138,7 +155,7 @@ class ConfigureController extends CommonController {
 		$M3 = M('admins');
 		$map['uid'] = $adminid;
 		$M3->where($map)->save($data);
-		
+
 		$this->assign('adminid',$adminid);//
 		$this->success('Update administrator infomation successfully!',U('Configure/admindetail?adminid='.$adminid.''),1);
 	}
@@ -155,7 +172,7 @@ class ConfigureController extends CommonController {
 		$data['language'] = I('post.language');
 		$data['roleid'] = $roleid;
 		$data['regtime'] = date('Y-m-d H:i:s',time());
-		
+
 		$ct['username'] = $data['username'];
 		$usermsg = $Model->where($ct)->find();
 		if(!empty($usermsg))
@@ -182,15 +199,15 @@ class ConfigureController extends CommonController {
 					$mac['group_id'] = $roleid;
 					$Maccess->data($mac)->add();
 				}
-				$this->success('Add new administrator successfully!',U('Configure/adminlist'),1);		
+				$this->success('Add new administrator successfully!',U('Configure/adminlist'),1);
 
 			}else
 			{
 				R('Configure/adminlist');
 			}
 		}
-		
-		
+
+
 	}
 	/*adminrole*/
 	public function adminrolelist()
@@ -199,12 +216,12 @@ class ConfigureController extends CommonController {
 		$rolelist = $Mrole->where('id>=1')->select();
 		$Mrule = M('auth_rule');
 		$rulelist = $Mrule->select();
-		
+
 		$this->assign('list',$rolelist);//
 		$this->assign('ruleslist',$rulelist);//
 		$this->display(T('mgr/configure_admins_rolelist'));
-		
-	} 
+
+	}
 	public function adminroleadd()
 	{
 		/*Get rules list*/
@@ -216,7 +233,7 @@ class ConfigureController extends CommonController {
 			if(!empty(I('post.rule'.$val['id'])))
 			{
 				$rulecontent = $rulecontent.I('post.rule'.$val['id']).',';
-				
+
 			}
 		}
 		//print($rulecontent);
@@ -229,7 +246,7 @@ class ConfigureController extends CommonController {
 		$this->success('Add new role successfully!',U('Configure/adminrolelist'),2);
 		//print($data['title']);
 	}
-	
+
 	/*domain price*/
 	public function pricesetting()
 	{
@@ -249,8 +266,8 @@ class ConfigureController extends CommonController {
 	{
 		$this->display(T('mgr/configure_domainprice_tools'));
 	}
-	
-	
+
+
 	public function premiumlist()
 	{
 		$search =I('post.search');
@@ -265,13 +282,13 @@ class ConfigureController extends CommonController {
             $list = $Model->where("id>=0")->order('id asc')->page(I('get.p').',42')->select();
 		    $count = $Model->where("id>=0")->count();// get count of records
         }
-        
-		
+
+
 		//print_r($list);
 		/**
 		* pages
 		**/
-		
+
 		$Page = new \Think\Page($count,42);// page object
 		$Page->setConfig('prev','prev');
 		$Page->setConfig('next','next');
@@ -279,10 +296,10 @@ class ConfigureController extends CommonController {
 		$Page->setConfig('last','last page');
 		$Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER% ');
 		$show = $Page->show();// page output
-		$this->assign('page',$show);// 
+		$this->assign('page',$show);//
 		$this->assign('list',$list);
         $this->display(T('mgr/configure_domainprice_premium'));
-		
+
 	}
 	public function premiumadd()
 	{
@@ -313,7 +330,7 @@ class ConfigureController extends CommonController {
 		$Model = M('premium');
 		$item = $Model->where($where)->find();
 		print_r($item);
-		$this->assign('item',$item);// 
+		$this->assign('item',$item);//
 		$this->display(T('mgr/configure_domainprice_premiumedit'));
 	}
 	public function premiumedit()
@@ -339,7 +356,7 @@ class ConfigureController extends CommonController {
 		$Model = M('paymethod');
 		//$condition['useable'] = 'Y';
 		$ct = $Model->select();
-		$this->assign('list',$ct);// 
+		$this->assign('list',$ct);//
 		$this->display(T('mgr/configure_payment'));
 	}
 	/*currency setting*/
@@ -357,7 +374,7 @@ class ConfigureController extends CommonController {
 		$Model = M('registrar');
 		//$condition['useable'] = 'Y';
 		$ct = $Model->select();
-		$this->assign('list',$ct);// 
+		$this->assign('list',$ct);//
 		$this->display(T('mgr/configure_domainregistrar'));
 	}
 	public function delregistrar(){
@@ -385,7 +402,7 @@ class ConfigureController extends CommonController {
 		$ct['id'] = I('get.id');
 		$Model = M('registrar');
 		$content = $Model->where($ct)->find();
-		$this->assign('list',$content);// 
+		$this->assign('list',$content);//
 		$this->display(T('mgr/configure_domainregistrar_edit'));
 	}
 	public function editregistrar(){
@@ -396,7 +413,7 @@ class ConfigureController extends CommonController {
 		$this->success('The registrar has already changed successfully!',U('Configure/domainregistrar'),2);
 	}
 	/*############################*/
-	
-	
-	
+
+
+
 }

@@ -28,38 +28,39 @@ class WorkerController extends CommonController {
             		array_push($worklist ,$techeslist[0]['wxid']);
             	}
             }
-			//dump($worklist);
-			//$workliststr = rtrim($workliststr,",");
-			//dump($workliststr);
-			$workeroutput = [];
-			foreach($workers as $k=>$v){
-				$MM = M('worker_tech');
-				if(in_array($v['wxid'],$worklist)){
-					$teches = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.techid,db_technologies.content')->where('db_worker_tech.wxid = "'.$v['wxid'].'"')->select();
-					$v['techarr'] = $teches;
-                    
-                    $ORDER = M('orders');
-                    /* complete orders*/
-                    $ordercomplete = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->count();
-                    $orderremark = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->avg('db_guest_order.remark');
-                    $income = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->sum('db_worker_order.w_payment');
-                    /* incomplete */
-                    $orderincomplete = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->count();
-                    $v['ordercomplete'] = $ordercomplete;
-                    $v['orderincomplete'] = $orderincomplete;
-                    $v['orderall'] = $orderincomplete + $ordercomplete;
-                    $v['income'] = $income;
-                    if($income == ''){
-                        $v['income'] = 0.00;
-                    }
-                    $v['remark'] = round($orderremark,2);
-					$workers[$k] = $v;
-					array_push($workeroutput ,$workers[$k]);
-				}
-			}
+      			//dump($worklist);
+      			//$workliststr = rtrim($workliststr,",");
+      			//dump($workliststr);
+      			$workeroutput = [];
+      			foreach($workers as $k=>$v){
+      				$MM = M('worker_tech');
+      				if(in_array($v['wxid'],$worklist)){
+      					$teches = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_worker_tech.techid,db_technologies.content')->where('db_worker_tech.wxid = "'.$v['wxid'].'"')->select();
+      					$v['techarr'] = $teches;
+
+                $ORDER = M('orders');
+                /* complete orders*/
+                $ordercomplete = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->count();
+                $orderremark = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->avg('db_guest_order.remark');
+                $income = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->sum('db_worker_order.w_payment');
+                /* incomplete */
+                $orderincomplete = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->count();
+                $v['ordercomplete'] = $ordercomplete;
+                $v['orderincomplete'] = $orderincomplete;
+                $v['orderall'] = $orderincomplete + $ordercomplete;
+                $v['income'] = $income;
+                if($income == ''){
+                    $v['income'] = 0.00;
+                }
+                $v['remark'] = round($orderremark,2);
+      					$workers[$k] = $v;
+      					array_push($workeroutput ,$workers[$k]);
+      				}
+      			}
             //dump($workeroutput);
             $Mtech = M('technologies');
             $teches = $Mtech->select();
+            $workeroutput = arraySequence($workeroutput, 'remark', $sort = 'SORT_DESC');
             $this->assign('workers',$workeroutput);
             $this->assign('techstr',$techstr);
             $this->assign('teches',$teches);
@@ -200,43 +201,82 @@ class WorkerController extends CommonController {
 
 	}
 	public function workerupdate()
+  {
+    $data_['wxid'] = I('post.wxid');
+    $Model = M('workers');
+    $content = $Model->where($data_)->find();
+    $teches = [];
+    $teches = I('post.tech','','htmlspecialchars');//
+    //dump($teches);
+    if(!empty($content))
     {
-        $data_['wxid'] = I('post.wxid');
-        $Model = M('workers');
-        $content = $Model->where($data_)->find();
-		$teches = [];
-		$teches = I('post.tech','','htmlspecialchars');//
-		//dump($teches);
-        if(!empty($content))
-        {
-			$data['wxname'] = I('post.wxname','','htmlspecialchars');//get email
-            $data['email'] = I('post.email','','htmlspecialchars');//get email
-			$data['description'] = I('post.description','','htmlspecialchars');//get email
-			//dump($data);
-			$Model->where($data_)->save($data);
-			/* add to worker_tech*/
-			$Model = M('worker_tech');
-			$Model->where($data_)->delete();
-			foreach($teches as $k=>$v){
-				$map['wxid'] = $data_['wxid'];
-				$map['techid'] = $v;
-				$Model->data($map)->add();
-			}
-            $this->success('Update Worker ^ '.$data['wxname'].' ^ successfully!',U('Worker/workerlist'),3);
-        }
-        else
-        {
-            $this->error('Worker has no existed !', U('Worker/workerlist'),2);
+      $data['wxname'] = I('post.wxname','','htmlspecialchars');//get email
+      $data['email'] = I('post.email','','htmlspecialchars');//get email
+      $data['description'] = I('post.description','','htmlspecialchars');//get email
+      //dump($data);
+      $Model->where($data_)->save($data);
+      /* add to worker_tech*/
+      $Model = M('worker_tech');
+      $Model->where($data_)->delete();
+      foreach($teches as $k=>$v){
+        $map['wxid'] = $data_['wxid'];
+        $map['techid'] = $v;
+        $Model->data($map)->add();
+      }
+      $this->success('Update Worker ^ '.$data['wxname'].' ^ successfully!',U('Worker/workerlist'),3);
+    }
+    else
+    {
+      $this->error('Worker has no existed !', U('Worker/workerlist'),2);
 
-        }
+    }
 
     }
 	/* delete a worker */
-	public function workerdelete(){
+	public function workerdelete()
+  {
 		$data_['wxid'] = I('get.wxid');
 		$Model = M('workers');
 		$Model->where($data_)->delete();
 		$this->success('Worker has deleted successfully!', U('Worker/workerlist'),2);
 
 	}
+  /* view worker detail */
+  public function workerdetailpage(){
+
+
+    $m['wxid'] = I('get.wxid');
+    $W = M('workers');
+    $v = $W->where($m)->find();
+    //dump($v);
+    $MM = M('worker_tech');
+    $teches = $MM->join('left join db_technologies on db_worker_tech.techid = db_technologies.techid')->field('db_technologies.content')->where('db_worker_tech.wxid = "'.$v['wxid'].'"')->select();
+    $v['teches'] = $teches;
+    /*order info*/
+    $ORDER = M('orders');
+    $orderlist = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'"')->select();
+    /* complete orders*/
+    $ordercomplete = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->count();
+    $orderremark = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->avg('db_guest_order.remark');
+    $income = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->sum('db_worker_order.w_payment');
+    /* incomplete */
+    $orderincomplete = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->count();
+    $orderincomelist = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_workers.wxid = "'.$v['wxid'].'" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->select();
+    //dump($ordercomplete);
+    //dump($orderremark);
+    //dump($income);
+    //dump($orderincomplete);
+    $v['ordercomplete'] = $ordercomplete;
+    $v['orderincomplete'] = $orderincomplete;
+    $v['orderall'] = $orderincomplete + $ordercomplete;
+    $v['income'] = $income;
+    $v['orderlist'] = $orderlist;
+    $v['orderincomelist'] = $orderincomelist;
+    if($income == ''){
+        $v['income'] = 0.00;
+    }
+    $v['remark'] = round($orderremark,2);
+    $this->assign('workerinfo',$v);
+    $this->display(T('admin/workers_detail'));
+  }
 }

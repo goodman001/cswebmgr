@@ -3,7 +3,7 @@ namespace Admin\Controller;
 use Think\Controller;
 class LoginController extends Controller {
     public function index(){
-        $this->display(T('login/login'));
+        $this->display(T('admin/login'));
     }
 	public function checkLog()
 	{
@@ -21,9 +21,9 @@ class LoginController extends Controller {
 			//echo "hahah";
 			cookie('admin_uid',$content['uid'],36000);
             cookie('admin_username',$content['username'],36000);
-            $this->success(C('LOGIN_SUCCESS'), U("Profile/index"),3);
-			
-				
+            $this->success(C('LOGIN_SUCCESS'), U("Dashboard/index"),3);
+
+
 		}else
 		{
 			cookie('admin_uid',null);
@@ -31,10 +31,10 @@ class LoginController extends Controller {
 		}
 	}
 	public function logout()
-    {
+  {
 		cookie('admin_uid',null);
 		//$this->show('login');
     	//$this->display(T('homepage/index'));
 		R('Login/index');
-    }
+  }
 }

@@ -66,7 +66,7 @@ class OrderController extends CommonController {
 		switch($flag){
 			case 1:
 				//echo "completed orders";
-				$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND db_guest_order.g_state = 3 AND db_worker_order.w_state = 3')->order('db_orders.createtime asc')->page($pp.',3')->select();
+				$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->order('db_orders.createtime asc')->page($pp.',3')->select();
 				$count = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND db_guest_order.g_state = 2 AND db_worker_order.w_state = 3')->count();
 				break;
 			case 2:
@@ -88,9 +88,8 @@ class OrderController extends CommonController {
 				//echo "hahah";
 				//echo "all";
 		}
-		/* incomplete orders*/
-		$cin = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_guest_order.g_state != 2 OR db_worker_order.w_state != 3')->count();
-		$this->assign('cin',$cin);// 赋值分页输出
+		/* ongoing orders*/
+
 		//dump($orderinfolist);
 		//echo $count;
 		$Page = new \Think\Page($count,3);// 实例化分页类 传入总记录数和每页显示的记录数
@@ -169,7 +168,7 @@ class OrderController extends CommonController {
 			$Order->data($map)->add();
 		}
 		if(isset($_GET["go"]) && $_GET["go"] == 1){
-			$this->success('Add a new order successfully!',U('Order/orderlist_incomplete'),1);
+			$this->success('Add a new order successfully!',U('Order/orderlist_ongoing'),1);
 		}else{
         	$this->success('Add a new order successfully!',U('Order/orderlist'),1);
 		}
@@ -220,12 +219,12 @@ class OrderController extends CommonController {
 			$GUEST = M('guests');
 			$cond['wxid'] = I('post.guest_wxid','','htmlspecialchars');//
 			$guestinfo = $GUEST->where($cond)->find();
-			
+
 			if(!empty($guestinfo)){
 				//echo "nonull";
 				$cell['wxname'] = I('post.guest_wxname','','htmlspecialchars');//
 				$GUEST->where($cond)->save($cell);
-				
+
 				/*guest_order*/
 				$GUESTORDER = M('guest_order');
 				$go['wxid'] = $cond['wxid'];
@@ -244,7 +243,7 @@ class OrderController extends CommonController {
 					$mapadd['w_payment'] = I('post.w_payment','','htmlspecialchars');//
 					$mapadd['w_state'] = I('post.w_state','','htmlspecialchars');//
 
-					
+
 					$WORKEROORDER = M('worker_order');
 					if($map['wxid'] != ""){
 						//echo "fef";
@@ -265,35 +264,35 @@ class OrderController extends CommonController {
 						$WORKEROORDER->where($map)->delete();
 					}
 					if(isset($_GET["go"]) && $_GET["go"] == 1){
-						//$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
-						$this->success('Update order #'.$orderid.' successfully!',U('Order/orderlist_incomplete'),1);
+						//$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_ongoing'),1);
+						$this->success('Update order #'.$orderid.' successfully!',U('Order/orderlist_ongoing'),1);
 					}else{
 						$this->success('Update order #'.$orderid.' successfully!',U('Order/orderlist'),1);
 					}
 					//$this->success('Update order #'.$orderid.' successfully!',U('Order/orderlist'),1);
-					
+
 				}else{
 					if(isset($_GET["go"]) && $_GET["go"] == 1){
-						$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
+						$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_ongoing'),1);
 					}else{
 						$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist'),1);
 					}
 					//$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist'),1);
 				}
 				//$Model->data($go)->add();
-				
+
 			}else
 			{
 				if(isset($_GET["go"]) && $_GET["go"] == 1){
-					$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
+					$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_ongoing'),1);
 				}else{
 					$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist'),1);
 				}
-				
+
 			}
 		}else{
 			if(isset($_GET["go"]) && $_GET["go"] == 1){
-				$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
+				$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_ongoing'),1);
 			}else{
 				$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist'),1);
 			}
@@ -312,8 +311,8 @@ class OrderController extends CommonController {
 		$Model = M('orders');
 		$Model->where($data)->delete();
 		if(isset($_GET["go"]) && $_GET["go"] == 1){
-			//$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_incomplete'),1);
-			$this->success('Delete order #'.$data['orderid'].' successfully!',U('Order/orderlist_incomplete'),1);
+			//$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_ongoing'),1);
+			$this->success('Delete order #'.$data['orderid'].' successfully!',U('Order/orderlist_ongoing'),1);
 		}else{
 			$this->success('Delete order #'.$data['orderid'].' successfully!',U('Order/orderlist'),1);
 		}
@@ -335,7 +334,7 @@ class OrderController extends CommonController {
 
 	}
 	/*in complete*/
-	public function orderlist_incomplete()
+	public function orderlist_ongoing()
 	{
 		$pp = 0;
 		if(isset($_GET["p"])){
@@ -364,9 +363,7 @@ class OrderController extends CommonController {
 		$orderinfolist = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->order('db_orders.createtime asc')->page($pp.',3')->select();
 		$count = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59" AND (db_guest_order.g_state != 2 OR db_worker_order.w_state != 3)')->count();
 		//dump($orderinfolist);
-		/* incomplete orders*/
-		$cin = $Model->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('db_orders.orderid,db_orders.createtime,db_guests.wxid as gwxid,db_guests.wxname as gwxname,db_orders.projectname,db_guest_order.g_deadline,db_orders.moneytype,db_orders.totalprice,db_orders.guarantee,db_guest_order.g_state,db_workers.wxid,db_workers.wxname,db_worker_order.w_deadline,db_worker_order.w_payment,db_worker_order.w_state,db_guest_order.remark as gremark,db_orders.description')->where('db_guest_order.g_state != 2 OR db_worker_order.w_state != 3')->count();
-		$this->assign('cin',$cin);// 赋值分页输出
+		/* Ongoing orders*/
 		//echo $count;
 		$Page = new \Think\Page($count,3);// 实例化分页类 传入总记录数和每页显示的记录数
 		$Page->setConfig('prev','last');
@@ -381,9 +378,21 @@ class OrderController extends CommonController {
 		$this->assign('fflag',$flag);// 赋值分页输出
 		$this->assign('newfrom',$newfrom);// 赋值分页输出
 		$this->assign('newto',$newto);// 赋值分页输出
-		$this->display(T('admin/orders_incomplete'));
+		$this->display(T('admin/orders_ongoing'));
 	}
-
+	public function orderremark(){
+		$orderid = I('get.orderid');
+		$Model = M('guest_order');
+		$cond['orderid'] = $orderid;
+		$cell['remark'] = I('post.remarkoption');
+		$Model->where($cond)->save($cell);
+		if(isset($_GET["go"]) && $_GET["go"] == 1){
+			//$this->error('Update order #'.$orderid.' failure!',U('Order/orderlist_ongoing'),1);
+			$this->success('Delete order #'.$cond['orderid'].' successfully!',U('Order/orderlist_ongoing'),1);
+		}else{
+			$this->success('Remark order #'.$cond['orderid'].' successfully!',U('Order/orderlist'),1);
+		}
+	}
 
 
 }
