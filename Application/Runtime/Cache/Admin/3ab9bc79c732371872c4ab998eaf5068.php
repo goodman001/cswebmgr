@@ -369,7 +369,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			</a>
 			<ul class="sub-menu">
 				<li>
-					<a href="form_controls.html">
+					<a href="<?php echo U('Configure/exchangelist');;?>">
 						Exchange Rate
 					</a>
 				</li>
@@ -441,10 +441,10 @@ License: You must have a valid license purchased only from themeforest(the above
 						</div>
 						<div class="details">
 							<div class="number">
-								 1349
+								 <?php echo ($revenues); ?> <i class="fa fa-cny"></i>
 							</div>
 							<div class="desc">
-								 New Feedbacks
+								 Revenues
 							</div>
 						</div>
 						<a class="more" href="javascript:;">
@@ -459,10 +459,10 @@ License: You must have a valid license purchased only from themeforest(the above
 						</div>
 						<div class="details">
 							<div class="number">
-								 12,5M$
+								 <?php echo ($salary); ?>RMB
 							</div>
 							<div class="desc">
-								 Total Profit
+								 Profit
 							</div>
 						</div>
 						<a class="more" href="javascript:;">
@@ -477,10 +477,10 @@ License: You must have a valid license purchased only from themeforest(the above
 						</div>
 						<div class="details">
 							<div class="number">
-								 549
+								 549/1000RMB
 							</div>
 							<div class="desc">
-								 New Orders
+								 Ongoing
 							</div>
 						</div>
 						<a class="more" href="javascript:;">
@@ -498,7 +498,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								 +89%
 							</div>
 							<div class="desc">
-								 Brand Popularity
+								 Estimat
 							</div>
 						</div>
 						<a class="more" href="javascript:;">
