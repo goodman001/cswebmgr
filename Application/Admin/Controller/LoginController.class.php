@@ -2,9 +2,9 @@
 namespace Admin\Controller;
 use Think\Controller;
 class LoginController extends Controller {
-    public function index(){
-        $this->display(T('admin/login'));
-    }
+  public function index(){
+      $this->display(T('admin/login'));
+  }
 	public function checkLog()
 	{
 		cookie('admin_uid',null);
@@ -16,7 +16,7 @@ class LoginController extends Controller {
 		//print_r($data);
 		$content = $Model->field('uid,username')->where($data)->find();
 		//dump($content);
-		if(!empty($content) )//exist
+		if(!empty($content))//exist
 		{
 			//echo "hahah";
 			cookie('admin_uid',$content['uid'],36000);

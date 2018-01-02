@@ -109,7 +109,7 @@ class OrderController extends CommonController {
 	}
 	public function orderaddpage(){
 		$Model = M('workers');
-        $workers = $Model->select();
+    $workers = $Model->select();
 		$this->assign('workers',$workers);
 		if(isset($_GET["go"])){
 			$this->assign('go',1);// 赋值分页输出

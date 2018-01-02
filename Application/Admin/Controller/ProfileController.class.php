@@ -6,7 +6,7 @@ class ProfileController extends CommonController {
     {
 		$uid = cookie('admin_uid');
 		$username = cookie('admin_username');
-		
+
 		$data['uid'] = $uid;
 		$Model = M('admin');
 		$content = $Model->where($data)->find();
@@ -18,12 +18,14 @@ class ProfileController extends CommonController {
 			$this->assign('role',"administrator");
 			$this->assign('description',"This is administrator");
 			$this->assign('nowtime',$nowtime);
-			$this->display(T('admin/index'));	
+
+      
+			//$this->display(T('admin/index'));
 		}else
 		{
 			$this->error(C('LOGIN_ERROR'), U('Login/index'),3);
 		}
-		
-		
+
+
     }
 }

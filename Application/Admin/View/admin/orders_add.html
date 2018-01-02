@@ -945,13 +945,9 @@
 										<label class="col-md-3 control-label">Currency Type</label>
 										<div class="col-md-9">
 											<select name="moneytype" class="form-control input-inline input-medium">
-												<option value="USD">USD</option>
-												<option value="RMB">RMB</option>
-												<option value="EUR">EUR</option>
-												<option value="CAD">CAD</option>
-												<option value="HKD">HKD</option>
-												<option value="AUD">AUD</option>
-												<option value="SGD">SGD</option>
+												<foreach name="currencies" item="vo">
+													<option value="{$vo['currency']}">{$vo['currency']}</option>
+												</foreach>
 											</select>
 										</div>
 									</div>
