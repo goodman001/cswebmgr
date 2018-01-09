@@ -1186,7 +1186,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest deadline</label>
 										<div class="col-md-3">
-											<div class="input-group date form_meridian_datetimenew" data-date="2012-12-21">
+											<div class="input-group date form_meridian_datetimenew" data-date="2017-12-21">
 												<input name="g_deadtime" type="text" size="10" class="form-control input-inline " placeholder="Guest deadline" required>
 												<span class="input-group-btn">
 												<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
@@ -1199,13 +1199,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<label class="col-md-3 control-label">Currency Type</label>
 										<div class="col-md-9">
 											<select name="moneytype" class="form-control input-inline input-medium">
-												<option value="USD">USD</option>
-												<option value="RMB">RMB</option>
-												<option value="EUR">EUR</option>
-												<option value="CAD">CAD</option>
-												<option value="HKD">HKD</option>
-												<option value="AUD">AUD</option>
-												<option value="SGD">SGD</option>
+												<?php if(is_array($currencies)): foreach($currencies as $key=>$vo): ?><option value="<?php echo ($vo['currency']); ?>"><?php echo ($vo['currency']); ?></option><?php endforeach; endif; ?>
 											</select>
 										</div>
 									</div>
@@ -1257,8 +1251,8 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="form-group">
 										<label class="col-md-3 control-label">Worker deadline</label>
 										<div class="col-md-3">
-											<div class="input-group date form_meridian_datetimenew" data-date="2012-12-21">
-												<input name="w_deadline" type="text" size="10" class="form-control input-inline " placeholder="Worker deadline" readonly>
+											<div class="input-group date form_meridian_datetimenew" data-date="2017-12-21">
+												<input name="w_deadline" type="text" size="10" class="form-control input-inline " placeholder="Worker deadline" >
 												<span class="input-group-btn">
 												<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
 												<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>

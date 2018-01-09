@@ -32,15 +32,18 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 
-	<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
-	<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
-	<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
-	<link href="/cswebmgr/Public/metronic3_7/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
-	<!-- END PAGE LEVEL PLUGIN STYLES -->
-	<!-- BEGIN PAGE STYLES -->
-	<link href="/cswebmgr/Public/metronic3_7/assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
-	<!-- END PAGE STYLES -->
-
+	<!-- BEGIN PAGE LEVEL STYLES -->
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
+	<!-- END PAGE LEVEL STYLES -->
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/clockface/css/clockface.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/cswebmgr/Public/metronic3_7/assets/admin/pages/css/pagecode.css"/>
 
 <!-- BEGIN THEME STYLES -->
 <link href="/cswebmgr/Public/metronic3_7/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
@@ -289,7 +292,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			</form>
 			<!-- END RESPONSIVE QUICK SEARCH FORM -->
 		</li>
-		<li class="start active open">
+		<li class="start">
 			<a href="javascript:;">
 			<i class="icon-home"></i>
 			<span class="title">Dashboard</span>
@@ -297,7 +300,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<span class="arrow open"></span>
 			</a>
 			<ul class="sub-menu">
-				<li class="active">
+				<li>
 					<a href="<?php echo U('Dashboard/index');;?>">
 					<i class="icon-bar-chart"></i>
 					Default Dashboard</a>
@@ -322,7 +325,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<span class="badge badge-danger"><?php echo ($cin); ?></span>
 					Orders Ongoing</a>
 				</li>
-				<li>
+				<li class="active">
 					<a href="<?php echo U('Order/orderlist?flag=3');;?>">
 					<i class="icon-basket"></i>
 					Orders All</a>
@@ -361,14 +364,14 @@ License: You must have a valid license purchased only from themeforest(the above
 				</li>
 			</ul>
 		</li>
-		<li>
+		<li class="active open">
 			<a href="javascript:;">
 			<i class="icon-settings"></i>
 			<span class="title">Configuration</span>
 			<span class="arrow "></span>
 			</a>
 			<ul class="sub-menu">
-				<li>
+				<li class="active">
 					<a href="<?php echo U('Configure/exchangelist');;?>">
 						Exchange Rate
 					</a>
@@ -411,11 +414,10 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div class="page-content-wrapper">
 		
 	<div class="page-content">
-			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- BEGIN STYLE CUSTOMIZER -->
-			<!-- END STYLE CUSTOMIZER -->
 			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title">
+			Exchage Rate <small> Exchage rate listing</small>
+			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
@@ -424,326 +426,126 @@ License: You must have a valid license purchased only from themeforest(the above
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="#">Dashboard</a>
+						<a href="#">Configuration</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="<?php echo U('Configure/exchangelist');;?>">Exchage Rate</a>
 					</li>
 				</ul>
+				<div class="page-toolbar">
+					<div class="btn-group pull-right">
+						<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+						Actions <i class="fa fa-angle-down"></i>
+						</button>
+						<ul class="dropdown-menu pull-right" role="menu">
+							<li>
+								<a href="#">Action</a>
+							</li>
+							<li>
+								<a href="#">Another action</a>
+							</li>
+							<li>
+								<a href="#">Something else here</a>
+							</li>
+							<li class="divider">
+							</li>
+							<li>
+								<a href="#">Separated link</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
-			<h3 class="page-title">
-			Dashboard <small>reports & statistics</small>
-			</h3>
 			<!-- END PAGE HEADER-->
-			<!-- BEGIN DASHBOARD STATS -->
+			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="dashboard-stat blue-madison">
-						<div class="visual">
-							<i class="fa fa-comments"></i>
-						</div>
-						<div class="details">
-							<div class="number">
-								 <?php echo ($revenues); ?> <i class="fa fa-cny"></i>
-							</div>
-							<div class="desc">
-								 Revenues
-							</div>
-						</div>
-						<a class="more" href="javascript:;">
-						View more <i class="m-icon-swapright m-icon-white"></i>
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="dashboard-stat red-intense">
-						<div class="visual">
-							<i class="fa fa-bar-chart-o"></i>
-						</div>
-						<div class="details">
-							<div class="number">
-								 <?php echo ($profit); ?><i class="fa fa-cny"></i>
-							</div>
-							<div class="desc">
-								 Profit
-							</div>
-						</div>
-						<a class="more" href="javascript:;">
-						View more <i class="m-icon-swapright m-icon-white"></i>
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="dashboard-stat green-haze">
-						<div class="visual">
-							<i class="fa fa-shopping-cart"></i>
-						</div>
-						<div class="details">
-							<div class="number">
-								 <?php echo ($cin); ?>
-							</div>
-							<div class="desc">
-								 Ongoing
-							</div>
-						</div>
-						<a class="more" href="javascript:;">
-						View more <i class="m-icon-swapright m-icon-white"></i>
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="dashboard-stat purple-plum">
-						<div class="visual">
-							<i class="fa fa-globe"></i>
-						</div>
-						<div class="details">
-							<div class="number">
-								 <?php echo ($ongoingprofit); ?><i class="fa fa-cny"></i>
-							</div>
-							<div class="desc">
-								 Estimat
-							</div>
-						</div>
-						<a class="more" href="javascript:;">
-						View more <i class="m-icon-swapright m-icon-white"></i>
-						</a>
-					</div>
-				</div>
-			</div>
-			<!-- END DASHBOARD STATS -->
-			<div class="clearfix">
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-6">
-					<!-- BEGIN PORTLET-->
-					<div class="portlet light ">
+				<div class="col-md-12">
+					<!-- Begin: life time stats -->
+					<div class="portlet">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="icon-bar-chart font-green-sharp hide"></i>
-								<span class="caption-subject font-green-sharp bold uppercase">Global statistic</span>
-								<span class="caption-helper">global statistic...</span>
+								<i class="fa fa-shopping-cart"></i>Exchage Rate Listing
 							</div>
-						</div>
-						<div class="portlet-body">
-							<div class="portlet-body">
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										 Revenues (all completed):
-									</div>
-									<div class="col-md-7 value">
-										 <i class="fa fa-paper-plane"></i> <?php echo ($revenues); ?> RMB
-									</div>
+							<div class="actions">
+								<a href="<?php echo U('Configure/addexchangepage');;?>" class="btn default yellow-stripe">
+									<i class="fa fa-plus"></i>
+									<span class="hidden-480"> New Currency </span>
+								</a>
+								<div class="btn-group">
+									<a class="btn default yellow-stripe dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+									<i class="fa fa-share"></i>
+									<span class="hidden-480">
+									Tools </span>
+									<i class="fa fa-angle-down"></i>
+									</a>
+									<ul class="dropdown-menu pull-right">
+										<li>
+											<a href="javascript:;">
+											Export to Excel </a>
+										</li>
+										<li>
+											<a href="javascript:;">
+											Export to CSV </a>
+										</li>
+										<li>
+											<a href="javascript:;">
+											Export to XML </a>
+										</li>
+										<li class="divider">
+										</li>
+										<li>
+											<a href="javascript:;">
+											Print Invoices </a>
+										</li>
+									</ul>
 								</div>
-								<?php if(is_array($revenuesarr)): foreach($revenuesarr as $key=>$vo): ?><div class="row static-info">
-										<div class="col-md-5 name">
-										</div>
-										<div class="col-md-7 value">
-											 <small><i class="fa fa-check-square-o"></i> <?php echo ($vo['revenues']); ?> <?php echo ($vo['moneytype']); ?> </mall><span class="label label-sm label-info"> <?php echo ($vo['rating']); ?> </span>
-										</div>
-									</div><?php endforeach; endif; ?>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										 Profit (all completed):
-									</div>
-									<div class="col-md-7 value">
-										 <i class="fa fa-paper-plane"></i> <?php echo ($profit); ?> RMB
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										 Worker Salary (all completed):
-									</div>
-									<div class="col-md-7 value">
-										 <i class="fa fa-paper-plane"></i> <?php echo ($salary); ?> RMB
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										 No. completed Orders
-									</div>
-									<div class="col-md-7 value">
-										 <i class="fa fa-paper-plane"></i> <?php echo ($ordernum); ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										 Revenues (ongoing):
-									</div>
-									<div class="col-md-7 value">
-										 <i class="fa fa-paper-plane"></i> <?php echo ($ongoingrevenues); ?> RMB
-									</div>
-								</div>
-								<?php if(is_array($ongoingrevenuesarr)): foreach($ongoingrevenuesarr as $key=>$vo): ?><div class="row static-info">
-										<div class="col-md-5 name">
-										</div>
-										<div class="col-md-7 value">
-											 <small><i class="fa fa-check-square-o"></i> <?php echo ($vo['revenues']); ?> <?php echo ($vo['moneytype']); ?> </mall><span class="label label-sm label-info"> <?php echo ($vo['rating']); ?> </span>
-										</div>
-									</div><?php endforeach; endif; ?>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										 Profit (ongoing):
-									</div>
-									<div class="col-md-7 value">
-										 <i class="fa fa-paper-plane"></i> <?php echo ($ongoingprofit); ?> RMB
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										 Worker Salary (ongoing):
-									</div>
-									<div class="col-md-7 value">
-										 <i class="fa fa-paper-plane"></i> <?php echo ($ongoingsalary); ?> RMB
-									</div>
-								</div>
-								<div class="row static-info">
-									<div class="col-md-5 name">
-										 No. ongoing Orders
-									</div>
-									<div class="col-md-7 value">
-										 <i class="fa fa-paper-plane"></i> <?php echo ($cin); ?>
-									</div>
-								</div>
-								<hr>
-							</div>
-						</div>
-					</div>
-					<!-- END PORTLET-->
-				</div>
-				<div class="col-md-6 col-sm-6">
-					<!-- BEGIN PORTLET-->
-					<div class="portlet light ">
-						<div class="portlet-title">
-							<div class="caption">
-								<i class="icon-share font-red-sunglo hide"></i>
-								<span class="caption-subject font-red-sunglo bold uppercase">Date Analysis</span>
-								<span class="caption-helper">Date Section Analysis...</span>
 							</div>
 						</div>
 						<div class="portlet-body">
 							<div class="row">
-								<form role="form" action="<?php echo U('Order/orderlist?p=1');;?>" method="POST">
-								<div class="col-md-12 col-sm-12">
-									<div class="form-group">
-										<div class="col-md-4 col-sm-12">
-											<div class="input-group date form_meridian_date" data-date="2012-12-21T15:25:00Z">
-												<input name="fromdate" type="text" size="10" class="form-control input-inline" placeholder="From" value="<?php echo ($newfrom); ?>" readonly>
-												<span class="input-group-btn">
-												<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
-												</span>
-											</div>
-											<!-- /input-group -->
-										</div>
-										<div class="col-md-4 col-sm-12">
-											<div class="input-group date form_meridian_date" data-date="2012-12-21T15:25:00Z">
-												<input name="todate" type="text" size="10" class="form-control input-inline" placeholder="To" value="<?php echo ($newto); ?>" readonly>
-												<span class="input-group-btn">
-												<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
-												</span>
-											</div>
-											<!-- /input-group -->
-										</div>
-										<div class="col-md-4 col-sm-12">
-											<button class="btn yellow table-group-action-submit"><i class="fa fa-search"></i></button>
-											<a class="btn red filter-cancel" type="reset" href="<?php echo U('Order/orderlist?p=1');;?>"><i class="fa fa-times"></i> </a>
-											<!-- /input-group -->
-										</div>
-									</div>
-								</div>
-								</form>
-							</div>
-								<div class="portlet-body">
+								<div class="col-md-12">
 									<div class="portlet-body">
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 Revenues (all completed):
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> <?php echo ($revenues); ?> RMB
-											</div>
-										</div>
-										<?php if(is_array($revenuesarr)): foreach($revenuesarr as $key=>$vo): ?><div class="row static-info">
-												<div class="col-md-5 name">
-												</div>
-												<div class="col-md-7 value">
-													 <small><i class="fa fa-check-square-o"></i> <?php echo ($vo['revenues']); ?> <?php echo ($vo['moneytype']); ?> </mall><span class="label label-sm label-info"> <?php echo ($vo['rating']); ?> </span>
-												</div>
-											</div><?php endforeach; endif; ?>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 Profit (all completed):
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> <?php echo ($profit); ?> RMB
-											</div>
-										</div>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 Worker Salary (all completed):
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> <?php echo ($salary); ?> RMB
-											</div>
-										</div>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 No. completed Orders
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> <?php echo ($ordernum); ?>
-											</div>
-										</div>
-										<hr>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 Revenues (ongoing):
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> <?php echo ($ongoingrevenues); ?> RMB
-											</div>
-										</div>
-										<?php if(is_array($ongoingrevenuesarr)): foreach($ongoingrevenuesarr as $key=>$vo): ?><div class="row static-info">
-												<div class="col-md-5 name">
-												</div>
-												<div class="col-md-7 value">
-													 <small><i class="fa fa-check-square-o"></i> <?php echo ($vo['revenues']); ?> <?php echo ($vo['moneytype']); ?> </mall><span class="label label-sm label-info"> <?php echo ($vo['rating']); ?> </span>
-												</div>
-											</div><?php endforeach; endif; ?>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 Profit (ongoing):
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> <?php echo ($ongoingprofit); ?> RMB
-											</div>
-										</div>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 Worker Salary (ongoing):
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> <?php echo ($ongoingsalary); ?> RMB
-											</div>
-										</div>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 No. ongoing Orders
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> <?php echo ($cin); ?>
-											</div>
-										</div>
-										<hr>
+										<h4 class="block">Exchange rate list</h4>
+										<ul class="list-group">
+											<?php if(is_array($currencies)): foreach($currencies as $key=>$vo): ?><li class="list-group-item <?php echo ($vo['color']); ?>">
+													<?php echo ($vo['currency']); ?> - <strong> <?php echo ($vo['rating']); ?> </strong>
+													<a class="badge btn btn-xs" href="#confirmModal<?php echo ($vo['id']); ?>" data-toggle="modal">
+														 Delete <i class="fa fa-times"></i>
+													</a>
+													<div class="modal fade modal-overflow in" id="confirmModal<?php echo ($vo['id']); ?>" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+														<div class="modal-dialog">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+																	<h4 class="modal-title text-warning">Delete warning</h4>
+																</div>
+																<div class="modal-body">
+																	<p style="color:black">Are you sure to delete this currency: #<?php echo ($vo['currency']); ?>  ?</p>
+
+																</div>
+																<div class="modal-footer">
+																	<a href="<?php echo U('Configure/delexchange?id='.$vo['id'].'');;?>" type="button" class="btn blue"> Delete </a>
+																	<a class="btn default" data-dismiss="modal"> Cancel </a>
+
+																</div>
+															</div>
+															<!-- /.modal-content -->
+														</div>
+													<!-- /.modal-dialog -->
+													</div>
+													<a href="<?php echo U('Configure/editexchangepage?currency='.$vo['currency'].'');;?>" class="badge btn btn-xs grey-cascade"> Edit <i class="fa fa-edit"></i></a>
+												</li><?php endforeach; endif; ?>
+										</ul>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
-					<!-- END PORTLET-->
+					<!-- End: life time stats -->
 				</div>
 			</div>
-			<div class="clearfix">
-			</div>
-
+			<!-- END PAGE CONTENT-->
 		</div>
 
 	</div>
@@ -780,6 +582,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/cswebmgr/Public/metronic3_7/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/select2/select2.min.js"></script>
 	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="/cswebmgr/Public/metronic3_7/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>

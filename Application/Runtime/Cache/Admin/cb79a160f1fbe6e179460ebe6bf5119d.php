@@ -544,14 +544,10 @@ License: You must have a valid license purchased only from themeforest(the above
 										<label class="col-md-3 control-label">Currency Type</label>
 										<div class="col-md-9">
 											<select name="moneytype" class="form-control input-inline input-medium">
-												<option value="<?php echo ($orderinfo["moneytype"]); ?>" selected><?php echo ($orderinfo["moneytype"]); ?></option>
-												<option value="USD">USD</option>
-												<option value="RMB">RMB</option>
-												<option value="EUR">EUR</option>
-												<option value="CAD">CAD</option>
-												<option value="HKD">HKD</option>
-												<option value="AUD">AUD</option>
-												<option value="SGD">SGD</option>
+												<?php if(is_array($currencies)): foreach($currencies as $key=>$vo): if($vo['currency'] == $orderinfo['moneytype']): ?>\
+														<option value="<?php echo ($orderinfo["moneytype"]); ?>" selected><?php echo ($orderinfo["moneytype"]); ?></option>
+													<?php else: ?>
+														<option value="<?php echo ($vo['currency']); ?>" ><?php echo ($vo['currency']); ?></option><?php endif; endforeach; endif; ?>
 											</select>
 										</div>
 									</div>
