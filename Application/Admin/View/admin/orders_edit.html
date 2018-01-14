@@ -277,7 +277,7 @@
 									<div class="form-group has-error">
 										<label class="col-md-3 control-label">Guest deadline</label>
 										<div class="col-md-3">
-											<div class="input-group date form_meridian_datetimenew" data-date="2012-12-21">
+											<div class="input-group date form_meridian_datetimenew" data-date="{$dateform}">
 												<input name="g_deadtime" type="text" size="10" class="form-control input-inline " placeholder="Guest deadline" value="{$orderinfo.g_deadline}" required>
 												<span class="input-group-btn">
 												<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
@@ -331,18 +331,17 @@
 											<select name="g_state" class="form-control input-inline input-medium">
 												<if condition="$orderinfo.g_state eq 0 ">
 												  <option value="0" selected>Guest have no paid gurrentee</option>
-																		<option value="1">Guest have paid gurrentee</option>
-																		<option value="2">Guest have pain all money</option>
-												<elseif condition="$name eq 1"/>
+													<option value="1">Guest have only paid gurrentee</option>
+													<option value="2">Guest have pain all money</option>
+												<elseif condition="$orderinfo.g_state eq 1"/>
 												  <option value="0">Guest have no paid gurrentee</option>
-																		<option value="1" selected>Guest have paid gurrentee</option>
-																		<option value="2">Guest have pain all money</option>
+													<option value="1" selected>Guest have paid gurrentee</option>
+													<option value="2">Guest have pain all money</option>
 												<else />
 												  <option value="0">Guest have no paid gurrentee</option>
-																		<option value="1">Guest have paid gurrentee</option>
-																		<option value="2" selected>Guest have pain all money</option>
+													<option value="1">Guest have paid gurrentee</option>
+													<option value="2" selected>Guest have pain all money</option>
 												</if>
-
 											</select>
 										</div>
 									</div>
@@ -352,10 +351,10 @@
 										<div class="col-md-9">
 											<input name="oriid" type="hidden" value="{$orderinfo[wxid]}" readonly>
 											<select name="wxid" class="form-control input-inline input-medium">
+												<option value="">Please Choose a worker</option>
 												<foreach name="workers" item="vo">
-													<option value="">Please Choose a worker</option>
 													<if condition="$orderinfo[wxid] eq $vo[wxid]">
-																		  <option value="{$vo.wxid}" selected>{$vo.wxid} : {$vo.wxname}</option>
+														<option value="{$vo.wxid}" selected>{$vo.wxid} : {$vo.wxname}</option>
 													<else />
 														<option value="{$vo.wxid}">{$vo.wxid} : {$vo.wxname}</option>
 													</if>
@@ -366,8 +365,8 @@
 									<div class="form-group">
 										<label class="col-md-3 control-label">Worker deadline</label>
 										<div class="col-md-3">
-											<div class="input-group date form_meridian_datetimenew" data-date="2012-12-21">
-												<input name="w_deadline" type="text" size="10" class="form-control input-inline " placeholder="Worker deadline" value="{$orderinfo.w_deadline}" readonly>
+											<div class="input-group date form_meridian_datetimenew" data-date="{$dateform}">
+												<input name="w_deadline" type="text" size="10" class="form-control input-inline " placeholder="Worker deadline" value="{$orderinfo.w_deadline}" >
 												<span class="input-group-btn">
 												<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
 												<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>

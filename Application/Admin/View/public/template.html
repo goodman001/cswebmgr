@@ -40,6 +40,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="__PUBLIC__/metronic3_7/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
+
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -62,8 +63,6 @@ License: You must have a valid license purchased only from themeforest(the above
 			<a href="index.html">
 			<img src="__PUBLIC__/metronic3_7/assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
 			</a>
-			<div class="menu-toggler sidebar-toggler hide">
-			</div>
 		</div>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -78,7 +77,16 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- END NOTIFICATION DROPDOWN -->
 				<!-- BEGIN INBOX DROPDOWN -->
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-				
+				<li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+						<a id="currentTime"></a>
+				</li>
+				<li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+						<a href="javascript:;" class="dropdown-toggle">
+							<i class="icon-envelope-open"></i>
+							<span class="badge badge-default">
+							{$cin} </span>
+						</a>
+				</li>
 				<!-- END INBOX DROPDOWN -->
 				<!-- BEGIN TODO DROPDOWN -->
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
@@ -297,7 +305,14 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END CORE PLUGINS -->
 <block name="footscript">
 </block>
-
+<script language="javascript">
+    $(function(){
+        //setInterval("$('#currentTime').text(new Date().toLocalsString());",1000);
+        setInterval(function(){
+            $("#currentTime").text(new Date().toLocaleString());
+        },1000);
+    });
+</script>
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

@@ -31,6 +31,9 @@ class CommonController extends Controller
 				$Model = M('configure_exchange');
 				$items = $Model->select();
 				$this->assign('currencies',$items);
+				/* get default date */
+				$dateform = date("Y-m-d",time());
+				$this->assign('dateform',$dateform);
 			}
 
 		}
