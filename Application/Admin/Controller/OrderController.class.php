@@ -246,17 +246,9 @@ class OrderController extends CommonController {
 
 					$WORKEROORDER = M('worker_order');
 					if($map['wxid'] != ""){
-						//echo "fef";
-						//dump($map);
-						$workorder = $WORKEROORDER->where($map)->find();
-						if(!empty($workorder)){
-							$WORKEROORDER->where($map)->save($mapadd);
-						}else{
-							$map['w_deadline'] = I('post.w_deadline','','htmlspecialchars');//
-							$map['w_payment'] = I('post.w_payment','','htmlspecialchars');//
-							$map['w_state'] = I('post.w_state','','htmlspecialchars');//
-							$WORKEROORDER->data($map)->add();
-						}
+						$mapadd['wxid'] = $map['wxid'];
+						$connd['orderid'] = $map['orderid'];
+						$WORKEROORDER->where($connd)->save($mapadd);
 						//dump($ii);
 					}else
 					{
