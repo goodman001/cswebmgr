@@ -360,8 +360,8 @@
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="icon-share font-red-sunglo hide"></i>
-								<span class="caption-subject font-red-sunglo bold uppercase">Date Analysis</span>
-								<span class="caption-helper">Date Section Analysis...</span>
+								<span class="caption-subject font-red-sunglo bold uppercase">Day Analysis</span>
+								<span class="caption-helper">Day Section Analysis...</span>
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -372,15 +372,6 @@
 										<div class="col-md-4 col-sm-12">
 											<div class="input-group date form_meridian_date" data-date="2012-12-21T15:25:00Z">
 												<input name="fromdate" type="text" size="10" class="form-control input-inline" placeholder="From" value="{$newfrom}" readonly>
-												<span class="input-group-btn">
-												<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
-												</span>
-											</div>
-											<!-- /input-group -->
-										</div>
-										<div class="col-md-4 col-sm-12">
-											<div class="input-group date form_meridian_date" data-date="2012-12-21T15:25:00Z">
-												<input name="todate" type="text" size="10" class="form-control input-inline" placeholder="To" value="{$newto}" readonly>
 												<span class="input-group-btn">
 												<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
 												</span>
@@ -531,5 +522,19 @@
 			Demo.init(); // init demo features
 			ComponentsPickers.init();
         });
+				/* GET /stores */
+			function get_datedate_query(){
+				var url='__URL__/getDayData';
+				$.ajax({
+					type:"get",
+					url:url,
+					dataType:"json",
+					success: function aa(data) {
+						  //showstorelist(data.stores);
+							console.log(data);
+					}
+				});
+			}
+			get_datedate_query();
 		</script>
 </block>
