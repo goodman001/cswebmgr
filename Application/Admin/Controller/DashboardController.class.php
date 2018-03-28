@@ -143,22 +143,24 @@ class DashboardController extends CommonController {
     public function getMonthData(){
       $ORDER = M('orders');
       //$month =  date("Y-m");
-      $month =  date("2018-03");
+	  $daydata = I('post.daytime','','htmlspecialchars');//
+      $month =  $daydata;
       $fromdate = date('Y-m-01', strtotime($month."-01")); //月初
       $todate = date('Y-m-d', strtotime("$fromdate +1 month -1 day"));//月末
       /*  month day revenues*/
       $month_revenuesarr  = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('DATE_FORMAT(db_orders.createtime,"%Y-%m-%d") as createday,db_orders.moneytype,SUM(db_orders.totalprice) as revenues')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->group('db_orders.moneytype,DATE_FORMAT(db_orders.createtime,"%Y-%m-%d")')->select();
-      print($fromdate);
-      print($todate);
+      //print($fromdate);
+      //print($todate);
       //print_r($month_revenuesarr);
       $day_revenuearray = [];
+	  $day_all = [];
       foreach($month_revenuesarr as $k=>$v){
           //print_r($v);
           $Model = M('configure_exchange');
           $cc['currency'] = $v['moneytype'];
           $item = $Model->where($cc)->find();
           $day_revenuearray[$v['createday']] = $day_revenuearray[$v['createday']] + $v['revenues']*$item['rating'];
-
+		  $day_all[$v['createday']][$v['moneytype']] = $v['revenues'];
       }
       //print_r($day_revenuearray);
       /*  month day salary */
@@ -171,7 +173,20 @@ class DashboardController extends CommonController {
           $day_profitarray[$v['createday']] = $day_revenuearray[$v['createday']] - $v['salary'];
       }
       //print_r($day_profitarray);
+	  $datas = [];
+	  foreach($month_salaryarr as $k=>$v){
+		  $cell['profit'] = $day_profitarray[$v['createday']];
+		  $cell['salary'] = $v['salary'];
+		  $cell['revenuearray'] = $day_revenuearray[$v['createday']];
+		  $cell['createday'] = $v['createday'];
+		  $cell['datas'] = $day_all[$v['createday']];
+		  array_push($datas ,$cell);
+      }
+	  $this->ajaxReturn($datas);
     }
+	
+	
+	
     public function getYearData(){
       /*year show*/
       $year =  date("2018");
