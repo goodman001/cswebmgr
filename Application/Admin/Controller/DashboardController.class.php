@@ -90,6 +90,8 @@ class DashboardController extends CommonController {
               $this->assign('ongoingrevenuesarr',$ongoingrevenuesarrnew);
               $fromdate = date("Y-m-d");
               $this->assign('today',$fromdate);
+              $this->assign('todaymonth',date("Y-m"));
+              $this->assign('todayyear',date("Y"));
               /* display */
 
               /*
@@ -138,12 +140,12 @@ class DashboardController extends CommonController {
       $datas['today_profit'] = $today_revenues - $today_salary;
       $this->ajaxReturn($datas);
     }
-    
-    
+
+
     public function getMonthData(){
       $ORDER = M('orders');
       //$month =  date("Y-m");
-	  $daydata = I('post.daytime','','htmlspecialchars');//
+	    $daydata = I('post.daytime','','htmlspecialchars');//
       $month =  $daydata;
       $fromdate = date('Y-m-01', strtotime($month."-01")); //月初
       $todate = date('Y-m-d', strtotime("$fromdate +1 month -1 day"));//月末
@@ -153,20 +155,23 @@ class DashboardController extends CommonController {
       //print($todate);
       //print_r($month_revenuesarr);
       $day_revenuearray = [];
-	  $day_all = [];
+	    $day_all = [];
+      $revenuesum = 0;
       foreach($month_revenuesarr as $k=>$v){
           //print_r($v);
           $Model = M('configure_exchange');
           $cc['currency'] = $v['moneytype'];
           $item = $Model->where($cc)->find();
           $day_revenuearray[$v['createday']] = $day_revenuearray[$v['createday']] + $v['revenues']*$item['rating'];
-		  $day_all[$v['createday']][$v['moneytype']] = $v['revenues'];
+          $revenuesum = $day_revenuearray[$v['createday']] + $revenuesum;
+		      $day_all[$v['createday']][$v['moneytype']] = $v['revenues'];
       }
       //print_r($day_revenuearray);
       /*  month day salary */
       $month_salaryarr  = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('DATE_FORMAT(db_orders.createtime,"%Y-%m-%d") as createday,SUM(db_worker_order.w_payment) as salary')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->group('DATE_FORMAT(db_orders.createtime,"%Y-%m-%d")')->select();
       //print_r($month_salaryarr);
       $day_profitarray = [];
+
       foreach($month_salaryarr as $k=>$v){
           //print_r($v);
           $Model = M('configure_exchange');
@@ -174,22 +179,29 @@ class DashboardController extends CommonController {
       }
       //print_r($day_profitarray);
 	  $datas = [];
+    $salarysum = 0;
 	  foreach($month_salaryarr as $k=>$v){
 		  $cell['profit'] = $day_profitarray[$v['createday']];
 		  $cell['salary'] = $v['salary'];
+      $salarysum = $salarysum + $v['salary'];
 		  $cell['revenuearray'] = $day_revenuearray[$v['createday']];
 		  $cell['createday'] = $v['createday'];
 		  $cell['datas'] = $day_all[$v['createday']];
 		  array_push($datas ,$cell);
       }
-	  $this->ajaxReturn($datas);
+    $res["salarysum"] = $salarysum;
+    $res["revenuesum"]=$revenuesum;
+    $res["profitsum"]=($revenuesum - $salarysum);
+    $res["datas"] = $datas;
+	  $this->ajaxReturn($res);
     }
-	
-	
-	
+
+
+
     public function getYearData(){
       /*year show*/
-      $year =  date("2018");
+      $ORDER = M('orders');
+      $year =  I('post.daytime','','htmlspecialchars');//
       $fromdate = date('Y-m-01', strtotime($year."-01-01")); //月初
       $todate = date('Y-m-d', strtotime($year."-12-31"));//月末
       $year_revenuesarr  = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('DATE_FORMAT(db_orders.createtime,"%Y-%m") as createday,db_orders.moneytype,SUM(db_orders.totalprice) as revenues')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->group('db_orders.moneytype,DATE_FORMAT(db_orders.createtime,"%Y-%m")')->select();
@@ -197,23 +209,41 @@ class DashboardController extends CommonController {
 
 
       $year_revenuearray = [];
+      $day_all = [];
+      $revenuesum = 0;
       foreach($year_revenuesarr as $k=>$v){
           //print_r($v);
           $Model = M('configure_exchange');
           $cc['currency'] = $v['moneytype'];
           $item = $Model->where($cc)->find();
           $year_revenuearray[$v['createday']] = $year_revenuearray[$v['createday']] + $v['revenues']*$item['rating'];
-
+          $revenuesum = $revenuesum  + $year_revenuearray[$v['createday']];
+          $day_all[$v['createday']][$v['moneytype']] = $v['revenues'];
       }
       //print_r($year_revenuearray);
       $year_salaryarr  = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('DATE_FORMAT(db_orders.createtime,"%Y-%m") as createday,SUM(db_worker_order.w_payment) as salary')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->group('DATE_FORMAT(db_orders.createtime,"%Y-%m")')->select();
       $year_profitarray = [];
-      print_r($year_salaryarr);
+      //print_r($year_salaryarr);
       foreach($year_salaryarr as $k=>$v){
           //print_r($v);
           $Model = M('configure_exchange');
           $year_profitarray[$v['createday']] = $year_revenuearray[$v['createday']] - $v['salary'];
       }
-      print_r($year_profitarray);
+      $datas = [];
+      $salarysum = 0;
+  	  foreach($year_salaryarr as $k=>$v){
+        $room['profit'] = $year_profitarray[$v['createday']];
+  		  $room['salary'] = $v['salary'];
+        $salarysum = $salarysum + $v['salary'];
+  		  $room['revenuearray'] = $year_revenuearray[$v['createday']];
+  		  $room['createday'] = $v['createday'];
+  		  $room['datas'] = $day_all[$v['createday']];
+  		  array_push($datas ,$room);
+      }
+      $res["salarysum"] = $salarysum;
+      $res["revenuesum"]=$revenuesum;
+      $res["profitsum"]=($revenuesum - $salarysum);
+      $res["datas"] = $datas;
+      $this->ajaxReturn($res);
     }
 }

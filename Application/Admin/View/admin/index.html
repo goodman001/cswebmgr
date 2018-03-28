@@ -438,12 +438,33 @@
 								</a>
 							</div>
 						</div>
-						<div class="portlet-body">
-							<div id="chart_month" class="chart" style="padding: 0px; position: relative;">
+						<div class="portlet-body form">
+							<div class="row">
+								<div class="col-md-12 col-sm-12">
+									<div class="form-group">
+										<div class="col-md-3 col-sm-12">
+											<div class="input-group input-medium date date-picker" data-date="{$todaymonth}" data-date-format="yyyy-mm" data-date-viewmode="years" data-date-minviewmode="months">
+												<input type="text" class="form-control" name="monthsearchinput" width="80%" value="{$todaymonth}" readonly="">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											<!-- /input-group -->
+										</div>
+										<div class="col-md-1 col-sm-12">
+											<button class="btn yellow table-group-action-submit" id="monthsearchbtn"><i class="fa fa-search"></i></button>
+										</div>
+										<div class="col-md-8 col-sm-12">
+											<i class="fa fa-search" ></i> Salary/mon: <span id="monthsalarysum"></span>
+											<i class="fa fa-search" ></i> Profit/mon: <span id="monthprofitsum"></span>
+											<i class="fa fa-search" ></i> Revenues/mon: <span id="monthrevenuessum"></span>
+										</div>
+									</div>
+								</div>
+							<div id="chart_month" class="chart" style="padding: 0px; position: relative;width:100%;height: 400px;">
 							</div>
 					</div>
-							
-							
+
 						</div>
 				</div>
 			</div>
@@ -506,7 +527,7 @@
 		function showDayData(data){
 			$("#dayrevenues").html("");
 			$("#daydatalist").html("");
-			
+
 			$("#dayrevenues").text("  " + data.today_revenues + " RMB");
 			if(data.today_alldata != null){
 				for(var i=0;i< data.today_alldata.length;i++){
@@ -514,7 +535,7 @@
 					$("#daydatalist").append(cell);
 				}
 			}
-			
+
 			$("#dayprofit").text("  " + data.today_profit + " RMB");
 			if(data.today_salary == null){
 				data.today_salary = 0;
@@ -528,7 +549,7 @@
 			var day = $("input[name='daysearchinput']").val();
 			get_datedata_query(day);
 			//console.log(day);
-			
+
 		});
 		/* month data  */
 		function get_monthdata_query(day){
@@ -543,12 +564,45 @@
 				success: function aa(data) {
 					  //showstorelist(data.stores);
 						console.log(data);
+						drawProfitBar(data.datas);
+						$("#monthsalarysum").text("  " + data.salarysum + " RMB");
+						$("#monthprofitsum").text("  " + data.profitsum + " RMB");
+						$("#monthrevenuessum").text("  " + data.revenuesum + " RMB");
 						//showDayData(data);
 				}
 			});
 		}
-		get_monthdata_query('2018-03');
-		
+		var month = $("input[name='monthsearchinput']").val();
+		get_monthdata_query(month);
+		$("#monthsearchbtn").click(function(){
+			var data = {};
+			var month = $("input[name='monthsearchinput']").val();
+			get_monthdata_query(month);
+			//console.log(day);
+		});
+		/* get year */
+		function get_yeardata_query(day){
+			var data = {};
+			data.daytime = day;
+			var url='__URL__/getYearData';
+			$.ajax({
+				type:"post",
+				url:url,
+				data:data,
+				dataType:"json",
+				success: function aa(data) {
+					  //showstorelist(data.stores);
+						console.log(data);
+						//drawProfitBar(data.datas);
+						//$("#monthsalarysum").text("  " + data.salarysum + " RMB");
+						//$("#monthprofitsum").text("  " + data.profitsum + " RMB");
+						//$("#monthrevenuessum").text("  " + data.revenuesum + " RMB");
+						//showDayData(data);
+				}
+			});
+		}
+		get_yeardata_query('2018');
+
 		</script>
 		<script>
 			/*
@@ -560,62 +614,68 @@
     {name:'E',count:4,description:"This is column E!"},
     {name:'F',count:2,description:"This is column F!"},
 ];*/
-var data = [
-	{profit: 4180, salary: "4500.00", description:"This is column A!",revenuearray: 8680, createday: "2018-03-01"},
-	{profit: 864, salary: "800.00", description:"This is column A!",revenuearray: 1664, createday: "2018-03-02"},
-]
-// Draw a basic bar chart
+function drawProfitBar(data){
 
-var margin = {top:20, left:50, bottom:50, right:20};
-var height = 500 - margin.top - margin.bottom,
-    width = 960 - margin.left - margin.right;
+	// Draw a basic bar chart
+	var wd = $(chart_month).width();
+	var wh = $(chart_month).height();
+	var margin = {top:20, left:50, bottom:70, right:20};
+	var height = wh - margin.top - margin.bottom,
+	    width = wd - margin.left - margin.right;
+  $("#chart_month").html("");
+	var svg = d3.select("#chart_month")
+	        .append("svg")
+	        .attr("height", height + margin.top + margin.bottom)
+	        .attr("width", width + margin.left + margin.right)
+	        .style("cursor","default")
+	        .append("g")
+	        .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
-var svg = d3.select("#chart_month")
-        .append("svg")
-        .attr("height", height + margin.top + margin.bottom)
-        .attr("width", width + margin.left + margin.right)
-        .style("cursor","default")
-        .append("g")
-        .attr("transform","translate(" + margin.left + "," + margin.top + ")");
+	var x = d3.scaleBand()
+	    .domain(data.map(function(d) { return d.createday;}))
+	    .range([0,width])
+	    .padding(.1);
+	var flagv = Math.max.apply(Math,data.map(function(o){return o.profit;}))
+	var y = d3.scaleLinear()
+	    .domain([0,flagv])
+	    .range([height,0]);
 
-var x = d3.scaleBand() 
-    .domain(data.map(function(d) { return d.profit;}))
-    .range([0,width])
-    .padding(.1);
-
-var y = d3.scaleLinear()
-    .domain([0,70])
-    .range([height,0]);
-
-var color = d3.scaleOrdinal(d3.schemeCategory10)
-    .domain(x.domain())
+	var color = d3.scaleOrdinal(d3.schemeCategory10)
+	    .domain(x.domain())
 
 
-var tooltip = d3.tooltip() // returns the tooltip function
-    .extent([[0,0],[width,height]]) // tells the tooltip how much area it has to work with
-    .tips(["name","description"],["Bar Name: ","Description: "]) // tells the tooltip which properties to display in the tip and what to label thme
-    .fontSize(12) // sets the font size for the tooltip
-    .padding([8,4]) // sets the amount of padding in the tooltip rectangle
-    .margin([10,10]); // set the distance H and V to keep the tooltip from the mouse pointer
+	var tooltip = d3.tooltip() // returns the tooltip function
+	    .extent([[0,0],[width,height]]) // tells the tooltip how much area it has to work with
+	    .tips(["createday","profit","salary","revenuearray"],["CreateDate: ","Profit: ","Salary: ","Revenue: "]) // tells the tooltip which properties to display in the tip and what to label thme
+	    .fontSize(12) // sets the font size for the tooltip
+	    .padding([8,4]) // sets the amount of padding in the tooltip rectangle
+	    .margin([10,10]); // set the distance H and V to keep the tooltip from the mouse pointer
 
-svg.selectAll(".bar")
-    .data(data)
-    .enter()
-    .append("rect")
-    .attr("x", function(d) { return x(d.profit)})
-    .attr("y", function(d) { return y(d.salary)})
-    .attr("width", x.bandwidth())
-    .attr("height", function(d) { return height - y(d.salary)})
-    .attr("fill", function(d) { return color(d.profit)})
-    .each(tooltip.events); // attaches the tooltips mouseenter/leave/move events but does not overwrite previously attached events
+	svg.selectAll(".bar")
+	    .data(data)
+	    .enter()
+	    .append("rect")
+	    .attr("x", function(d) { return x(d.createday)})
+	    .attr("y", function(d) { return y(d.salary)})
+	    .attr("width", x.bandwidth())
+	    .attr("height", function(d) { return height - y(d.salary)})
+	    .attr("fill", function(d) { return color(d.createday)})
+	    .each(tooltip.events); // attaches the tooltips mouseenter/leave/move events but does not overwrite previously attached events
 
-svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
+	svg.append("g")
+	    .attr("transform", "translate(0," + height + ")")
+	    .call(d3.axisBottom(x))
+			.selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+        .attr("transform", "rotate(-65)");
 
-svg.append("g")
-    .call(d3.axisLeft(y));
+	svg.append("g")
+	    .call(d3.axisLeft(y));
 
-svg.call(tooltip) // draws the tooltip;
+	svg.call(tooltip) // draws the tooltip;
+}
+
 		</script>
 </block>
