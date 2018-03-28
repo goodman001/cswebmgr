@@ -366,12 +366,11 @@
 						</div>
 						<div class="portlet-body">
 							<div class="row">
-								<form role="form" action="{:U('Order/orderlist?p=1');}" method="POST">
 								<div class="col-md-12 col-sm-12">
 									<div class="form-group">
 										<div class="col-md-4 col-sm-12">
 											<div class="input-group date form_meridian_date" data-date="2012-12-21T15:25:00Z">
-												<input name="fromdate" type="text" size="10" class="form-control input-inline" placeholder="From" value="{$newfrom}" readonly>
+												<input name="daysearchinput" type="text" size="10" class="form-control input-inline" placeholder="Day" value="{$today}" readonly>
 												<span class="input-group-btn">
 												<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
 												</span>
@@ -379,97 +378,37 @@
 											<!-- /input-group -->
 										</div>
 										<div class="col-md-4 col-sm-12">
-											<button class="btn yellow table-group-action-submit"><i class="fa fa-search"></i></button>
-											<a class="btn red filter-cancel" type="reset" href="{:U('Order/orderlist?p=1');}"><i class="fa fa-times"></i> </a>
-											<!-- /input-group -->
+											<button class="btn yellow table-group-action-submit" id="daysearchbtn"><i class="fa fa-search"></i></button>
 										</div>
 									</div>
 								</div>
-								</form>
 							</div>
 								<div class="portlet-body">
 									<div class="portlet-body">
 										<div class="row static-info">
 											<div class="col-md-5 name">
-												 Revenues (all completed):
+												 Revenues:
 											</div>
 											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> {$revenues} RMB
+												 <i class="fa fa-paper-plane" ></i><span id="dayrevenues"></span>
 											</div>
 										</div>
-										<foreach name="revenuesarr" item="vo">
-											<div class="row static-info">
-												<div class="col-md-5 name">
-												</div>
-												<div class="col-md-7 value">
-													 <small><i class="fa fa-check-square-o"></i> {$vo['revenues']} {$vo['moneytype']} </mall><span class="label label-sm label-info"> {$vo['rating']} </span>
-												</div>
-											</div>
-										</foreach>
+										<div id="daydatalist">
+										</div>
 										<div class="row static-info">
 											<div class="col-md-5 name">
-												 Profit (all completed):
+												 Profit :
 											</div>
 											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> {$profit} RMB
+												 <i class="fa fa-paper-plane"></i>  <span id="dayprofit"></span>
 											</div>
 										</div>
 										<div class="row static-info">
 											<div class="col-md-5 name">
-												 Worker Salary (all completed):
+												 Worker Salary :
 											</div>
 											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> {$salary} RMB
-											</div>
-										</div>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 No. completed Orders
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> {$ordernum}
-											</div>
-										</div>
-										<hr>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 Revenues (ongoing):
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> {$ongoingrevenues} RMB
-											</div>
-										</div>
-										<foreach name="ongoingrevenuesarr" item="vo">
-											<div class="row static-info">
-												<div class="col-md-5 name">
-												</div>
-												<div class="col-md-7 value">
-													 <small><i class="fa fa-check-square-o"></i> {$vo['revenues']} {$vo['moneytype']} </mall><span class="label label-sm label-info"> {$vo['rating']} </span>
-												</div>
-											</div>
-										</foreach>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 Profit (ongoing):
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> {$ongoingprofit} RMB
-											</div>
-										</div>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 Worker Salary (ongoing):
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> {$ongoingsalary} RMB
-											</div>
-										</div>
-										<div class="row static-info">
-											<div class="col-md-5 name">
-												 No. ongoing Orders
-											</div>
-											<div class="col-md-7 value">
-												 <i class="fa fa-paper-plane"></i> {$cin}
+												 <i class="fa fa-paper-plane"></i> <span id="daysalary"></span>
 											</div>
 										</div>
 										<hr>
@@ -522,19 +461,51 @@
 			Demo.init(); // init demo features
 			ComponentsPickers.init();
         });
-				/* GET /stores */
-			function get_datedate_query(){
-				var url='__URL__/getDayData';
-				$.ajax({
-					type:"get",
-					url:url,
-					dataType:"json",
-					success: function aa(data) {
-						  //showstorelist(data.stores);
-							console.log(data);
-					}
-				});
+		/* date data */
+		function get_datedata_query(day){
+			var data = {};
+			data.daytime = day;
+			var url='__URL__/getDayData';
+			$.ajax({
+				type:"post",
+				url:url,
+				data:data,
+				dataType:"json",
+				success: function aa(data) {
+					  //showstorelist(data.stores);
+						console.log(data);
+						showDayData(data);
+				}
+			});
+		}
+		function showDayData(data){
+			$("#dayrevenues").html("");
+			$("#daydatalist").html("");
+			
+			$("#dayrevenues").text("  " + data.today_revenues + " RMB");
+			if(data.today_alldata != null){
+				for(var i=0;i< data.today_alldata.length;i++){
+					var cell='<div class="row static-info"><div class="col-md-5 name"></div><div class="col-md-7 value"><small><i class="fa fa-check-square-o"></i> ' + data['today_alldata'][i].revenues + " " + data['today_alldata'][i].moneytype +  '</small><span class="label label-sm label-info"> {$vo['rating']} </span></div></div>';
+					$("#daydatalist").append(cell);
+				}
 			}
-			get_datedate_query();
+			
+			$("#dayprofit").text("  " + data.today_profit + " RMB");
+			if(data.today_salary == null){
+				data.today_salary = 0;
+			}
+			$("#daysalary").text("  " + data.today_salary + " RMB");
+		}
+		var day  = $("input[name='daysearchinput']").val()
+		get_datedata_query(day);
+		$("#daysearchbtn").click(function(){
+			var data = {};
+			var day = $("input[name='daysearchinput']").val();
+			get_datedata_query(day);
+			console.log(day);
+			
+		});
+		/* Day date analysis */
+		
 		</script>
 </block>

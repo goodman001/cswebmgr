@@ -88,6 +88,8 @@ class DashboardController extends CommonController {
               $this->assign('ongoingsalary',$ongoingsalary);
               $this->assign('ongoingprofit',$ongoingprofit);
               $this->assign('ongoingrevenuesarr',$ongoingrevenuesarrnew);
+              $fromdate = date("Y-m-d");
+              $this->assign('today',$fromdate);
               /* display */
 
               /*
@@ -104,11 +106,13 @@ class DashboardController extends CommonController {
     }
     public function getDayData(){
       $ORDER = M('orders');
+      $daydata = I('post.daytime','','htmlspecialchars');//
+      //echo $daydata;
       /*
           today show
       */
-      $fromdate = date("Y-m-d");
-      $todate = date("Y-m-d");
+      $fromdate = $daydata ;
+      $todate = $daydata;
       $today_salary = 0;
       $today_salary = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->sum('db_worker_order.w_payment');
       //print($today_salary);
@@ -127,11 +131,15 @@ class DashboardController extends CommonController {
 
       }
       //print($today_revenues);
+      $datas['today_day'] = $daydata;
       $datas['today_salary'] = $today_salary;
       $datas['today_revenues'] = $today_revenues;
+      $datas['today_alldata'] = $today_revenuesarr;
       $datas['today_profit'] = $today_revenues - $today_salary;
       $this->ajaxReturn($datas);
     }
+    
+    
     public function getMonthData(){
       $ORDER = M('orders');
       //$month =  date("Y-m");
