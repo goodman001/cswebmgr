@@ -729,9 +729,9 @@ function drawProfitBar(data,chartname){
 	    .enter()
 	    .append("rect")
 	    .attr("x", function(d) { return x(d.createday)})
-	    .attr("y", function(d) { return y(d.salary)})
+	    .attr("y", function(d) { return y(d.profit)})
 	    .attr("width", x.bandwidth())
-	    .attr("height", function(d) { return height - y(d.salary)})
+	    .attr("height", function(d) { return height - y(d.profit)})
 	    .attr("fill", function(d) { return color(d.createday)})
 	    .each(tooltip.events); // attaches the tooltips mouseenter/leave/move events but does not overwrite previously attached events
 
