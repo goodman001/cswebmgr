@@ -451,18 +451,18 @@
 												<!-- /input-group -->
 											</div>
 											<div class="col-md-1 col-sm-12">
-												<button class="btn yellow table-group-action-submit" id="yearsearchbtn"><i class="fa fa-search"></i></button>
+												<button class="btn yellow table-group-action-submit" id="monthsearchbtn"><i class="fa fa-search"></i></button>
 											</div>
 											<div class="col-md-4 col-sm-12">
-												<h3 class="text-right"><i class="fa fa-calendar"></i> {$todaymonth}</h3>
+												<h3 class="text-right"><i class="fa fa-calendar"></i> <span id="monthspan"><span></h3>
 											</div>
 											<div class="col-md-4 col-sm-12">
 												<div class="tile bg-red-sunglo">
 													<div class="tile-body" style="padding-left:2%;padding-top:2%;padding-bottom:2%">
-														<h4>Salary/mon: <span id="monthsalarysum"></span></h4>
+															<h4>Salary/mon: <span id="monthsalarysum"></span></h4>
 															<h4>Profit/mon: <span id="monthprofitsum"></span></h4>
 															<h4>Revenues/mon: <span id="monthrevenuessum"></span></h4>
-														
+
 													</div>
 												</div>
 											</div>
@@ -511,15 +511,15 @@
 												<button class="btn yellow table-group-action-submit" id="yearsearchbtn"><i class="fa fa-search"></i></button>
 											</div>
 											<div class="col-md-4 col-sm-12">
-												<h3 class="text-right"><i class="fa fa-calendar"></i> {$todayyear}</h3>
+												<h3 class="text-right"><i class="fa fa-calendar"></i> <span id="yearspan"></span></h3>
 											</div>
 											<div class="col-md-4 col-sm-12">
 												<div class="tile bg-red-sunglo">
-													<div class="tile-body" style="padding-left:2%;padding-top:2%;">
+													<div class="tile-body" style="padding-left:2%;padding-top:2%;padding-bottom:2%">
 														<h4>Salary/mon: <span id="yearsalarysum"></span></h4>
 															<h4>Profit/mon: <span id="yearprofitsum"></span></h4>
 															<h4>Revenues/mon: <span id="yearrevenuessum"></span></h4>
-														
+
 													</div>
 												</div>
 											</div>
@@ -592,7 +592,6 @@
 		function showDayData(data){
 			$("#dayrevenues").html("");
 			$("#daydatalist").html("");
-
 			$("#dayrevenues").text("  " + data.today_revenues + " RMB");
 			if(data.today_alldata != null){
 				for(var i=0;i< data.today_alldata.length;i++){
@@ -607,7 +606,8 @@
 			}
 			$("#daysalary").text("  " + data.today_salary + " RMB");
 		}
-		var day  = $("input[name='daysearchinput']").val()
+		var day  = $("input[name='daysearchinput']").val();
+
 		get_datedata_query(day);
 		$("#daysearchbtn").click(function(){
 			var data = {};
@@ -633,6 +633,7 @@
 						$("#monthsalarysum").text("  " + data.salarysum + " RMB");
 						$("#monthprofitsum").text("  " + data.profitsum + " RMB");
 						$("#monthrevenuessum").text("  " + data.revenuesum + " RMB");
+						$("#monthspan").text(data.createdate);
 						//showDayData(data);
 				}
 			});
@@ -663,6 +664,7 @@
 						$("#yearsalarysum").text("  " + data.salarysum + " RMB");
 						$("#yearprofitsum").text("  " + data.profitsum + " RMB");
 						$("#yearrevenuessum").text("  " + data.revenuesum + " RMB");
+						$("#yearspan").text(data.createyear);
 						//showDayData(data);
 				}
 			});
@@ -748,8 +750,8 @@ function drawProfitBar(data,chartname){
 	svg.call(tooltip) // draws the tooltip;
 }
 
-			
-			
-			
+
+
+
 		</script>
 </block>

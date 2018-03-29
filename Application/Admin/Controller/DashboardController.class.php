@@ -147,23 +147,23 @@ class DashboardController extends CommonController {
       //$month =  date("Y-m");
 	    $daydata = I('post.daytime','','htmlspecialchars');//
       $month =  $daydata;
-      $fromdate = date('Y-m-01', strtotime($month."-01")); //月初
+      $fromdate = date('Y-m-d', strtotime($month."-01")); //月初
       $todate = date('Y-m-d', strtotime("$fromdate +1 month -1 day"));//月末
       /*  month day revenues*/
-      $month_revenuesarr  = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('DATE_FORMAT(db_orders.createtime,"%Y-%m-%d") as createday,db_orders.moneytype,SUM(db_orders.totalprice) as revenues')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->group('db_orders.moneytype,DATE_FORMAT(db_orders.createtime,"%Y-%m-%d")')->select();
+      $month_revenuesarr  = $ORDER->field('DATE_FORMAT(db_orders.createtime,"%Y-%m-%d") as createday,db_orders.moneytype,SUM(db_orders.totalprice) as revenues')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->group('db_orders.moneytype,DATE_FORMAT(db_orders.createtime,"%Y-%m-%d")')->select();
       //print($fromdate);
       //print($todate);
       //print_r($month_revenuesarr);
       $day_revenuearray = [];
 	    $day_all = [];
-      $revenuesum = 0;
+
       foreach($month_revenuesarr as $k=>$v){
           //print_r($v);
           $Model = M('configure_exchange');
           $cc['currency'] = $v['moneytype'];
           $item = $Model->where($cc)->find();
           $day_revenuearray[$v['createday']] = $day_revenuearray[$v['createday']] + $v['revenues']*$item['rating'];
-          $revenuesum = $day_revenuearray[$v['createday']] + $revenuesum;
+
 		      $day_all[$v['createday']][$v['moneytype']] = $v['revenues'];
       }
       //print_r($day_revenuearray);
@@ -180,6 +180,7 @@ class DashboardController extends CommonController {
       //print_r($day_profitarray);
 	  $datas = [];
     $salarysum = 0;
+    $revenuesum = 0;
 	  foreach($month_salaryarr as $k=>$v){
 		  $cell['profit'] = $day_profitarray[$v['createday']];
 		  $cell['salary'] = $v['salary'];
@@ -187,8 +188,10 @@ class DashboardController extends CommonController {
 		  $cell['revenuearray'] = $day_revenuearray[$v['createday']];
 		  $cell['createday'] = $v['createday'];
 		  $cell['datas'] = $day_all[$v['createday']];
+      $revenuesum = $day_revenuearray[$v['createday']] + $revenuesum;
 		  array_push($datas ,$cell);
-      }
+    }
+    $res["createdate"] = $daydata;
     $res["salarysum"] = $salarysum;
     $res["revenuesum"]=$revenuesum;
     $res["profitsum"]=($revenuesum - $salarysum);
@@ -202,22 +205,22 @@ class DashboardController extends CommonController {
       /*year show*/
       $ORDER = M('orders');
       $year =  I('post.daytime','','htmlspecialchars');//
-      $fromdate = date('Y-m-01', strtotime($year."-01-01")); //月初
+      $fromdate = date('Y-m-d', strtotime($year."-01-01")); //月初
       $todate = date('Y-m-d', strtotime($year."-12-31"));//月末
-      $year_revenuesarr  = $ORDER->join('left join db_worker_order on db_worker_order.orderid = db_orders.orderid')->join('left join db_workers on db_worker_order.wxid = db_workers.wxid')->join('left join db_guest_order on db_guest_order.orderid = db_orders.orderid')->join('left join db_guests on db_guest_order.wxid = db_guests.wxid')->field('DATE_FORMAT(db_orders.createtime,"%Y-%m") as createday,db_orders.moneytype,SUM(db_orders.totalprice) as revenues')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->group('db_orders.moneytype,DATE_FORMAT(db_orders.createtime,"%Y-%m")')->select();
+      $year_revenuesarr  = $ORDER->field('DATE_FORMAT(db_orders.createtime,"%Y-%m") as createday,db_orders.moneytype,SUM(db_orders.totalprice) as revenues')->where('db_orders.createtime >=  "'.$fromdate.' 00:00:00" AND db_orders.createtime <= "'.$todate.' 23:59:59"')->group('DATE_FORMAT(db_orders.createtime,"%Y-%m"),db_orders.moneytype')->select();
       //print_r($year_revenuesarr);
 
 
       $year_revenuearray = [];
       $day_all = [];
-      $revenuesum = 0;
+
       foreach($year_revenuesarr as $k=>$v){
           //print_r($v);
           $Model = M('configure_exchange');
           $cc['currency'] = $v['moneytype'];
           $item = $Model->where($cc)->find();
           $year_revenuearray[$v['createday']] = $year_revenuearray[$v['createday']] + $v['revenues']*$item['rating'];
-          $revenuesum = $revenuesum  + $year_revenuearray[$v['createday']];
+
           $day_all[$v['createday']][$v['moneytype']] = $v['revenues'];
       }
       //print_r($year_revenuearray);
@@ -231,6 +234,7 @@ class DashboardController extends CommonController {
       }
       $datas = [];
       $salarysum = 0;
+      $revenuesum = 0;
   	  foreach($year_salaryarr as $k=>$v){
         $room['profit'] = $year_profitarray[$v['createday']];
   		  $room['salary'] = $v['salary'];
@@ -238,9 +242,10 @@ class DashboardController extends CommonController {
   		  $room['revenuearray'] = $year_revenuearray[$v['createday']];
   		  $room['createday'] = $v['createday'];
   		  $room['datas'] = $day_all[$v['createday']];
+        $revenuesum = $revenuesum  + $year_revenuearray[$v['createday']];
   		  array_push($datas ,$room);
       }
-	  $res["createyear"] = $year;
+	    $res["createyear"] = $year;
       $res["salarysum"] = $salarysum;
       $res["revenuesum"]=$revenuesum;
       $res["profitsum"]=($revenuesum - $salarysum);
