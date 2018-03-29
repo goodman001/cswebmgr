@@ -240,6 +240,7 @@ class DashboardController extends CommonController {
   		  $room['datas'] = $day_all[$v['createday']];
   		  array_push($datas ,$room);
       }
+	  $res["createyear"] = $year;
       $res["salarysum"] = $salarysum;
       $res["revenuesum"]=$revenuesum;
       $res["profitsum"]=($revenuesum - $salarysum);
